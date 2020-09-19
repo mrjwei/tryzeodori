@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}ログイン{% endblock title%}
+
+{% block content %}
+<div class="outer-container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="title">トライズ大通情報サイトログイン</h1>
+    <div class="form-container">
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="cta" type="submit">ログイン</button>
+            <div class="hints d-flex flex-row justify-content-around">
+                <span class="hint">パスワードを忘れた方は<a href="{% url 'account_reset_password' %}">こちら</a></span>
+                <span class="hint">新規の方は<a href="{% url 'account_signup' %}">こちら</a>からご登録ください</span>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

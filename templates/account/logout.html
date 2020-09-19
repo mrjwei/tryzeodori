@@ -1,0 +1,18 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}ログアウト{% endblock title%}
+
+{% block content %}
+<div class="outer-container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="title">ログアウト</h1>
+    <p class="confirm">ログアウトしてもよろしいですか？</p>
+    <div class="logout">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="cta" type="submit">ログアウト</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
