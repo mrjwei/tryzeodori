@@ -1,0 +1,26 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}作成完了{% endblock title%}
+
+{% block content %}
+<div class="outer-container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="title">この内容で送信してもよろしいですか？</h1>
+    <div class="container">
+        <ul>
+            <li>{{ report.name }}</li>
+            <li>{{ report.condition }}</li>
+            <li>{{ report.temperature }}</li>
+            <li>{{ report.am }}</li>
+            <li>{{ report.am_detail }}</li>
+            <li>{{ report.pm }}</li>
+            <li>{{ report.pm_detail }}</li>
+            <li>{{ report.comment }}</li>
+        </ul>
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            <button class="cta" type="submit">送信</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

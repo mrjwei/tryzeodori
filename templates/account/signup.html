@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block title %}新規登録{% endblock title %}
+
+{% block content %}
+<div class="outer-container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="title">新規登録</h1>
+    <div class="form-container">
+        <form class="signup-form" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="cta" type="submit">登録</button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

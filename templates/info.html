@@ -1,0 +1,38 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}掲示板{% endblock title%}
+
+{% block content %}
+<section class="hero subpage">
+    <div class="container d-flex flex-column align-items-center">
+        <h1 class="title">
+            <span class="maintitle">掲示板</span>
+            <span class="subtitle">Info</span>
+        </h1>
+    </div>
+</section>
+<section class="section news">
+    <div class="container">
+        <ul class="news-list">
+            {% for post in posts %}
+                <li class="item news-item">
+                    <p class="date-tag">
+                        {% if post.tag %}<span class="tag">{{ post.tag }}</span>{% endif %}
+                        <span class="date">{{ post.publish_date|date:'Y.m.d' }}</span>
+                    </p>
+                    <a class="news-title" href="">{{ post.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if perms.pages.can_add_post %}
+        <a class="add d-flex flex-row justify-content-between align-items-center" href="{% url 'post_new' %}">
+            新着情報追加
+            <svg viewBox="0 0 16 16" class="bi bi-plus" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+        </a>
+        {% endif %}
+    </div>
+</section>
+{% endblock content %}

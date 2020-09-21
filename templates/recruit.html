@@ -1,0 +1,41 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}求人情報{% endblock title%}
+
+{% block content %}
+<section class="hero subpage">
+    <div class="container d-flex flex-column align-items-center">
+        <h1 class="title">
+            <span class="maintitle">求人情報</span>
+            <span class="subtitle">Recruit</span>
+        </h1>
+    </div>
+</section>
+<section class="section recruit">
+    <div class="container">
+        <div class="content-container">
+            <h2 class="title">求人情報：{{ month }}月{{ day }}日更新</h2>
+            <ul class="recruit-list">
+                {% for post in posts %}
+                    <li class="item recruit-item">
+                        <p class="tag-title">
+                            {% if post.tag %}<span class="tag">{{ post.tag }}</span>{% endif %}
+                            <span class="recruit-title">{{ post.title }}</span>
+                        </p>
+                        <span class="number">求人番号：{{ post.number }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if perms.pages.can_add_recruit_info %}
+        <a class="add d-flex flex-row justify-content-between align-items-center" href="{% url 'recruit_new' %}">
+            求人情報追加
+            <svg viewBox="0 0 16 16" class="bi bi-plus" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+        </a>
+        {% endif %}
+    </div>
+</section>
+{% endblock content %}

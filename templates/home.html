@@ -1,5 +1,111 @@
 {% extends '_base.html' %}
+{% load static %}
+
+{% block title %}ホーム{% endblock title%}
 
 {% block content %}
-<h1>Hello</h1>
+<section class="hero">
+    <div class="container d-flex flex-column align-items-center">
+        <h1 class="title">
+            <span class="maintitle">トライズ大通情報サイト</span>
+            <span class="subtitle">開所予定やイベント情報、就職に関する情報や施設についての情報などを発信しております</span>
+        </h1>
+        <a href="#news" class="down-arrow">
+            <svg viewBox="0 0 16 16" class="bi bi-arrow-down-short" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.646 7.646a.5.5 0 0 1 .708 0L8 10.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
+                <path fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+        </a>
+    </div>
+</section>
+<section class="section pattern news" id="news">
+    <div class="container">
+        <h2 class="title">
+            <span class="maintitle">新着情報</span>
+            <span class="subtitle">Info</span>
+        </h2>
+        <ul class="news-list">
+            {% for post in posts %}
+                <li class="item news-item">
+                    <p class="date-tag">
+                        {% if post.tag %}<span class="tag">{{ post.tag }}</span>{% endif %}
+                        <span class="date">{{ post.publish_date|date:'Y.m.d' }}</span>
+                    </p>
+                    <a class="news-title" href="{% url 'post' post.pk %}">{{ post.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if perms.pages.can_add_post %}
+        <a class="add d-flex flex-row justify-content-between align-items-center" href="{% url 'post_new' %}">
+            新着情報追加
+            <svg viewBox="0 0 16 16" class="bi bi-plus" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+        </a>
+        {% endif %}
+    </div>
+</section>
+<section class="section bg-blue saturdays">
+    <div class="container">
+        <h2 class="title">
+            <span class="maintitle">土曜開所予定</span>
+            <span class="subtitle">Saturdays</span>
+        </h2>
+        <ul class="saturday-list">
+            {% for schedule in saturday_schedules %}
+                <li class="item saturday-item">{{ schedule.date }} {{ schedule.title }}</li>
+            {% endfor %}
+        </ul>
+        {% if perms.pages.can_add_saturday_schedule %}
+        <a class="add white d-flex flex-row justify-content-between align-items-center" href="{% url 'saturday_new' %}">
+            土曜予定追加
+            <svg viewBox="0 0 16 16" class="bi bi-plus" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+        </a>
+        {% endif %}
+    </div>
+</section>
+<section class="section pattern schedule">
+    <div class="container">
+        <h2 class="title">
+            <span class="maintitle">職員予定</span>
+            <span class="subtitle">Staff Schedule</span>
+        </h2>
+        <ul class="row staff-list">
+            {% for schedule in staff_schedules %}
+                <li class="col-md-6 staff-item">
+                    <p>{{ schedule.name }}: {{ schedule.date }} {{ schedule.content }} / {{ schedule.duration }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        {% if perms.pages.can_add_staff_schedules %}
+        <a class="add d-flex flex-row justify-content-between align-items-center" href="{% url 'staff_new' %}">
+            職員予定追加
+            <svg viewBox="0 0 16 16" class="bi bi-plus" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+        </a>
+        {% endif %}
+    </div>
+</section>
+<section class="section bg-blue access">
+    <div class="container">
+        <h2 class="title">
+            <span class="maintitle">アクセス</span>
+            <span class="subtitle">Access</span>
+        </h2>
+        <div class="row">
+            <div class="col-md-6 contact">
+                <p>〒060-0051</p>
+                <p>札幌市中央区南1条東2丁目 5-1 MⅡビル 5Ｆ</p>
+                <p>Tel: 011-252-7660 / Fax: 011-252-7661</p>
+                <p>Email: odori＠tryze.biz</p>
+            </div>
+            <div class="col-md-6 map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2915.089456470641!2d141.35664501547328!3d43.06058607914616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f0b29780eba7edd%3A0x76e2287e88cc7456!2z44CSMDYwLTAwNTEg5YyX5rW36YGT5pyt5bmM5biC5Lit5aSu5Yy65Y2X77yR5p2h5p2x77yS5LiB55uu77yV4oiS77yRIO-8re-8kuODk-ODqyA177ym!5e0!3m2!1sja!2sjp!4v1598268637440!5m2!1sja!2sjp" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
