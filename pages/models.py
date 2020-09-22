@@ -72,8 +72,8 @@ class Report(models.Model):
         ('普通', '普通'),
         ('悪い', '悪い'),
     )
-    condition = models.CharField('体調', max_length=10, choices=CONDITION_CHOICES, default='normal')
-    temperature = models.DecimalField('体温', max_digits=3, decimal_places=1)
+    condition = models.CharField('体調', max_length=10, choices=CONDITION_CHOICES, default='普通')
+    temperature = models.DecimalField('体温', max_digits=3, decimal_places=1, default=36.0)
     TASKS = (
         ('テキスト学習', 'テキスト学習'),
         ('課題', '課題'),

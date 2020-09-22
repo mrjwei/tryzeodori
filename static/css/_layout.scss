@@ -476,12 +476,24 @@ form {
     z-index: 1;
     .content-container {
         display: inline-block;
+        width: 20%;
         color: $color-light;
         z-index: 10;
+        .confirm-form {
+            width: 100%;
+        }
     }
     .report-confirm-content {
+        width: 100%;
         li {
             margin-bottom: 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            span {
+                width: 50%;
+                display: block;
+            }
         }
     }
 }

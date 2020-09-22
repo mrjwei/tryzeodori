@@ -113,6 +113,7 @@ class ReportCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         context = super().get_context_data(**kwargs)
         context['month'] = month
         context['day'] = day
+        context['sent'] = False
         return context
     
     def form_valid(self, form):
@@ -120,6 +121,7 @@ class ReportCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         form.instance.author = self.request.user
         yesterday = date.today() - timedelta(days=1)
         if Report.objects.filter(author=self.request.user, created__gt=yesterday).exists():
+            context['sent'] = True
             return render(self.request, 'report_alert.html', context)
         else:
             if (next := self.request.POST.get('next', '')) == 'confirm':

@@ -6,8 +6,7 @@
 {% block content %}
 <div class="report-confirm outer-container d-flex flex-column justify-content-center align-items-center">
     <h1 class="title">本日の日報が既に送信済み</h1>
-    <div class="content-container ">
-        <p>本日の日報が既に送信されたため、送信不可です。</p>
-    </div>
+    <p class="confirm">本日の日報が既に送信されたため、送信不可です。</p>
+    <a class="cta" href="{% url 'home' %}">ホームへ戻る</a>
 </div>
 {% endblock content %}

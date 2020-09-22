@@ -6,16 +6,16 @@
 {% block content %}
 <div class="report-confirm outer-container d-flex flex-column justify-content-center align-items-center">
     <h1 class="title">この内容で送信してもよろしいですか？</h1>
-    <div class="content-container ">
+    <div class="content-container d-flex flex-column align-items-center">
         <ul class="report-confirm-content">
-            <li>名前：{{ form.name.value }}</li>
-            <li>体調：{{ form.condition.value }}</li>
-            <li>体温：{{ form.temperature.value }}</li>
-            <li>午前：{{ form.am.value }}</li>
-            <li>午前具体内容：{{ form.am_detail.value }}</li>
-            <li>午後：{{ form.pm.value }}</li>
-            <li>午後具体内容：{{ form.pm_detail.value }}</li>
-            <li>感想や相談事など：{{ form.comment.value }}</li>
+            <li><span>名前：</span><span>{{ form.name.value }}</span></li>
+            <li><span>体調：</span><span>{{ form.condition.value }}</span></li>
+            <li><span>体温：</span><span>{{ form.temperature.value }}</span></li>
+            <li><span>午前：</span><span>{{ form.am.value }}</span></li>
+            <li><span>午前具体内容：</span><span>{{ form.am_detail.value }}</span></li>
+            <li><span>午後：</span><span>{{ form.pm.value }}</span></li>
+            <li><span>午後具体内容：</span><span>{{ form.pm_detail.value }}</span></li>
+            <li><span>感想や相談事など：</span><span>{{ form.comment.value }}</span></li>
         </ul>
         <form class="confirm-form" method="POST">
             {% csrf_token %}

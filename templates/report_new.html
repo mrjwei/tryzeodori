@@ -14,12 +14,19 @@
 </section>
 <section class="section report d-flex flex-column align-items-center">
     <h2 class="title">日報：{{ month }}月{{ day }}日</h2>
-    <form class="report-form" method="POST">
-        {% csrf_token %}
-        {% for field in form %}
-            <p>{{ field.label_tag }}{{field}}</p>
-        {% endfor %}
-        <button class="cta" type="submit" name="next" value="confirm">送信</button>
-    </form>
+    {% if user.is_authenticated %}
+        {% if sent %}
+            <p class="alert">本日の日報が既に送信されました</p>
+            <a href="{% url 'home' %}"></a>
+        {% else %}
+            <form class="report-form" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    <p>{{ field.label_tag }}{{field}}</p>
+                {% endfor %}
+                <button class="cta" type="submit" name="next" value="confirm">送信</button>
+            </form>
+        {% endif %}
+    {% endif %}
 </section>
 {% endblock content %}

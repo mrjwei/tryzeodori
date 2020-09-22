@@ -11,6 +11,7 @@ django-allauth = "==0.42.0"
 django = "*"
 django-crispy-forms = "*"
 django-debug-toolbar = "*"
+environs = {extras = ["django"], version = "*"}
 
 [requires]
 python_version = "3.8"
