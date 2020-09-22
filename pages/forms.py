@@ -4,7 +4,7 @@ from django.forms import Textarea
 from django.forms import TextInput
 
 from .models import Report
-from .models import StaffSchedules
+from .models import StaffSchedule
 from .models import SaturdaySchedule
 from .models import Post
 from .models import RecruitInfo
@@ -13,7 +13,7 @@ from .models import RecruitInfo
 class ReportForm(ModelForm):
     class Meta:
         model = Report
-        exclude = ['id', 'date']
+        exclude = ['id', 'author', 'date', 'created']
         widgets = {
             'comment': Textarea(),
         }
@@ -39,7 +39,7 @@ class SaturdayForm(ModelForm):
 
 class StaffForm(ModelForm):
     class Meta:
-        model = StaffSchedules
+        model = StaffSchedule
         fields = '__all__'
         widgets = {
             'date': CustomDateInput(),

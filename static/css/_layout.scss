@@ -131,6 +131,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        z-index: 1;
     }
     .title {
         display: flex;
@@ -377,6 +378,7 @@ form {
     width: 100%;
     display: inline-block;
     text-align: center;
+    z-index: 1;
     p {
         width: 100%;
         display: flex;
@@ -407,7 +409,7 @@ form {
         @include button($color-light, $color-primary);
     }
 }
-.report-form, .staff-form, .saturday-form, .news-form {
+.report-form, .staff-form, .saturday-form, .news-form, .confirm-form {
     width: 30%;
 }
 .login-form {
@@ -464,6 +466,22 @@ form {
         color: $color-light;
         a {
             color: $color-light;
+        }
+    }
+}
+// ===============================================================
+// report confirm page
+// ===============================================================
+.report-confirm {
+    z-index: 1;
+    .content-container {
+        display: inline-block;
+        color: $color-light;
+        z-index: 10;
+    }
+    .report-confirm-content {
+        li {
+            margin-bottom: 1rem;
         }
     }
 }

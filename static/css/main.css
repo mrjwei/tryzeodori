@@ -305,6 +305,7 @@ p {
   width: 80%;
   margin: 0 auto;
   padding: 0;
+  z-index: 1;
 }
 
 .row {
@@ -667,6 +668,7 @@ p {
   width: 80%;
   margin: 0 auto;
   padding: 0;
+  z-index: 1;
 }
 
 .row {
@@ -1029,6 +1031,7 @@ p {
   width: 80%;
   margin: 0 auto;
   padding: 0;
+  z-index: 1;
 }
 
 .row {
@@ -1391,6 +1394,7 @@ p {
   width: 80%;
   margin: 0 auto;
   padding: 0;
+  z-index: 1;
 }
 
 .row {
@@ -1612,6 +1616,7 @@ p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 1;
 }
 
 .section .title {
@@ -1949,6 +1954,7 @@ form {
   width: 100%;
   display: inline-block;
   text-align: center;
+  z-index: 1;
 }
 
 form p {
@@ -2003,7 +2009,7 @@ form .cta {
   line-height: 1.5rem;
 }
 
-.report-form, .staff-form, .saturday-form, .news-form {
+.report-form, .staff-form, .saturday-form, .news-form, .confirm-form {
   width: 30%;
 }
 
@@ -2063,5 +2069,19 @@ form .cta {
 
 #ui-datepicker-div table a {
   color: #f2f2f2;
+}
+
+.report-confirm {
+  z-index: 1;
+}
+
+.report-confirm .content-container {
+  display: inline-block;
+  color: #f2f2f2;
+  z-index: 10;
+}
+
+.report-confirm .report-confirm-content li {
+  margin-bottom: 1rem;
 }
 /*# sourceMappingURL=main.css.map */

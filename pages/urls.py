@@ -4,14 +4,13 @@ from . import views
 
 
 urlpatterns = [
-    path('report/<uuid:pk>/confirm/', views.ConfirmPageView.as_view(), name='confirm'),
-    path('recruit/new/', views.recruit_new, name='recruit_new'),
-    path('staff/new/', views.staff_new, name='staff_new'),
-    path('saturday/new/', views.saturday_new, name='saturday_new'),
-    path('info/<uuid:pk>/', views.ConfirmPageView.as_view(), name='post_detail'),
-    path('info/new/', views.post_new, name='post_new'),
-    path('report/new/', views.report_new, name='report_new'),
-    path('recruit/', views.RecruitPageView.as_view(), name='recruit'),
+    path('recruit/new/', views.RecruitCreateView.as_view(), name='recruit_new'),
+    path('staff/new/', views.StaffCreateView.as_view(), name='staff_new'),
+    path('saturday/new/', views.SaturdayCreateView.as_view(), name='saturday_new'),
+    path('info/<uuid:pk>/', views.PostDetailView.as_view(), name='post_detail'),
+    path('info/new/', views.PostCreateView.as_view(), name='post_new'),
+    path('report/new/', views.ReportCreateView.as_view(), name='report_new'),
+    path('recruit/', views.RecruitListView.as_view(), name='recruit'),
     path('info/', views.PostListView.as_view(), name='info'),
-    path('', views.home, name='home'),
+    path('', views.HomePageView.as_view(), name='home'),
 ]

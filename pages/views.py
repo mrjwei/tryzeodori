@@ -1,18 +1,20 @@
 from datetime import date
-from django.urls import reverse
+from datetime import timedelta
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.decorators import permission_required
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
+from django.views.generic import TemplateView
 from django.views.generic import ListView
 from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
 
 from .models import Post
 from .models import SaturdaySchedule
-from .models import StaffSchedules
+from .models import StaffSchedule
 from .models import RecruitInfo
 from .models import Report
 from .forms import ReportForm
@@ -25,21 +27,17 @@ today = date.today()
 month = str(today.month)
 day = str(today.day)
 
-# Create your views here.
-@login_required(login_url='account_login')
-def home(request):
-    posts = Post.objects.all().order_by('publish_date')
-    saturday_schedules = SaturdaySchedule.objects.all().order_by('date')
-    staff_schedules = StaffSchedules.objects.all()
 
-    return render(
-        request, 'home.html', 
-        {
-            'posts': posts, 
-            'saturday_schedules': saturday_schedules,
-            'staff_schedules': staff_schedules,
-        })
-    
+class HomePageView(LoginRequiredMixin, TemplateView):
+    template_name = 'home.html'
+    login_url = 'account_login'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.all().order_by('publish_date')
+        context['saturday_schedules'] = SaturdaySchedule.objects.all().order_by('date')
+        context['staff_schedules'] = StaffSchedule.objects.all()
+        return context
 
 class PostListView(LoginRequiredMixin, ListView):
     model = Post
@@ -48,17 +46,28 @@ class PostListView(LoginRequiredMixin, ListView):
     login_url = 'account_login'
     
 
-class PostDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post
     context_object_name = 'post'
     template_name = 'post_detail.html'
+    login_url = 'account_login'
     
-    def test_func(self):
-        obj = self.get_object()
-        return obj.author == self.request.user
 
+class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    form_class = PostForm
+    template_name = 'post_new.html'
+    success_url = reverse_lazy('home')
+    login_url = 'account_login'
+    permission_required = 'pages.can_add_post'
 
-class RecruitPageView(LoginRequiredMixin, ListView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['month'] = month
+        context['day'] = day
+        return context
+    
+
+class RecruitListView(LoginRequiredMixin, ListView):
     model = RecruitInfo
     context_object_name = 'posts'
     template_name = 'recruit.html'
@@ -69,91 +78,71 @@ class RecruitPageView(LoginRequiredMixin, ListView):
         context['month'] = month
         context['day'] = day
         return context
+    
+
+class RecruitCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    form_class = RecruitForm
+    template_name = 'recruit_new.html'
+    success_url = reverse_lazy('recruit')
+    login_url = 'account_login'
+    permission_required = 'pages.can_add_recruit_info'
 
 
-class ReportListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
+class ReportListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     paginate_by = 30
     model = Report
     context_object_name = 'reports'
     template_name = 'report_list.html'
+    login_url = 'account_login'
+    permission_required = 'pages.can_view_all_reports'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['reports'] = Report.objects.all().order_by('date')
         return context
+
+
+class ReportCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    form_class = ReportForm
+    template_name = 'report_new.html'
+    success_url = reverse_lazy('home')
+    login_url = 'account_login'
+    permission_required = 'pages.can_add_report'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['month'] = month
+        context['day'] = day
+        return context
     
-    def test_func(self):
-        self.request.user.has_perms['pages.can_view_all_reports']
+    def form_valid(self, form):
+        context = self.get_context_data()
+        form.instance.author = self.request.user
+        yesterday = date.today() - timedelta(days=1)
+        if Report.objects.filter(author=self.request.user, created__gt=yesterday).exists():
+            return render(self.request, 'report_alert.html', context)
+        else:
+            if (next := self.request.POST.get('next', '')) == 'confirm':
+                return render(self.request, 'report_confirm.html', context)
+            elif next == 'back':
+                return render(self.request, 'report_new.html', context)
+            elif next == 'send':
+                return super().form_valid(form)
+            else:
+                return redirect(reverse_lazy('home'))
 
 
-@permission_required('pages.can_add_report')
-@login_required(login_url='account_login')
-def report_new(request):
-    if request.method == 'POST':
-        form = ReportForm(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect(reverse('confirm', args=(obj.id,)))
-    else:
-        form = ReportForm()
-    return render(
-        request, 'report.html', 
-        {'form': form, 'month': month, 'day': day})
-
-class ConfirmPageView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
-    model = Report
-    template_name = 'report_confirm.html'
+class SaturdayCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    form_class = SaturdayForm
+    template_name = 'saturday_new.html'
+    success_url = reverse_lazy('home')
+    login_url = 'account_login'
+    permission_required = 'pages.can_add_saturday_schedule'
     
-    def test_func(self):
-        obj = self.get_object()
-        return obj.name == self.request
 
-@permission_required('pages.can_add_post')  
-@login_required(login_url='account_login')
-def post_new(request):
-    if request.method == 'POST':
-        form = PostForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/info/')
-    else:
-        form = PostForm()
-    return render(request, 'post_new.html', {'form': form})
-
-
-@permission_required('pages.can_add_saturday_schedule') 
-@login_required(login_url='account_login')
-def saturday_new(request):
-    if request.method == 'POST':
-        form = SaturdayForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/')
-    else:
-        form = SaturdayForm()
-    return render(request, 'saturday_new.html', {'form': form})
-
-
-@permission_required('pages.can_add_staff_schedules') 
-@login_required(login_url='account_login')
-def staff_new(request):
-    if request.method == 'POST':
-        form = StaffForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/')
-    else:
-        form = StaffForm()
-    return render(request, 'staff_new.html', {'form': form})
-
-
-@permission_required('pages.can_add_recruit_info') 
-@login_required(login_url='account_login')
-def recruit_new(request):
-    if request.method == 'POST':
-        form = RecruitForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/recruit/')
-    else:
-        form = RecruitForm()
-    return render(request, 'recruit_new.html', {'form': form})
+class StaffCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    form_class = StaffForm
+    template_name = 'staff_new.html'
+    success_url = reverse_lazy('home')
+    login_url = 'account_login'
+    permission_required = 'pages.can_add_staff_schedule'

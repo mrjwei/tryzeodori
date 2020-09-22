@@ -31,7 +31,7 @@
                         {% if post.tag %}<span class="tag">{{ post.tag }}</span>{% endif %}
                         <span class="date">{{ post.publish_date|date:'Y.m.d' }}</span>
                     </p>
-                    <a class="news-title" href="{% url 'post' post.pk %}">{{ post.title }}</a>
+                    <a class="news-title" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
                 </li>
             {% endfor %}
         </ul>

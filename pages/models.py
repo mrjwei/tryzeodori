@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth import get_user_model
 
 
@@ -29,7 +30,7 @@ class SaturdaySchedule(models.Model):
     def __str__(self):
         return self.title
     
-class StaffSchedules(models.Model):
+class StaffSchedule(models.Model):
     name = models.CharField('名前', max_length=10)
     date = models.CharField('日付', max_length=20, blank=False)
     content = models.CharField('内容', max_length=10)
@@ -61,32 +62,34 @@ class Report(models.Model):
     date = models.DateField('日付', auto_now=True)
     author = models.ForeignKey(
         get_user_model(),
+        verbose_name='ユーザー名',
         on_delete=models.CASCADE,
-        default=None
+        default=get_user_model(),
     )
     name = models.CharField('名前', max_length=10)
     CONDITION_CHOICES = (
-        ('good', '良い'),
-        ('normal', '普通'),
-        ('bad', '悪い'),
+        ('良い', '良い'),
+        ('普通', '普通'),
+        ('悪い', '悪い'),
     )
     condition = models.CharField('体調', max_length=10, choices=CONDITION_CHOICES, default='normal')
     temperature = models.DecimalField('体温', max_digits=3, decimal_places=1)
     TASKS = (
-        ('book', 'テキスト学習'),
-        ('project', '課題'),
-        ('talk', '面談'),
-        ('job-hunting', '就職活動'),
-        ('intern', '実習'),
-        ('training', '作業訓練'),
-        ('absent', '該当なし'),
-        ('others', 'その他'),
+        ('テキスト学習', 'テキスト学習'),
+        ('課題', '課題'),
+        ('面談', '面談'),
+        ('就職活動', '就職活動'),
+        ('実習', '実習'),
+        ('作業訓練', '作業訓練'),
+        ('該当なし', '該当なし'),
+        ('その他', 'その他'),
     )
     am = models.CharField('午前', max_length=20, choices=TASKS)
     am_detail = models.CharField('午前具体内容', max_length=100, blank=True)
     pm = models.CharField('午後', max_length=20, choices=TASKS)
     pm_detail = models.CharField('午後具体内容', max_length=100, blank=True)
     comment = models.CharField('感想や相談事など', max_length=150, blank=True)
+    created = models.DateField(auto_now_add=True)
 
     class Meta:
         permissions = [
