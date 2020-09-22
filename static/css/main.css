@@ -303,6 +303,7 @@ p {
 
 .container {
   width: 80%;
+  max-width: 150rem;
   margin: 0 auto;
   padding: 0;
   z-index: 1;
@@ -359,6 +360,11 @@ p {
 
 .btn-group .cta:not(:last-child) {
   margin-right: 3rem;
+}
+
+.alert-text {
+  color: red;
+  margin-bottom: 6rem;
 }
 
 article,
@@ -666,6 +672,7 @@ p {
 
 .container {
   width: 80%;
+  max-width: 150rem;
   margin: 0 auto;
   padding: 0;
   z-index: 1;
@@ -722,6 +729,11 @@ p {
 
 .btn-group .cta:not(:last-child) {
   margin-right: 3rem;
+}
+
+.alert-text {
+  color: red;
+  margin-bottom: 6rem;
 }
 
 article,
@@ -1029,6 +1041,7 @@ p {
 
 .container {
   width: 80%;
+  max-width: 150rem;
   margin: 0 auto;
   padding: 0;
   z-index: 1;
@@ -1085,6 +1098,11 @@ p {
 
 .btn-group .cta:not(:last-child) {
   margin-right: 3rem;
+}
+
+.alert-text {
+  color: red;
+  margin-bottom: 6rem;
 }
 
 article,
@@ -1392,6 +1410,7 @@ p {
 
 .container {
   width: 80%;
+  max-width: 150rem;
   margin: 0 auto;
   padding: 0;
   z-index: 1;
@@ -1448,6 +1467,11 @@ p {
 
 .btn-group .cta:not(:last-child) {
   margin-right: 3rem;
+}
+
+.alert-text {
+  color: red;
+  margin-bottom: 6rem;
 }
 
 .navbar {
@@ -1462,7 +1486,7 @@ p {
 }
 
 .navbar .navbar-brand {
-  width: 7%;
+  width: 5%;
   min-width: 7rem;
 }
 
@@ -1482,7 +1506,20 @@ p {
   line-height: 1.5rem;
   border: 0.2rem solid #f2f2f2;
   background-color: transparent;
+  width: 8rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  font-size: 1rem;
   margin-left: 3rem;
+}
+
+.navbar .username {
+  color: #f2f2f2;
+  margin-left: 6rem;
+}
+
+.navbar .username span {
+  font-size: 1.5rem;
 }
 
 .navbar .navbar-collapse {
@@ -1794,6 +1831,33 @@ p {
   height: 100%;
 }
 
+.section.report a.cta {
+  width: 10rem;
+  padding: 1rem 0;
+  border: none;
+  color: #036eb8;
+  background-color: #036eb8;
+  border-radius: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  border: 0.2rem solid #036eb8;
+  background-color: transparent;
+  width: 12rem;
+}
+
+.section.report .report-form .cta {
+  width: 10rem;
+  padding: 1rem 0;
+  border: none;
+  color: #f2f2f2;
+  background-color: #036eb8;
+  border-radius: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
 .section .add {
   position: relative;
   width: 10rem;
@@ -1930,6 +1994,10 @@ p {
   color: #f2f2f2;
   font-weight: 400;
   margin-bottom: 3rem;
+  z-index: 1;
+}
+
+.logout-container {
   z-index: 1;
 }
 
@@ -2084,6 +2152,32 @@ form .cta {
 
 .report-confirm .content-container .confirm-form {
   width: 100%;
+}
+
+.report-confirm .content-container .confirm-form .cta {
+  width: 10rem;
+  padding: 1rem 0;
+  border: none;
+  color: #036eb8;
+  background-color: #f2f2f2;
+  border-radius: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.report-confirm .content-container .confirm-form .line-cta {
+  width: 10rem;
+  padding: 1rem 0;
+  border: none;
+  color: #f2f2f2;
+  background-color: #f2f2f2;
+  border-radius: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  border: 0.2rem solid #f2f2f2;
+  background-color: transparent;
 }
 
 .report-confirm .report-confirm-content {

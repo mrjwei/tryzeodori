@@ -621,6 +621,7 @@ p {
 }
 .container {
     width: 80%;
+    max-width: 150rem;
     margin: 0 auto;
     padding: 0;
     z-index: 1;
@@ -688,4 +689,8 @@ p {
     .cta:not(:last-child) {
         margin-right: 3rem;
     }
+}
+.alert-text {
+    color: red;
+    margin-bottom: 6rem;
 }

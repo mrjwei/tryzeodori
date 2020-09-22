@@ -79,7 +79,7 @@
                 </li>
             {% endfor %}
         </ul>
-        {% if perms.pages.can_add_staff_schedules %}
+        {% if perms.pages.can_add_staff_schedule %}
         <a class="add d-flex flex-row justify-content-between align-items-center" href="{% url 'staff_new' %}">
             職員予定追加
             <svg viewBox="0 0 16 16" class="bi bi-plus" xmlns="http://www.w3.org/2000/svg">

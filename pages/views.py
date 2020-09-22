@@ -113,25 +113,24 @@ class ReportCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         context = super().get_context_data(**kwargs)
         context['month'] = month
         context['day'] = day
-        context['sent'] = False
+        yesterday = date.today() - timedelta(days=1)
+        if Report.objects.filter(author=self.request.user, created__gt=yesterday).exists():
+            context['sent'] = True
+        else:
+            context['sent'] = False
         return context
     
     def form_valid(self, form):
         context = self.get_context_data()
         form.instance.author = self.request.user
-        yesterday = date.today() - timedelta(days=1)
-        if Report.objects.filter(author=self.request.user, created__gt=yesterday).exists():
-            context['sent'] = True
-            return render(self.request, 'report_alert.html', context)
+        if (next := self.request.POST.get('next', '')) == 'confirm':
+            return render(self.request, 'report_confirm.html', context)
+        elif next == 'back':
+            return render(self.request, 'report_new.html', context)
+        elif next == 'send':
+            return super().form_valid(form)
         else:
-            if (next := self.request.POST.get('next', '')) == 'confirm':
-                return render(self.request, 'report_confirm.html', context)
-            elif next == 'back':
-                return render(self.request, 'report_new.html', context)
-            elif next == 'send':
-                return super().form_valid(form)
-            else:
-                return redirect(reverse_lazy('home'))
+            return redirect(reverse_lazy('home'))
 
 
 class SaturdayCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):

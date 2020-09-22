@@ -12,7 +12,7 @@
         height: 100%;
     }
     .navbar-brand {
-        width: 7%;
+        width: 5%;
         min-width: 7rem;
         img {
             width: 100%;
@@ -20,7 +20,18 @@
     }
     .line-cta {
         @include line-button($color-light);
+        width: 8rem;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+        font-size: $font-size-xs;
         margin-left: 3rem;
+    }
+    .username {
+        color: $color-light;
+        margin-left: 6rem;
+        span {
+            font-size: $font-size-sm-xs;
+        }
     }
     .navbar-collapse {
         justify-content: flex-end;
@@ -268,6 +279,17 @@
             }
         }
     }
+    &.report {
+        a.cta {
+            @include line-button($color-primary);
+            width: 12rem;
+        }
+        .report-form {
+            .cta {
+                @include button($color-light, $color-primary);
+            }
+        }
+    }
     .add {
         position: relative;
         @include line-button($color-primary);
@@ -365,6 +387,9 @@
     color: $color-light; 
     font-weight: $font-weight-normal;
     margin-bottom: 3rem;
+    z-index: 1;
+}
+.logout-container {
     z-index: 1;
 }
 .logout {
@@ -481,6 +506,12 @@ form {
         z-index: 10;
         .confirm-form {
             width: 100%;
+            .cta {
+                @include button($color-primary, $color-light);
+            }
+            .line-cta {
+                @include line-button($color-light);
+            }
         }
     }
     .report-confirm-content {

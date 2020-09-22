@@ -19,6 +19,11 @@ class Post(models.Model):
         ('New', '新着'),
     )
     tag = models.CharField('タッグ', max_length=10, blank=True, null=True, choices=TAGS)
+
+    class Meta:
+        permissions = [
+            ('can_add_post', 'can add post'),
+        ]
     
     def __str__(self):
         return self.title
@@ -26,6 +31,11 @@ class Post(models.Model):
 class SaturdaySchedule(models.Model):
     title = models.CharField('内容', max_length=50)
     date = models.CharField('日付', max_length=20, blank=False)
+
+    class Meta:
+        permissions = [
+            ('can_add_saturday_schedule', 'can add saturday schedule'),
+        ]
     
     def __str__(self):
         return self.title
@@ -35,6 +45,11 @@ class StaffSchedule(models.Model):
     date = models.CharField('日付', max_length=20, blank=False)
     content = models.CharField('内容', max_length=10)
     duration = models.CharField('時間', max_length=20, blank=False)
+
+    class Meta:
+        permissions = [
+            ('can_add_staff_schedule', 'can add staff schedule'),
+        ]
     
     def __str__(self):
         return f'{self.name} {self.content}'
@@ -48,6 +63,11 @@ class RecruitInfo(models.Model):
         ('New', '新着'),
     )
     tag = models.CharField('タッグ', max_length=10, blank=True, null=True, choices=TAGS)
+    
+    class Meta:
+        permissions = [
+            ('can_add_recruit_info', 'can add recruit info'),
+        ]
     
     def __str__(self):
         return self.title
@@ -64,7 +84,7 @@ class Report(models.Model):
         get_user_model(),
         verbose_name='ユーザー名',
         on_delete=models.CASCADE,
-        default=get_user_model(),
+        null=True
     )
     name = models.CharField('名前', max_length=10)
     CONDITION_CHOICES = (
@@ -94,6 +114,7 @@ class Report(models.Model):
     class Meta:
         permissions = [
             ('can_view_all_reports', 'can view all reports'),
+            ('can_add_report', 'can add report'),
         ]
 
     def __str__(self):
