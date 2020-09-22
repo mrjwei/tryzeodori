@@ -12,6 +12,8 @@ django = "*"
 django-crispy-forms = "*"
 django-debug-toolbar = "*"
 environs = {extras = ["django"], version = "*"}
+whitenoise = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
