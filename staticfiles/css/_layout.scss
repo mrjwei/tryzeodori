@@ -20,10 +20,8 @@
     }
     .line-cta {
         @include line-button($color-light);
-        width: 8rem;
-        padding-top: 0.8rem;
-        padding-bottom: 0.8rem;
-        font-size: $font-size-xs;
+        width: 10rem;
+        font-size: $font-size-sm-xs;
         margin-left: 3rem;
     }
     .username {
