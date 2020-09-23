@@ -372,7 +372,7 @@
         @include button($color-light, $color-primary);
     }
     .hint, a {
-        font-size: $font-size-xs;
+        font-size: $font-size-sm-xs;
         font-weight: $font-weight-normal;
     }
     a {
