@@ -288,6 +288,42 @@
             }
         }
     }
+    &.reports {
+        .accordion {
+            width: 30%;
+            margin-bottom: 1rem;
+        }
+        .accordion-title, .accordion-content {
+            font-size: $font-size-sm-xs;
+            margin-bottom: 0;
+        }
+        .accordion-title {
+            padding: 1rem 3rem;
+            margin-bottom: 1rem;
+            background-color: $color-secondary;
+            color: $color-light;
+            outline: none;
+            cursor: pointer;
+            &.ui-accordion-header-active {
+                background-color: $color-primary;
+                .plus {
+                    display: none;
+                }
+                .minus {
+                    display: block;
+                }
+            }
+        }
+        .accordion-content {
+            margin-bottom: 1rem;
+            p {
+                font-size: $font-size-sm-xs;
+                padding: 1rem 3rem;
+                margin-bottom: 1rem;
+                border-bottom: 0.1rem solid lighten($color-dark, 60%);
+            }
+        }
+    }
     .add {
         position: relative;
         @include line-button($color-primary);

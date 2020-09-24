@@ -669,6 +669,9 @@ p {
 .mobileonly {
     display: none;
 }
+.hidden {
+    display: none;
+}
 @mixin button($text-color, $bg-color) {
     width: 10rem;
     padding: 1rem 0;

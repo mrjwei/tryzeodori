@@ -91,14 +91,13 @@ class RecruitCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
 class ReportListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     paginate_by = 30
     model = Report
-    context_object_name = 'reports'
     template_name = 'report_list.html'
     login_url = 'account_login'
     permission_required = 'pages.can_view_all_reports'
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['reports'] = Report.objects.all().order_by('date')
+        context['reports'] = Report.objects.all().order_by('-date')
         return context
 
 

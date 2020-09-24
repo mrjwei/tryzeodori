@@ -9,6 +9,7 @@ urlpatterns = [
     path('saturday/new/', views.SaturdayCreateView.as_view(), name='saturday_new'),
     path('info/<uuid:pk>/', views.PostDetailView.as_view(), name='post_detail'),
     path('info/new/', views.PostCreateView.as_view(), name='post_new'),
+    path('reports/', views.ReportListView.as_view(), name='reports'),
     path('report/new/', views.ReportCreateView.as_view(), name='report_new'),
     path('recruit/', views.RecruitListView.as_view(), name='recruit'),
     path('info/', views.PostListView.as_view(), name='info'),

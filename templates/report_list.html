@@ -12,18 +12,29 @@
         </h1>
     </div>
 </section>
-<section class="section report">
+<section class="section reports">
     <div class="container">
-        <div class="content-container">
-            <ul class="report-list">
-                {% for report in reports %}
-                    <li class="item report-item table">
-                        <th>{{ report.date }} {{ report.name }}: </th>
-                        <td>{{ report.condition }}</td>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+        {% for report in reports %}
+            <div class="accordion">
+                <h3 class="accordion-title d-flex flex-row justify-content-between align-items-center">
+                    <div>
+                        <span>{{ report.date|date:'Y-m-d' }}</span>
+                        <span>{{ report.name }}</span>
+                    </div>
+                    <i class="material-icons plus">add</i>
+                    <i class="material-icons minus hidden">remove</i>
+                </h3>
+                <div class="accordion-content">
+                    <p class="row"><span class="col-6">体調：</span><span>{{ report.condition }}</span></p>
+                    <p class="row"><span class="col-6">体温：</span><span>{{ report.temperature }}</span></p>
+                    <p class="row"><span class="col-6">午前：</span><span>{{ report.am }}</span></p>
+                    <p class="row"><span class="col-6">午前具体内容：</span><span>{{ report.am_detail }}</span></p>
+                    <p class="row"><span class="col-6">午後：</span><span>{{ report.pm }}</span></p>
+                    <p class="row"><span class="col-6">午後具体内容：</span><span>{{ report.pm_detail }}</span></p>
+                    <p class="row"><span class="col-6">感想や相談事など：</span><span>{{ report.comment }}</span></p>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </section>
 {% endblock content %}
