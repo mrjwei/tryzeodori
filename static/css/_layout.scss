@@ -12,8 +12,11 @@
         height: 100%;
     }
     .navbar-brand {
-        width: 5%;
-        min-width: 7rem;
+        width: 25%;
+        a {
+            min-width: 6rem;
+            max-width: 7.5rem;
+        }
         img {
             width: 100%;
         }
@@ -24,6 +27,9 @@
         font-size: $font-size-sm-xs;
         margin-left: 3rem;
     }
+    .user-group {
+        width: 25%;
+    }
     .username {
         color: $color-light;
         margin-left: 6rem;
@@ -32,7 +38,7 @@
         }
     }
     .navbar-collapse {
-        justify-content: flex-end;
+        justify-content: center;
         height: 100%;
         .navbar-nav {
             height: 100%;
@@ -47,16 +53,16 @@
                 color: $color-primary;
             }
         }
-        .nav-item:last-child {
-            margin-left: 2rem;
-            .nav-link {
-                padding: 0;
-            }
-        }
-        .bi {
-            min-width: 3rem;
-            fill: $color-light;
-        }
+    }
+    .mail, .phone {
+        margin-left: 3rem;
+    }
+    .icon {
+        padding: 0;
+    }
+    .bi {
+        min-width: 3rem;
+        fill: $color-light;
     }
 }
 

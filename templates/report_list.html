@@ -14,7 +14,7 @@
 </section>
 <section class="section reports">
     <div class="container">
-        {% for report in reports %}
+        {% for report in page_obj %}
             <div class="accordion">
                 <h3 class="accordion-title d-flex flex-row justify-content-between align-items-center">
                     <div>
@@ -35,6 +35,27 @@
                 </div>
             </div>
         {% endfor %}
+        <div class="pagination">
+            <span class="step-links d-flex flex-row justify-content-between">
+                {% if page_obj.has_previous %}
+                    <div class="page-nav">
+                        <a href="?page=1">&laquo; FIRST</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">PREV</a>
+                    </div>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <div class="page-nav">
+                        <a href="?page={{ page_obj.next_page_number }}">NEXT</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">LAST &raquo;</a>
+                    </div>
+                {% endif %}
+            </span>
+        </div>
     </div>
 </section>
 {% endblock content %}

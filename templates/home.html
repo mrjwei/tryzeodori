@@ -25,7 +25,7 @@
             <span class="subtitle">Info</span>
         </h2>
         <ul class="news-list">
-            {% for post in posts %}
+            {% for post in posts|slice:":5" %}
                 <li class="item news-item">
                     <p class="date-tag">
                         {% if post.tag %}<span class="tag">{{ post.tag }}</span>{% endif %}

@@ -697,3 +697,33 @@ p {
     color: red;
     margin-bottom: 6rem;
 }
+// paginate
+.pagination {
+    width: 30%;
+    margin-top: 3rem;
+    font-size: $font-size-sm-xs;
+    .step-links {
+        display: block;
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+    .page-nav {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        &:first-child {
+            left: 0;
+        }
+        &:last-child {
+            right: 0;
+        }
+        a {
+            margin: 0 1rem;
+        }
+    }
+    .current {
+        display: block;
+        margin: 0 auto;
+    }
+}

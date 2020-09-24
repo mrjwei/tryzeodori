@@ -371,6 +371,47 @@ p {
   margin-bottom: 6rem;
 }
 
+.pagination {
+  width: 30%;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+}
+
+.pagination .step-links {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.pagination .page-nav {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.pagination .page-nav:first-child {
+  left: 0;
+}
+
+.pagination .page-nav:last-child {
+  right: 0;
+}
+
+.pagination .page-nav a {
+  margin: 0 1rem;
+}
+
+.pagination .current {
+  display: block;
+  margin: 0 auto;
+}
+
 article,
 aside,
 details,
@@ -744,6 +785,47 @@ p {
   margin-bottom: 6rem;
 }
 
+.pagination {
+  width: 30%;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+}
+
+.pagination .step-links {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.pagination .page-nav {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.pagination .page-nav:first-child {
+  left: 0;
+}
+
+.pagination .page-nav:last-child {
+  right: 0;
+}
+
+.pagination .page-nav a {
+  margin: 0 1rem;
+}
+
+.pagination .current {
+  display: block;
+  margin: 0 auto;
+}
+
 article,
 aside,
 details,
@@ -1117,6 +1199,47 @@ p {
   margin-bottom: 6rem;
 }
 
+.pagination {
+  width: 30%;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+}
+
+.pagination .step-links {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.pagination .page-nav {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.pagination .page-nav:first-child {
+  left: 0;
+}
+
+.pagination .page-nav:last-child {
+  right: 0;
+}
+
+.pagination .page-nav a {
+  margin: 0 1rem;
+}
+
+.pagination .current {
+  display: block;
+  margin: 0 auto;
+}
+
 article,
 aside,
 details,
@@ -1488,6 +1611,47 @@ p {
 .alert-text {
   color: red;
   margin-bottom: 6rem;
+}
+
+.pagination {
+  width: 30%;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+}
+
+.pagination .step-links {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.pagination .page-nav {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.pagination .page-nav:first-child {
+  left: 0;
+}
+
+.pagination .page-nav:last-child {
+  right: 0;
+}
+
+.pagination .page-nav a {
+  margin: 0 1rem;
+}
+
+.pagination .current {
+  display: block;
+  margin: 0 auto;
 }
 
 .navbar {
@@ -1502,8 +1666,12 @@ p {
 }
 
 .navbar .navbar-brand {
-  width: 5%;
-  min-width: 7rem;
+  width: 25%;
+}
+
+.navbar .navbar-brand a {
+  min-width: 6rem;
+  max-width: 7.5rem;
 }
 
 .navbar .navbar-brand img {
@@ -1527,6 +1695,10 @@ p {
   margin-left: 3rem;
 }
 
+.navbar .user-group {
+  width: 25%;
+}
+
 .navbar .username {
   color: #f2f2f2;
   margin-left: 6rem;
@@ -1537,9 +1709,9 @@ p {
 }
 
 .navbar .navbar-collapse {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100%;
 }
 
@@ -1559,15 +1731,15 @@ p {
   color: #036eb8;
 }
 
-.navbar .navbar-collapse .nav-item:last-child {
-  margin-left: 2rem;
+.navbar .mail, .navbar .phone {
+  margin-left: 3rem;
 }
 
-.navbar .navbar-collapse .nav-item:last-child .nav-link {
+.navbar .icon {
   padding: 0;
 }
 
-.navbar .navbar-collapse .bi {
+.navbar .bi {
   min-width: 3rem;
   fill: #f2f2f2;
 }
