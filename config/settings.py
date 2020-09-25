@@ -172,7 +172,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'yokazu.tryze.odori@gmail.com'
-EMAIL_HOST = env("DJANGO_EMAIL_HOST")
+EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = env("DJANGO_EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = env("DJANGO_EMAIL_HOST_PASSWORD")
 EMAIL_PORT = env.int("DJANGO_EMAIL_HOST_PORT", default=587)
