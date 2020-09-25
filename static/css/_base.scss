@@ -626,6 +626,9 @@ p {
     padding: 0;
     z-index: 1;
 }
+.inner-container {
+    width: 60%;
+}
 .row {
     width: 100%;
 }
@@ -673,8 +676,7 @@ p {
     display: none;
 }
 @mixin button($text-color, $bg-color) {
-    width: 10rem;
-    padding: 1rem 0;
+    padding: 1rem 2rem;
     border: none;
     color: $text-color;
     background-color: $bg-color;

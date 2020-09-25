@@ -309,6 +309,10 @@ p {
   z-index: 1;
 }
 
+.inner-container {
+  width: 60%;
+}
+
 .row {
   width: 100%;
 }
@@ -723,6 +727,10 @@ p {
   z-index: 1;
 }
 
+.inner-container {
+  width: 60%;
+}
+
 .row {
   width: 100%;
 }
@@ -1137,6 +1145,10 @@ p {
   z-index: 1;
 }
 
+.inner-container {
+  width: 60%;
+}
+
 .row {
   width: 100%;
 }
@@ -1549,6 +1561,10 @@ p {
   margin: 0 auto;
   padding: 0;
   z-index: 1;
+}
+
+.inner-container {
+  width: 60%;
 }
 
 .row {
@@ -1679,8 +1695,7 @@ p {
 }
 
 .navbar .line-cta {
-  width: 10rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   border: none;
   color: #f2f2f2;
   background-color: #f2f2f2;
@@ -1690,7 +1705,8 @@ p {
   line-height: 1.5rem;
   border: 0.2rem solid #f2f2f2;
   background-color: transparent;
-  width: 10rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   font-size: 1.5rem;
   margin-left: 3rem;
 }
@@ -2018,8 +2034,7 @@ p {
 }
 
 .section.report a.cta {
-  width: 10rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   border: none;
   color: #036eb8;
   background-color: #036eb8;
@@ -2033,8 +2048,7 @@ p {
 }
 
 .section.report .report-form .cta {
-  width: 10rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   border: none;
   color: #f2f2f2;
   background-color: #036eb8;
@@ -2088,8 +2102,7 @@ p {
 
 .section .add {
   position: relative;
-  width: 10rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   border: none;
   color: #036eb8;
   background-color: #036eb8;
@@ -2106,8 +2119,7 @@ p {
 }
 
 .section .add.white {
-  width: 10rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   border: none;
   color: #f2f2f2;
   background-color: #f2f2f2;
@@ -2196,8 +2208,7 @@ p {
 .form-container .cta {
   border: none;
   margin-bottom: 3rem;
-  width: 10rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   border: none;
   color: #f2f2f2;
   background-color: #036eb8;
@@ -2235,8 +2246,7 @@ p {
 
 .logout .cta {
   border: none;
-  width: 10rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   border: none;
   color: #036eb8;
   background-color: #f2f2f2;
@@ -2294,8 +2304,7 @@ form textarea {
 }
 
 form .cta {
-  width: 10rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   border: none;
   color: #f2f2f2;
   background-color: #036eb8;
@@ -2335,6 +2344,20 @@ form .cta {
 
 .saturday-form input {
   width: 80%;
+}
+
+.news-detail .back-btn {
+  padding: 1rem 2rem;
+  border: none;
+  color: #036eb8;
+  background-color: #036eb8;
+  border-radius: 0.8rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  border: 0.2rem solid #036eb8;
+  background-color: transparent;
+  margin-top: 6rem;
 }
 
 #ui-datepicker-div {
@@ -2383,8 +2406,7 @@ form .cta {
 }
 
 .report-confirm .content-container .confirm-form .cta {
-  width: 10rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   border: none;
   color: #036eb8;
   background-color: #f2f2f2;
@@ -2395,8 +2417,7 @@ form .cta {
 }
 
 .report-confirm .content-container .confirm-form .line-cta {
-  width: 10rem;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
   border: none;
   color: #f2f2f2;
   background-color: #f2f2f2;

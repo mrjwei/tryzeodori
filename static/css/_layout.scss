@@ -23,7 +23,8 @@
     }
     .line-cta {
         @include line-button($color-light);
-        width: 10rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
         font-size: $font-size-sm-xs;
         margin-left: 3rem;
     }
@@ -504,6 +505,15 @@ form {
     }
     input {
         width: 80%;
+    }
+}
+// ===============================================================
+// info detail page
+// ===============================================================
+.news-detail {
+    .back-btn {
+        @include line-button($color-primary);
+        margin-top: 6rem;
     }
 }
 // ===============================================================
