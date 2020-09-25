@@ -9,7 +9,10 @@
         <form class="signup-form" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button class="cta" type="submit">登録</button>
+            <div class="btn-group">
+                <button class="cta" type="submit">登録</button>
+                <a class="line-cta" href="{% url 'account_login' %}">ログイン</a>
+            </div>
         </form>
     </div>
 </div>

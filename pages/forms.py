@@ -15,7 +15,7 @@ class ReportForm(ModelForm):
         model = Report
         exclude = ['id', 'author', 'date', 'created']
         widgets = {
-            'comment': Textarea(),
+            'comment': Textarea(attrs={'placeholder': '感想や相談事などがあれば、記入してください'}),
         }
 
 
