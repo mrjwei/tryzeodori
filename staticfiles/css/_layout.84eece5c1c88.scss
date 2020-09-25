@@ -8,21 +8,29 @@
     background-color: $color-primary;
     height: 8rem;
     padding: 0;
+    z-index: 0;
     .container {
         height: 100%;
     }
     .navbar-brand {
-        width: 5%;
-        min-width: 7rem;
+        width: 25%;
+        a {
+            min-width: 6rem;
+            max-width: 7.5rem;
+        }
         img {
             width: 100%;
         }
     }
     .line-cta {
         @include line-button($color-light);
-        width: 10rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
         font-size: $font-size-sm-xs;
         margin-left: 3rem;
+    }
+    .user-group {
+        width: 25%;
     }
     .username {
         color: $color-light;
@@ -32,7 +40,7 @@
         }
     }
     .navbar-collapse {
-        justify-content: flex-end;
+        justify-content: center;
         height: 100%;
         .navbar-nav {
             height: 100%;
@@ -47,16 +55,16 @@
                 color: $color-primary;
             }
         }
-        .nav-item:last-child {
-            margin-left: 2rem;
-            .nav-link {
-                padding: 0;
-            }
-        }
-        .bi {
-            min-width: 3rem;
-            fill: $color-light;
-        }
+    }
+    .mail, .phone {
+        margin-left: 3rem;
+    }
+    .icon {
+        padding: 0;
+    }
+    .bi {
+        min-width: 3rem;
+        fill: $color-light;
     }
 }
 
@@ -280,11 +288,46 @@
     &.report {
         a.cta {
             @include line-button($color-primary);
-            width: 12rem;
         }
         .report-form {
             .cta {
                 @include button($color-light, $color-primary);
+            }
+        }
+    }
+    &.reports {
+        .accordion {
+            width: 30%;
+            margin-bottom: 1rem;
+        }
+        .accordion-title, .accordion-content {
+            font-size: $font-size-sm-xs;
+            margin-bottom: 0;
+        }
+        .accordion-title {
+            padding: 1rem 3rem;
+            margin-bottom: 1rem;
+            background-color: $color-secondary;
+            color: $color-light;
+            outline: none;
+            cursor: pointer;
+            &.ui-accordion-header-active {
+                background-color: $color-primary;
+                .plus {
+                    display: none;
+                }
+                .minus {
+                    display: block;
+                }
+            }
+        }
+        .accordion-content {
+            margin-bottom: 1rem;
+            p {
+                font-size: $font-size-sm-xs;
+                padding: 1rem 3rem;
+                margin-bottom: 1rem;
+                border-bottom: 0.1rem solid lighten($color-dark, 60%);
             }
         }
     }
@@ -368,14 +411,19 @@
     }
     .cta {
         border: none;
-        margin-bottom: 3rem;
         @include button($color-light, $color-primary);
     }
-    .hint, a {
-        font-size: $font-size-xs;
+    .line-cta {
+        @include line-button($color-primary);
+    }
+    .btn-group {
+        margin-bottom: 3rem;
+    }
+    .hint, .hint a {
+        font-size: $font-size-sm-xs;
         font-weight: $font-weight-normal;
     }
-    a {
+    .hint a {
         display: inline;
         text-decoration: underline;
     }
@@ -442,6 +490,9 @@ form {
     input {
         width: 65%;
     }
+    .cta {
+        margin-bottom: 3rem;
+    }
 }
 .recruit, .report {
     .title {
@@ -462,6 +513,15 @@ form {
     }
     input {
         width: 80%;
+    }
+}
+// ===============================================================
+// info detail page
+// ===============================================================
+.news-detail {
+    .back-btn {
+        @include line-button($color-primary);
+        margin-top: 6rem;
     }
 }
 // ===============================================================
@@ -524,5 +584,24 @@ form {
                 display: block;
             }
         }
+    }
+}
+.email_confirm {
+    .email_confirm_container {
+        z-index: 1;
+    }
+    .email-confirm-btn {
+        @include button($color-primary, $color-light);
+    }
+}
+.password-reset-sent-done {
+    .desc {
+        margin-bottom: 0;
+    }
+}
+.password-reset-key-done {
+    .cta {
+        @include button($color-primary, $color-light);
+        z-index: 1;
     }
 }

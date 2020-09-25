@@ -619,12 +619,18 @@ p {
     font-size: $font-size-sm;
     margin-bottom: 0;
 }
+a {
+    text-decoration: none;
+}
 .container {
     width: 80%;
     max-width: 150rem;
     margin: 0 auto;
     padding: 0;
     z-index: 1;
+}
+.inner-container {
+    width: 60%;
 }
 .row {
     width: 100%;
@@ -669,9 +675,11 @@ p {
 .mobileonly {
     display: none;
 }
+.hidden {
+    display: none;
+}
 @mixin button($text-color, $bg-color) {
-    width: 10rem;
-    padding: 1rem 0;
+    padding: 1rem 2rem;
     border: none;
     color: $text-color;
     background-color: $bg-color;
@@ -693,4 +701,46 @@ p {
 .alert-text {
     color: red;
     margin-bottom: 6rem;
+}
+// paginate
+.pagination {
+    width: 30%;
+    margin-top: 3rem;
+    font-size: $font-size-sm-xs;
+    .step-links {
+        display: block;
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+    .page-nav {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        &:first-child {
+            left: 0;
+        }
+        &:last-child {
+            right: 0;
+        }
+        a {
+            margin: 0 1rem;
+        }
+    }
+    .current {
+        display: block;
+        margin: 0 auto;
+    }
+}
+textarea::placeholder {
+    color:lighten($color: $color-dark, $amount: 60%);
+    opacity: 1;
+}
+.underline {
+    text-decoration: underline;
+}
+.desc {
+    color: $color-light;
+    z-index: 1;
+    margin-bottom: 3rem;
 }
