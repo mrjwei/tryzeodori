@@ -1,6 +1,11 @@
-{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}{{ site_name }}情報サイトにご登録いただき、ありがとうございます!
-
-こちらにて{{ activate_url }}メールアドレスを確認してください。
+{% load account %}
+{% user_display user as user_display %}
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}
+{{ site_name }}情報サイトにご登録いただき、ありがとうございます!
+こちらにてメールアドレスを確認してください：
+ {{ activate_url }} 
 {% endblocktrans %}
 {% blocktrans with site_name=current_site.name site_domain=current_site.domain %}宜しくお願いします。
 {{ site_domain }}{% endblocktrans %}
