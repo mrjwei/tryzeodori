@@ -10,4 +10,11 @@ $(function(){
         collapsible: true,
         icons: false
     });
+    // mobile menu behaviour
+    $(".navbar-toggler").click(function() {
+        $(".navbar-collapse").addClass("show");
+    });
+    $(".close").click(function() {
+        $(".navbar-collapse").removeClass("show");
+    });
 });

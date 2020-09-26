@@ -2,77 +2,59 @@
 {% load static %}
 
 {% block title %}ホーム{% endblock title%}
+{% block hero_title %}トライズ大通情報サイト{% endblock hero_title%}
+{% block hero_subtitle %}開所予定やイベント情報、就職に関する情報や施設についての情報などを発信しております{% endblock hero_subtitle %}
 
 {% block content %}
-<section class="hero">
-    <div class="container d-flex flex-column align-items-center">
-        <h1 class="title">
-            <span class="maintitle">トライズ大通情報サイト</span>
-            <span class="subtitle">開所予定やイベント情報、就職に関する情報や施設についての情報などを発信しております</span>
-        </h1>
-        <a href="#news" class="down-arrow">
-            <svg viewBox="0 0 16 16" class="bi bi-arrow-down-short" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M4.646 7.646a.5.5 0 0 1 .708 0L8 10.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z"/>
-                <path fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5z"/>
-            </svg>
-        </a>
-    </div>
-</section>
-<section class="section pattern news" id="news">
+<section class="section pattern info" id="info">
     <div class="container">
-        <h2 class="title">
-            <span class="maintitle">新着情報</span>
-            <span class="subtitle">Info</span>
+        <h2 class="title font-md font-bold text-dark text-center mb-5">
+            <span class="d-block mb-4">新着情報</span>
+            <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Info</span>
         </h2>
-        <ul class="news-list">
+        <ul class="my-5">
             {% for post in posts|slice:":5" %}
-                <li class="item news-item">
-                    <p class="date-tag">
-                        {% if post.tag %}<span class="tag">{{ post.tag }}</span>{% endif %}
-                        <span class="date">{{ post.publish_date|date:'Y.m.d' }}</span>
-                    </p>
-                    <a class="news-title" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+                <li class="d-flex flex-row justify-content-start align-items-center mb-3">
+                    {% if post.tag %}<span class="tag font-en font-xs text-light text-uppercase custom-bg-secondary mr-4">{{ post.tag }}</span>{% endif %}
+                    <span class="date font-light font-md mr-4">{{ post.publish_date|date:'Y-m-d' }}</span>
+                    <a class="news-title font-md font-medium" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
                 </li>
             {% endfor %}
         </ul>
         {% if perms.pages.can_add_post %}
-        <a class="add d-flex flex-row justify-content-between align-items-center" href="{% url 'post_new' %}">
+        <a class="add outlined-btn d-flex flex-row justify-content-between align-items-center mt-5" href="{% url 'post_new' %}">
             新着情報追加
-            <svg viewBox="0 0 16 16" class="bi bi-plus" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg>
+            <span class="material-icons ml-1">add</span>
         </a>
         {% endif %}
     </div>
 </section>
-<section class="section bg-blue saturdays">
+<section class="section custom-bg-primary saturdays">
     <div class="container">
-        <h2 class="title">
-            <span class="maintitle">土曜開所予定</span>
-            <span class="subtitle">Saturdays</span>
+        <h2 class="title font-md font-bold text-light text-center mb-5">
+            <span class="d-block mb-4">土曜開所予定</span>
+            <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Saturdays</span>
         </h2>
-        <ul class="saturday-list">
+        <ul class="saturday-list my-5">
             {% for schedule in saturday_schedules %}
                 <li class="item saturday-item">{{ schedule.date }} {{ schedule.title }}</li>
             {% endfor %}
         </ul>
         {% if perms.pages.can_add_saturday_schedule %}
-        <a class="add white d-flex flex-row justify-content-between align-items-center" href="{% url 'saturday_new' %}">
+        <a class="add outlined-btn btn-light d-flex flex-row justify-content-between align-items-center mt-5" href="{% url 'saturday_new' %}">
             土曜予定追加
-            <svg viewBox="0 0 16 16" class="bi bi-plus" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg>
+            <span class="material-icons ml-1">add</span>
         </a>
         {% endif %}
     </div>
 </section>
-<section class="section pattern schedule">
+<section class="section pattern staff">
     <div class="container">
-        <h2 class="title">
-            <span class="maintitle">職員予定</span>
-            <span class="subtitle">Staff Schedule</span>
+        <h2 class="title font-md font-bold text-dark text-center mb-5">
+            <span class="d-block mb-4">職員予定</span>
+            <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Staff Schedule</span>
         </h2>
-        <ul class="row staff-list">
+        <ul class="row staff-list my-5">
             {% for schedule in staff_schedules %}
                 <li class="col-md-6 staff-item">
                     <p>{{ schedule.name }}: {{ schedule.date }} {{ schedule.content }} / {{ schedule.duration }}</p>
@@ -80,26 +62,24 @@
             {% endfor %}
         </ul>
         {% if perms.pages.can_add_staff_schedule %}
-        <a class="add d-flex flex-row justify-content-between align-items-center" href="{% url 'staff_new' %}">
+        <a class="add outlined-btn d-flex flex-row justify-content-between align-items-center mt-5" href="{% url 'staff_new' %}">
             職員予定追加
-            <svg viewBox="0 0 16 16" class="bi bi-plus" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg>
+            <span class="material-icons ml-1">add</span>
         </a>
         {% endif %}
     </div>
 </section>
-<section class="section bg-blue access">
+<section class="section custom-bg-primary access">
     <div class="container">
-        <h2 class="title">
-            <span class="maintitle">アクセス</span>
-            <span class="subtitle">Access</span>
+        <h2 class="title font-md font-bold text-light text-center mb-5">
+            <span class="d-block mb-4">アクセス</span>
+            <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Access</span>
         </h2>
-        <div class="row">
-            <div class="col-md-6 contact">
-                <p>〒060-0051</p>
-                <p>札幌市中央区南1条東2丁目 5-1 MⅡビル 5Ｆ</p>
-                <p>Tel: 011-252-7660 / Fax: 011-252-7661</p>
+        <div class="row my-5">
+            <div class="col-md-6 text-light mb-5 text-center contact">
+                <p class="mb-3">〒060-0051</p>
+                <p class="mb-3">札幌市中央区南1条東2丁目 5-1 MⅡビル 5Ｆ</p>
+                <p class="mb-3">Tel: 011-252-7660 / Fax: 011-252-7661</p>
                 <p>Email: odori＠tryze.biz</p>
             </div>
             <div class="col-md-6 map">
