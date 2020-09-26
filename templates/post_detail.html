@@ -18,9 +18,19 @@
             <h2 class="title">{{ post.title }}</h2>
             <p>{{ post.content }}</p>
         </div>
-        <a class="back-btn" href="{% url 'info' %}">
-            掲示板へ戻る
-        </a>
+        <div class="btn-container">
+            <div class="btn-group">
+                <a class="btn line-btn" href="{% url 'info' %}">
+                    編集
+                </a>
+                <a class="btn line-btn caution" href="{% url 'info' %}">
+                    削除
+                </a>
+            </div>
+            <a class="text-btn" href="{% url 'info' %}">
+                掲示板へ戻る
+            </a>
+        </div>
     </div>
 </section>
 {% endblock content %}
