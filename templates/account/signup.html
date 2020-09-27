@@ -1,19 +1,19 @@
-{% extends '_base.html' %}
+{% extends '_account_base.html' %}
+{% load static %}
 
-{% block title %}新規登録{% endblock title %}
+{% block title %}新規登録{% endblock title%}
+
+{% block page_title %}新規登録{% endblock page_title %}
 
 {% block content %}
-<div class="outer-container d-flex flex-column justify-content-center align-items-center">
-    <h1 class="title">新規登録</h1>
-    <div class="form-container">
-        <form class="signup-form" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <div class="btn-group">
-                <button class="cta" type="submit">登録</button>
-                <a class="line-cta" href="{% url 'account_login' %}">ログイン</a>
-            </div>
-        </form>
-    </div>
+<div class="panel custom-bg-light d-flex flex-column align-items-center">
+    <form class="form" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="w-100 d-flex flex-row justify-content-center margin-top-md margin-bottom-md">
+            <button class="contained-btn margin-right-sm" type="submit">登録</button>
+            <a class="outlined-btn " href="{% url 'account_login' %}">ログイン</a>
+        </div>
+    </form>
 </div>
 {% endblock content %}

@@ -3,10 +3,10 @@
 
 {% block title %}ホーム{% endblock title%}
 {% block hero_title %}トライズ大通情報サイト{% endblock hero_title%}
-{% block hero_subtitle %}開所予定やイベント情報、就職に関する情報や施設についての情報などを発信しております{% endblock hero_subtitle %}
+{% block hero_subtitle %}開所予定・イベント・求人情報・施設内告知{% endblock hero_subtitle %}
 
 {% block content %}
-<section class="section pattern info" id="info">
+<section class="section pattern info padding-top-xl padding-bottom-xl" id="info">
     <div class="container">
         <h2 class="title font-md font-bold text-dark text-center mb-5">
             <span class="d-block mb-4">新着情報</span>
@@ -14,10 +14,12 @@
         </h2>
         <ul class="my-5">
             {% for post in posts|slice:":5" %}
-                <li class="d-flex flex-row justify-content-start align-items-center mb-3">
-                    {% if post.tag %}<span class="tag font-en font-xs text-light text-uppercase custom-bg-secondary mr-4">{{ post.tag }}</span>{% endif %}
-                    <span class="date font-light font-md mr-4">{{ post.publish_date|date:'Y-m-d' }}</span>
-                    <a class="news-title font-md font-medium" href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+                <li class="info-item d-flex align-items-center mb-5">
+                    <div class="meta-group d-flex flex-row justify-content-left align-items-center">
+                        {% if post.tag %}<span class="tag font-en font-xs text-light text-uppercase custom-bg-secondary margin-right-sm">{{ post.tag }}</span>{% endif %}
+                        <span class="date font-light font-md">{{ post.publish_date|date:'Y-m-d' }}</span>
+                    </div>
+                    <a class="info-title text-dark font-md font-medium" href="{% url 'post_detail' post.pk %}"><u>{{ post.title }}</u></a>
                 </li>
             {% endfor %}
         </ul>
@@ -29,15 +31,15 @@
         {% endif %}
     </div>
 </section>
-<section class="section custom-bg-primary saturdays">
+<section class="section custom-bg-primary saturdays padding-top-xl padding-bottom-xl">
     <div class="container">
         <h2 class="title font-md font-bold text-light text-center mb-5">
             <span class="d-block mb-4">土曜開所予定</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Saturdays</span>
         </h2>
-        <ul class="saturday-list my-5">
+        <ul class="my-5">
             {% for schedule in saturday_schedules %}
-                <li class="item saturday-item">{{ schedule.date }} {{ schedule.title }}</li>
+                <li class="font-md text-light mb-5">{{ schedule.date }} {{ schedule.title }}</li>
             {% endfor %}
         </ul>
         {% if perms.pages.can_add_saturday_schedule %}
@@ -48,16 +50,16 @@
         {% endif %}
     </div>
 </section>
-<section class="section pattern staff">
+<section class="section pattern staff padding-top-xl padding-bottom-xl">
     <div class="container">
         <h2 class="title font-md font-bold text-dark text-center mb-5">
             <span class="d-block mb-4">職員予定</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Staff Schedule</span>
         </h2>
-        <ul class="row staff-list my-5">
+        <ul class="my-5">
             {% for schedule in staff_schedules %}
-                <li class="col-md-6 staff-item">
-                    <p>{{ schedule.name }}: {{ schedule.date }} {{ schedule.content }} / {{ schedule.duration }}</p>
+                <li class="mb-5">
+                    <p class="font-md">{{ schedule.name }}: {{ schedule.date }} {{ schedule.content }} / {{ schedule.duration }}</p>
                 </li>
             {% endfor %}
         </ul>
@@ -69,7 +71,7 @@
         {% endif %}
     </div>
 </section>
-<section class="section custom-bg-primary access">
+<section class="section custom-bg-primary access padding-top-xl padding-bottom-xl">
     <div class="container">
         <h2 class="title font-md font-bold text-light text-center mb-5">
             <span class="d-block mb-4">アクセス</span>

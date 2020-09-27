@@ -89,7 +89,7 @@ class RecruitCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
 
 
 class ReportListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
-    paginate_by = 20
+    paginate_by = 2
     model = Report
     template_name = 'report_list.html'
     ordering = ['-date']

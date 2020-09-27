@@ -1,34 +1,24 @@
 {% extends '_base.html' %}
 {% load static %}
 
-{% block title %}掲示板{% endblock title%}
+{% block title %}情報詳細{% endblock title%}
+{% block hero_title %}情報詳細{% endblock hero_title%}
+{% block hero_subtitle %}info detail{% endblock hero_subtitle %}
 
 {% block content %}
-<section class="hero subpage">
-    <div class="container d-flex flex-column align-items-center">
-        <h1 class="title">
-            <span class="maintitle">情報詳細</span>
-            <span class="subtitle">Info Detail</span>
-        </h1>
-    </div>
-</section>
-<section class="section news-detail">
+<section class="section info-detail padding-top-xl padding-bottom-xl">
     <div class="container">
-        <div class="inner-container">
-            <h2 class="title">{{ post.title }}</h2>
-            <p>{{ post.content }}</p>
-        </div>
-        <div class="btn-container">
-            <div class="btn-group">
-                <a class="btn line-btn" href="{% url 'info' %}">
-                    編集
-                </a>
-                <a class="btn line-btn caution" href="{% url 'info' %}">
-                    削除
-                </a>
-            </div>
-            <a class="text-btn" href="{% url 'info' %}">
+        <h2 class="margin-bottom-md">{{ post.title }}</h2>
+        <p class="inner-container">{{ post.content }}</p>
+        <div class="d-flex flex-row margin-top-xl">
+            <a class="outlined-btn margin-right-xl" href="{% url 'info' %}">
                 掲示板へ戻る
+            </a>
+            <a class="outlined-btn text-center margin-right-sm" href="{% url 'info' %}">
+                編集
+            </a>
+            <a class="outlined-btn btn-caution text-center" href="{% url 'info' %}">
+                削除
             </a>
         </div>
     </div>

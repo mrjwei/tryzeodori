@@ -1,21 +1,20 @@
-{% extends '_base.html' %}
+{% extends '_account_base.html' %}
 {% load static %}
 
 {% block title %}ログイン{% endblock title%}
 
+{% block page_title %}ログイン{% endblock page_title %}
+
 {% block content %}
-<div class="outer-container d-flex flex-column justify-content-center align-items-center">
-    <h1 class="title">トライズ大通情報サイトログイン</h1>
-    <div class="form-container">
-        <form class="login-form" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button class="cta" type="submit">ログイン</button>
-            <div class="hints d-flex flex-row justify-content-around">
-                <span class="hint">パスワードを忘れた方は<a href="{% url 'account_reset_password' %}">こちら</a></span>
-                <span class="hint">新規の方は<a href="{% url 'account_signup' %}">こちら</a>からご登録ください</span>
-            </div>
-        </form>
-    </div>
+<div class="panel custom-bg-light d-flex flex-column align-items-center">
+    <form class="form" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="contained-btn margin-top-md margin-bottom-md" type="submit">ログイン</button>
+        <div class="w-100 row meta-info">
+            <span class="col-md-6 font-xs">パスワードを忘れた方は<u><a class="d-inline font-bold" href="{% url 'account_reset_password' %}">こちら</a></u></span>
+            <span class="col-md-6 font-xs">新規の方は<u><a class="d-inline font-bold" href="{% url 'account_signup' %}">こちら</a></u>からご登録ください</span>
+        </div>
+    </form>
 </div>
 {% endblock content %}

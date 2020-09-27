@@ -2,45 +2,39 @@
 {% load static %}
 
 {% block title %}利用者日報送信結果{% endblock title%}
+{% block hero_title %}利用者日報送信結果{% endblock hero_title%}
+{% block hero_subtitle %}report list{% endblock hero_subtitle %}
 
 {% block content %}
-<section class="hero subpage">
-    <div class="container d-flex flex-column align-items-center">
-        <h1 class="title">
-            <span class="maintitle">利用者日報送信結果</span>
-            <span class="subtitle">Report List</span>
-        </h1>
-    </div>
-</section>
-<section class="section reports">
+<section class="section reports padding-top-xl padding-bottom-xl">
     <div class="container">
         {% for report in page_obj %}
-            <div class="accordion">
-                <h3 class="accordion-title d-flex flex-row justify-content-between align-items-center">
+            <div class="accordion margin-bottom-sm">
+                <h3 class="accordion-title padding-top-sm padding-bottom-sm padding-left-lg padding-right-lg font-sm margin-bottom-xs d-flex flex-row justify-content-between align-items-center">
                     <div>
-                        <span>{{ report.date|date:'Y-m-d' }}</span>
-                        <span>{{ report.name }}</span>
+                        <span class="text-light">{{ report.date|date:'Y-m-d' }}</span>
+                        <span class="text-light">{{ report.name }}</span>
                     </div>
-                    <i class="material-icons plus">add</i>
-                    <i class="material-icons minus hidden">remove</i>
+                    <span class="material-icons text-light down">keyboard_arrow_down</span>
+                    <span class="material-icons text-light up hidden">keyboard_arrow_up</span>
                 </h3>
-                <div class="accordion-content">
-                    <p class="row"><span class="col-6">体調：</span><span>{{ report.condition }}</span></p>
-                    <p class="row"><span class="col-6">体温：</span><span>{{ report.temperature }}</span></p>
-                    <p class="row"><span class="col-6">午前：</span><span>{{ report.am }}</span></p>
-                    <p class="row"><span class="col-6">午前具体内容：</span><span>{{ report.am_detail }}</span></p>
-                    <p class="row"><span class="col-6">午後：</span><span>{{ report.pm }}</span></p>
-                    <p class="row"><span class="col-6">午後具体内容：</span><span>{{ report.pm_detail }}</span></p>
-                    <p class="row"><span class="col-6">感想や相談事など：</span><span>{{ report.comment }}</span></p>
+                <div class="">
+                    <p class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">体調：</span><span class="col-8">{{ report.condition }}</span></p>
+                    <p class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">体温：</span><span class="col-8">{{ report.temperature }}</span></p>
+                    <p class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">午前：</span><span class="col-8">{{ report.am }}</span></p>
+                    <p class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">午前具体内容：</span><span class="col-8">{{ report.am_detail }}</span></p>
+                    <p class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">午後：</span><span class="col-8">{{ report.pm }}</span></p>
+                    <p class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">午後具体内容：</span><span class="col-8">{{ report.pm_detail }}</span></p>
+                    <p class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">感想や相談事など：</span><span class="col-8">{{ report.comment }}</span></p>
                 </div>
             </div>
         {% endfor %}
-        <div class="pagination">
+        <div class="pagination margin-top-lg">
             <span class="step-links d-flex flex-row justify-content-between">
                 {% if page_obj.has_previous %}
                     <div class="page-nav">
-                        <a href="?page=1">&laquo; FIRST</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">PREV</a>
+                        <a class="text-secondary" href="?page=1">&laquo; 最初へ</a>
+                        <a class="text-secondary" href="?page={{ page_obj.previous_page_number }}">前へ</a>
                     </div>
                 {% endif %}
         
@@ -50,8 +44,8 @@
         
                 {% if page_obj.has_next %}
                     <div class="page-nav">
-                        <a href="?page={{ page_obj.next_page_number }}">NEXT</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">LAST &raquo;</a>
+                        <a class="text-secondary" href="?page={{ page_obj.next_page_number }}">最後へ</a>
+                        <a class="text-secondary" href="?page={{ page_obj.paginator.num_pages }}">次へ &raquo;</a>
                     </div>
                 {% endif %}
             </span>

@@ -1,9 +1,12 @@
-@use './normalize';
+@import "../../node_modules/rfs/scss.scss";
+@import "normalize";
+@import "responsive";
 
 $color-primary: #036eb8;
 $color-secondary: #2fa8e1;
 $color-dark: #333333;
 $color-light: #f2f2f2;
+$color-caution: #db3218;
 
 $font-family-primary: 'M PLUS Rounded 1c', sans-serif;
 $font-family-secondary: 'Roboto', sans-serif;
@@ -34,6 +37,7 @@ body {
     font-size: $font-sm;
     font-weight: $font-normal;
     letter-spacing: $letter-spacing-normal;
+    z-index: -1;
 }
 h1, h2, h3, p {
     padding: 0;
@@ -62,11 +66,19 @@ ul {
     margin: 0;
 }
 .container {
-    width: 80%;
-    min-width: 40rem;
-    max-width: 150rem;
-    padding: 0;
+    width: 100%;
+    padding: 0 2rem;
     margin: 0 auto;
+}
+.inner-container {
+    width: 100%;
+}
+.row {
+    width: 100%;
+    max-width: 100rem;
+}
+.hidden {
+    display: none;
 }
 // utility classes & mixins
 .font-jp {
@@ -76,19 +88,19 @@ ul {
     font-family: $font-family-secondary;
 }
 .font-xl {
-    font-size: $font-xl;
+    @include font-size($font-xl);
 }
 .font-lg {
-    font-size: $font-lg;
+    @include font-size($font-lg);
 }
 .font-md {
-    font-size: $font-md;
+    @include font-size($font-md);
 }
 .font-sm {
-    font-size: $font-sm;
+    @include font-size($font-sm);
 }
 .font-xs {
-    font-size: $font-xs;
+    @include font-size($font-xs);
 }
 .font-bold {
     font-weight: $font-bold;
@@ -111,6 +123,12 @@ ul {
 .text-primary {
     color: $color-primary!important;
 }
+.text-secondary {
+    color: $color-secondary!important;
+}
+.text-caution {
+    color: $color-caution!important;
+}
 .letter-spacing-lg {
     letter-spacing: $letter-spacing-lg;
 }
@@ -123,9 +141,167 @@ ul {
 .custom-bg-secondary {
     background-color: $color-secondary;
 }
+.custom-bg-light {
+    background-color: $color-light;
+}
+.margin-xl {
+    @include margin(8rem);
+}
+.margin-top-xl {
+    @include margin-top(8rem);
+}
+.margin-bottom-xl {
+    @include margin-bottom(8rem);
+}
+.margin-left-xl {
+    @include margin-left(8rem);
+}
+.margin-right-xl {
+    @include margin-right(8rem);
+}
+.margin-lg {
+    @include margin(4rem);
+}
+.margin-top-lg {
+    @include margin-top(4rem);
+}
+.margin-bottom-lg {
+    @include margin-bottom(4rem);
+}
+.margin-left-lg {
+    @include margin-left(4rem);
+}
+.margin-right-lg {
+    @include margin-right(4rem);
+}
+.margin-md {
+    @include margin(3rem);
+}
+.margin-top-md {
+    @include margin-top(3rem);
+}
+.margin-bottom-md {
+    @include margin-bottom(3rem);
+}
+.margin-left-md {
+    @include margin-left(3rem);
+}
+.margin-right-md {
+    @include margin-right(3rem);
+}
+.margin-sm {
+    @include margin(2rem);
+}
+.margin-top-sm {
+    @include margin-top(2rem);
+}
+.margin-bottom-sm {
+    @include margin-bottom(2rem);
+}
+.margin-left-sm {
+    @include margin-left(2rem);
+}
+.margin-right-sm {
+    @include margin-right(2rem);
+}
+.margin-xs {
+    @include margin(1rem);
+}
+.margin-top-xs {
+    @include margin-top(1rem);
+}
+.margin-bottom-xs {
+    @include margin-bottom(1rem);
+}
+.margin-left-xs {
+    @include margin-left(1rem);
+}
+.margin-right-xs {
+    @include margin-right(1rem);
+}
+.padding-xl {
+    @include padding(12rem);
+}
+.padding-top-xl {
+    @include padding-top(12rem);
+}
+.padding-bottom-xl {
+    @include padding-bottom(12rem);
+}
+.padding-left-xl {
+    @include padding-left(12rem);
+}
+.padding-right-xl {
+    @include padding-right(12rem);
+}
+.padding-lg {
+    @include padding(3rem);
+}
+.padding-top-lg {
+    @include padding-top(3rem);
+}
+.padding-bottom-lg {
+    @include padding-bottom(3rem);
+}
+.padding-left-lg {
+    @include padding-left(3rem);
+}
+.padding-right-lg {
+    @include padding-right(3rem);
+}
+.padding-md {
+    @include padding(1.5rem);
+}
+.padding-top-md {
+    @include padding-top(1.5rem);
+}
+.padding-bottom-md {
+    @include padding-bottom(1.5rem);
+}
+.padding-left-md {
+    @include padding-left(1.5rem);
+}
+.padding-right-md {
+    @include padding-right(1.5rem);
+}
+.padding-sm {
+    @include padding(1rem);
+}
+.padding-top-sm {
+    @include padding-top(1rem);
+}
+.padding-bottom-sm {
+    @include padding-bottom(1rem);
+}
+.padding-left-sm {
+    @include padding-left(1rem);
+}
+.padding-right-sm {
+    @include padding-right(1rem);
+}
+.padding-xs {
+    @include padding(0.5rem);
+}
+.padding-top-xs {
+    @include padding-top(0.5rem);
+}
+.padding-bottom-xs {
+    @include padding-bottom(0.5rem);
+}
+.padding-left-xs {
+    @include padding-left(0.5rem);
+}
+.padding-right-xs {
+    @include padding-right(0.5rem);
+}
 // mixins
 @mixin text-btn($text-color, $bg-color) {
-    padding: 0.8rem 1rem;
+    @include padding-top(0.8rem);
+    @include padding-bottom(0.8rem);
+    @include padding-left(1rem);
+    @include padding-right(1rem);
+    @include font-size($font-sm);
+    min-width: 8rem;
     color: $text-color;
     background: transparent;
     &:hover {
@@ -135,12 +311,16 @@ ul {
 @mixin contained-btn($text-color, $bg-color) {
     @include text-btn($text-color: $text-color, $bg-color: $bg-color);
     background-color: $bg-color;
+    &:hover {
+        background-color: lighten($color: $bg-color, $amount: 20%);
+    }
 }
 @mixin outlined-btn($text-color, $bg-color) {
     @include text-btn($text-color: $text-color, $bg-color: $bg-color);
     border: 0.2rem solid $text-color;
     &:hover {
         background-color: $bg-color;
+        border: 0.2rem solid $text-color;
     }
 }
 @mixin short-bar($color) {
@@ -153,8 +333,36 @@ ul {
     top: 50%;
 }
 @mixin tag {
-    padding: 0.8rem 1rem;
+    @include padding-top(0.6rem);
+    @include padding-bottom(0.6rem);
+    @include padding-left(1rem);
+    @include padding-right(1rem);
     border-radius: 0.5rem;
+}
+@mixin form($width) {
+    width: $width;
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        &:not(:last-of-type) {
+            @include margin-bottom(2rem);
+        }
+        label {
+            width: 35%;
+        }
+        input, textarea {
+            width: 65%;
+        }
+    }
+    .outlined-btn, .contained-btn {
+        min-width: 8rem;
+    }
 }
 // buttons
 .text-btn {
@@ -162,17 +370,102 @@ ul {
     &.btn-light {
         @include text-btn($text-color: $color-light, $bg-color: lighten($color: $color-primary, $amount: 10%));
     }
+    &.btn-caution {
+        @include text-btn($text-color: $color-caution, $bg-color: lighten($color: $color-caution, $amount: 50%));
+    }
 }
 .outlined-btn {
     @include outlined-btn($text-color: $color-primary, $bg-color: lighten($color: $color-primary, $amount: 50%));
     &.btn-light {
         @include outlined-btn($text-color: $color-light, $bg-color: darken($color: $color-light, $amount: 30%));
     }
+    &.btn-caution {
+        @include outlined-btn($text-color: $color-caution, $bg-color: lighten($color: $color-caution, $amount: 50%));
+    }
+}
+.contained-btn {
+    @include contained-btn($text-color: $color-light, $bg-color: $color-primary);
+    &.btn-light {
+        @include contained-btn($text-color: $color-primary, $bg-color: $color-light);
+    }
+    &.btn-caution {
+        @include outlined-btn($text-color: $color-caution, $bg-color: lighten($color: $color-caution, $amount: 50%));
+    }
+}
+.tag {
+    display: block;
+    @include tag;
+}
+.form {
+    @include form(100%);
+}
+.accordion {
+    width: 100%;
+    max-width: 60rem;
+    p {
+        margin-left: 0;
+        margin-right: 0; 
+        &:not(:last-child) {
+            border-bottom: 0.1rem solid lighten($color: $color-dark, $amount: 60%);
+        }
+    }
+    .accordion-title {
+        background-color: $color-secondary;
+    }
+    .ui-accordion-header-active {
+        background-color: $color-primary;
+        .down {
+            display: none;
+        }
+        .up {
+            display: block;
+        }
+    }
+}
+// paginate
+.pagination {
+    width: 30%;
+    .step-links {
+        display: block;
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+    .page-nav {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        &:first-child {
+            left: 0;
+        }
+        &:last-child {
+            right: 0;
+        }
+        a {
+            margin: 0 1rem;
+        }
+    }
+    .current {
+        display: block;
+        margin: 0 auto;
+    }
+}
+textarea::placeholder {
+    color:lighten($color: $color-dark, $amount: 60%);
+    opacity: 1;
+}
+.underline {
+    text-decoration: underline;
+}
+.desc {
+    color: $color-light;
+    z-index: 1;
+    margin-bottom: 3rem;
 }
 // navbar
 .navbar {
     position: relative;
-    padding: 1rem 0;
+    z-index: 10;
     // toggle button
     .navbar-toggler {
         border: none;
@@ -188,7 +481,6 @@ ul {
         margin: 0;
         a {
             max-width: 7rem;
-            margin: 0 auto;
         }
     }
     // navbar-collapse
@@ -232,7 +524,25 @@ ul {
     overflow-y: hidden;
     z-index: 1;
     h1 {
+        position: relative;
+        padding: 0 2rem;
         transform: translateY(-3rem);
+        .main-msg {
+            @include font-size($font-xl);
+        }
+        .sub-msg {
+            @include font-size($font-md);
+            line-height: 3rem;
+        }
+        &::after {
+            @include short-bar($color-light);
+            position: absolute;
+            width: 20%;
+            height: 0.5rem;
+            left: 50%;
+            top: -4rem;
+            transform: translateX(-50%);
+        }
     }
     .down-arrow {
         width: 8rem;
@@ -250,7 +560,7 @@ ul {
 // section
 .section {
     position: relative;
-    padding: 8rem 0;
+    z-index: 1;
     &.pattern::before {
         content: "";
         display: block;
@@ -260,7 +570,7 @@ ul {
         background-size: cover;
         background-repeat: no-repeat;
         position: absolute;
-        top: 0;
+        // top: 0;
         opacity: .5;
         z-index: -1;
     }
@@ -292,13 +602,17 @@ ul {
     }
 }
 .info {
+    z-index: 0;
     .news-title {
         color: $color-dark;
-        text-decoration: underline;
     }
-    .tag {
-        display: block;
-        @include tag;
+    .info-item {
+        flex-direction: column;
+        justify-content: flex-end;
+        .info-title {
+            text-align: right;
+            margin-top: 1.5rem;
+        }
     }
     .date {
         line-height: 2rem;
@@ -308,8 +622,16 @@ ul {
         height: 110%;
     }
 }
+.saturday {
+    z-index: 10;
+}
 .staff {
+    .staff-item {
+        text-align: center;
+    }
+    z-index: 0;
     &.pattern::before {
+        top: -20%;
         height: 120%;
     }
 }
@@ -317,5 +639,127 @@ ul {
     iframe {
         width: 100%;
         height: 35rem;
+    }
+}
+// recruit
+.recruit-item {
+    border-bottom: 0.1rem solid lighten($color: $color-dark, $amount: 60%);
+}
+// responsive
+@media screen and (min-width: 576px) {}
+@media screen and (min-width: 768px) {
+    // layout
+    .container {
+        max-width: 120rem;
+    }
+    .inner-container {
+        width: 80%;
+        max-width: 60rem;
+    }
+    // navbar
+    .navbar-collapse {
+        position: static!important;
+        display: flex;
+        justify-content: center;
+        .close {
+            display: none;
+        }
+        .nav-link {
+            padding-left: 1rem!important;
+            padding-right: 1rem!important;
+        }
+    }
+    // hero
+    .hero {
+        height: 45rem;
+    }
+    // info
+    .info {
+        .info-item {
+            flex-direction: row!important;
+            justify-content: flex-start!important;
+            align-items: center;
+            .info-title {
+                margin-top: 0!important;
+            }
+            .meta-group {
+                margin-right: 2rem;
+            }
+        }
+    }
+    // staff
+    .staff {
+        .staff-item {
+            text-align: left;
+        }
+    }
+    // account pages
+    .meta-info {
+        span {
+            text-align: left;
+        }
+        span:not(:last-child) {
+            margin-bottom: 0!important;
+            padding-left: 0;
+        }
+        span:last-child {
+            padding-right: 0;
+        }
+    }
+}
+@media screen and (min-width: 992px) {
+    // layout
+    // navbar
+    .navbar-collapse {
+        .nav-link {
+            padding-left: 2rem!important;
+            padding-right: 2rem!important;
+        }
+    }
+    // hero
+    .hero {
+        height: 55rem;
+    }
+}
+@media screen and (min-width: 1200px) {
+    // layout
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+// ======================
+// account pages
+// ======================
+.account-body {
+    position: relative;
+    background: url(/static/images/hero.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+    &::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: $color-dark;
+        opacity: .6;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+    }
+    .panel {
+        width: 100%;
+        max-width: 60rem;
+        margin: 0 auto;
+        border-radius: 1rem;
+        @include padding(6rem);
+    }
+    .meta-info {
+        text-align: center;
+        span:not(:last-child) {
+            margin-bottom: 1rem;
+        }
     }
 }
