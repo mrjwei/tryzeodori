@@ -301,12 +301,12 @@ ul {
   max-width: 100rem;
 }
 
-.home-list {
+.data-list {
   width: 100%;
   max-width: 60rem;
 }
 
-.home-list.home-list-small {
+.data-list.data-list-small {
   max-width: 50rem;
 }
 
@@ -1514,7 +1514,21 @@ textarea::placeholder {
 }
 
 .recruit-item {
+  margin-left: 0;
+  margin-right: 0;
   border-bottom: 0.1rem solid #cccccc;
+}
+
+.recruit-item p {
+  margin-bottom: 2rem;
+}
+
+.recruit-item .number {
+  text-align: center;
+}
+
+.recruit-item .btn-group {
+  margin-top: 2rem;
 }
 
 .info-detail .outlined-btn {
@@ -1572,6 +1586,30 @@ textarea::placeholder {
   .access-info {
     font-size: 2rem !important;
     text-align: left !important;
+  }
+  .recruit-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .recruit-item p {
+    margin-bottom: 0;
+  }
+  .recruit-item .number {
+    text-align: left;
+  }
+  .recruit-item .btn-group {
+    margin-top: 0;
   }
   .meta-info span {
     text-align: left;

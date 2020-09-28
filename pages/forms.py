@@ -31,7 +31,7 @@ CustomDateInput = partial(TextInput, {'class': 'datepicker'})
 class SaturdayForm(ModelForm):
     class Meta:
         model = SaturdaySchedule
-        fields = '__all__'
+        exclude = ['id']
         widgets = {
             'date': CustomDateInput(),
         }
@@ -40,7 +40,7 @@ class SaturdayForm(ModelForm):
 class StaffForm(ModelForm):
     class Meta:
         model = StaffSchedule
-        fields = '__all__'
+        exclude = ['id']
         widgets = {
             'date': CustomDateInput(),
         }
@@ -48,4 +48,4 @@ class StaffForm(ModelForm):
 class RecruitForm(ModelForm):
     class Meta:
         model = RecruitInfo
-        exclude = ['publish_date']
+        exclude = ['id', 'publish_date']

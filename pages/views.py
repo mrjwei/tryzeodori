@@ -10,6 +10,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Post, SaturdaySchedule, StaffSchedule, RecruitInfo, Report
 from .forms import ReportForm, StaffForm, SaturdayForm, PostForm, RecruitForm
 
+
 today = date.today()
 month = str(today.month)
 day = str(today.day)
@@ -96,7 +97,6 @@ class RecruitUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView)
     model = RecruitInfo
     template_name = 'recruit_edit.html'
     success_url = reverse_lazy('recruit')
-    login_url = 'account_login'
     fields = ['title', 'number', 'tag']
     permission_required = 'pages.can_update_recruit_info'
 
@@ -160,7 +160,7 @@ class ReportUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 
 class ReportDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Report
-    template_name = 'report_edit.html'
+    template_name = 'report_delete.html'
     success_url = reverse_lazy('reports')
     login_url = 'account_login'
     permission_required = 'pages.can_view_all_reports'

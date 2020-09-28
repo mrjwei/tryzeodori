@@ -12,7 +12,7 @@
             <span class="d-block mb-4">新着情報</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Info</span>
         </h2>
-        <ul class="home-list home-list-small">
+        <ul class="data-list data-list-small">
             {% for post in posts|slice:":5" %}
                 <li class="info-item d-flex align-items-center margin-bottom-sm">
                     <div class="meta-group d-flex flex-row justify-content-left align-items-center">
@@ -37,7 +37,7 @@
             <span class="d-block mb-4">土曜開所予定</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Saturdays</span>
         </h2>
-        <ul class="home-list">
+        <ul class="data-list">
             {% for schedule in saturday_schedules %}
                 <li class="row font-md text-light margin-bottom-sm">
                     <span class="col-8">{{ schedule.date }} {{ schedule.title }}</span>
@@ -62,7 +62,7 @@
             <span class="d-block mb-4">職員予定</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Staff Schedule</span>
         </h2>
-        <ul class="home-list">
+        <ul class="data-list">
             {% for schedule in staff_schedules %}
                 <li class="d-flex flex-row justify-content-between align-items-center font-md text-light margin-bottom-sm">
                     <span class="col-8 text-dark">{{ schedule.name }}: {{ schedule.date }} {{ schedule.content }} / {{ schedule.duration }}</span>

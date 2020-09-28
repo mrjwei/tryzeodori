@@ -34,6 +34,11 @@ class Post(models.Model):
         return reverse('post_detail', args=[str(self.id)])
     
 class SaturdaySchedule(models.Model):
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
     title = models.CharField('内容', max_length=50)
     date = models.CharField('日付', max_length=20, blank=False)
 
@@ -47,6 +52,11 @@ class SaturdaySchedule(models.Model):
         return self.title
     
 class StaffSchedule(models.Model):
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
     name = models.CharField('名前', max_length=10)
     date = models.CharField('日付', max_length=20, blank=False)
     content = models.CharField('内容', max_length=10)
@@ -63,6 +73,11 @@ class StaffSchedule(models.Model):
 
 
 class RecruitInfo(models.Model):
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
     title = models.CharField('タイトル', max_length=70)
     number = models.CharField('求人番号', max_length=25)
     publish_date = models.DateTimeField('公開日', auto_now=True, blank=False, null=True)

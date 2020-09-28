@@ -77,10 +77,10 @@ ul {
     width: 100%;
     max-width: 100rem;
 }
-.home-list {
+.data-list {
     width: 100%;
     max-width: 60rem;
-    &.home-list-small {
+    &.data-list-small {
         max-width: 50rem;
     }
 }
@@ -665,7 +665,18 @@ textarea::placeholder {
 }
 // recruit
 .recruit-item {
+    margin-left: 0;
+    margin-right: 0;
     border-bottom: 0.1rem solid lighten($color: $color-dark, $amount: 60%);
+    p {
+        margin-bottom: 2rem;
+    }
+    .number {
+        text-align: center;
+    }
+    .btn-group {
+        margin-top: 2rem;
+    }
 }
 .info-detail {
     .outlined-btn {
@@ -724,6 +735,22 @@ textarea::placeholder {
     .access-info {
         font-size: $font-md!important;
         text-align: left!important;
+    }
+    // recruit
+    .recruit-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        p {
+            margin-bottom: 0;
+        }
+        .number {
+            text-align: left;
+        }
+        .btn-group {
+            margin-top: 0;
+        }
     }
     // account pages
     .meta-info {
