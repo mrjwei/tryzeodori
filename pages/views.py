@@ -1,27 +1,14 @@
 from datetime import date
 from datetime import timedelta
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.contrib.auth.mixins import UserPassesTestMixin
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
-from django.views.generic import TemplateView
-from django.views.generic import ListView
-from django.views.generic import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .models import Post
-from .models import SaturdaySchedule
-from .models import StaffSchedule
-from .models import RecruitInfo
-from .models import Report
-from .forms import ReportForm
-from .forms import StaffForm
-from .forms import SaturdayForm
-from .forms import PostForm
-from .forms import RecruitForm
+from .models import Post, SaturdaySchedule, StaffSchedule, RecruitInfo, Report
+from .forms import ReportForm, StaffForm, SaturdayForm, PostForm, RecruitForm
 
 today = date.today()
 month = str(today.month)
@@ -65,7 +52,24 @@ class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         context['month'] = month
         context['day'] = day
         return context
-    
+
+
+class PostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    model = Post
+    template_name = 'post_edit.html'
+    success_url = reverse_lazy('home')
+    login_url = 'account_login'
+    fields = ['title', 'content', 'tag']
+    permission_required = 'pages.can_update_post'
+
+
+class PostDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = Post
+    template_name = 'post_delete.html'
+    success_url = reverse_lazy('home')
+    login_url = 'account_login'
+    permission_required = 'pages.can_update_post'
+
 
 class RecruitListView(LoginRequiredMixin, ListView):
     model = RecruitInfo
@@ -86,6 +90,23 @@ class RecruitCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
     success_url = reverse_lazy('recruit')
     login_url = 'account_login'
     permission_required = 'pages.can_add_recruit_info'
+
+
+class RecruitUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    model = RecruitInfo
+    template_name = 'recruit_edit.html'
+    success_url = reverse_lazy('recruit')
+    login_url = 'account_login'
+    fields = ['title', 'number', 'tag']
+    permission_required = 'pages.can_update_recruit_info'
+
+
+class RecruitDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = RecruitInfo
+    template_name = 'recruit_delete.html'
+    success_url = reverse_lazy('recruit')
+    login_url = 'account_login'
+    permission_required = 'pages.can_update_recruit_info'
 
 
 class ReportListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
@@ -128,12 +149,46 @@ class ReportCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
             return redirect(reverse_lazy('home'))
 
 
+class ReportUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    model = Report
+    template_name = 'report_edit.html'
+    success_url = reverse_lazy('reports')
+    login_url = 'account_login'
+    fields = ['name', 'condition', 'temperature', 'am', 'am_detail', 'pm', 'pm_detail', 'comment']
+    permission_required = 'pages.can_view_all_reports'
+
+
+class ReportDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = Report
+    template_name = 'report_edit.html'
+    success_url = reverse_lazy('reports')
+    login_url = 'account_login'
+    permission_required = 'pages.can_view_all_reports'
+
+
 class SaturdayCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = SaturdayForm
     template_name = 'saturday_new.html'
     success_url = reverse_lazy('home')
     login_url = 'account_login'
     permission_required = 'pages.can_add_saturday_schedule'
+
+
+class SaturdayUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    model = SaturdaySchedule
+    template_name = 'saturday_edit.html'
+    success_url = reverse_lazy('home')
+    login_url = 'account_login'
+    fields = '__all__'
+    permission_required = 'pages.can_update_saturday_schedule'
+
+
+class SaturdayDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = SaturdaySchedule
+    template_name = 'saturday_delete.html'
+    success_url = reverse_lazy('home')
+    login_url = 'account_login'
+    permission_required = 'pages.can_update_saturday_schedule'
     
 
 class StaffCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
@@ -142,3 +197,19 @@ class StaffCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     success_url = reverse_lazy('home')
     login_url = 'account_login'
     permission_required = 'pages.can_add_staff_schedule'
+
+
+class StaffUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
+    model = StaffSchedule
+    template_name = 'staff_edit.html'
+    success_url = reverse_lazy('home')
+    login_url = 'account_login'
+    fields = '__all__'
+    permission_required = 'pages.can_update_staff_schedule'
+
+class StaffDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
+    model = StaffSchedule
+    template_name = 'staff_delete.html'
+    success_url = reverse_lazy('home')
+    login_url = 'account_login'
+    permission_required = 'pages.can_update_staff_schedule'

@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 
@@ -23,10 +24,14 @@ class Post(models.Model):
     class Meta:
         permissions = [
             ('can_add_post', 'can add post'),
+            ('can_update_post', 'can update post'),
         ]
     
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('post_detail', args=[str(self.id)])
     
 class SaturdaySchedule(models.Model):
     title = models.CharField('内容', max_length=50)
@@ -69,6 +74,7 @@ class RecruitInfo(models.Model):
     class Meta:
         permissions = [
             ('can_add_recruit_info', 'can add recruit info'),
+            ('can_update_recruit_info', 'can update recruit info'),
         ]
     
     def __str__(self):
