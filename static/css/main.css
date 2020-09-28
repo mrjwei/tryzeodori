@@ -301,6 +301,15 @@ ul {
   max-width: 100rem;
 }
 
+.home-list {
+  width: 100%;
+  max-width: 60rem;
+}
+
+.home-list.home-list-small {
+  max-width: 50rem;
+}
+
 .hidden {
   display: none;
 }
@@ -829,7 +838,6 @@ ul {
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: calc(1.275rem + 0.3vw);
-  min-width: 8rem;
   color: #036eb8;
   background: transparent;
 }
@@ -850,7 +858,6 @@ ul {
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: calc(1.275rem + 0.3vw);
-  min-width: 8rem;
   color: #f2f2f2;
   background: transparent;
 }
@@ -871,7 +878,6 @@ ul {
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: calc(1.275rem + 0.3vw);
-  min-width: 8rem;
   color: #db3218;
   background: transparent;
 }
@@ -886,13 +892,75 @@ ul {
   background-color: #fef5f4;
 }
 
+.text-btn-small {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: calc(1.275rem + 0.3vw);
+  color: #036eb8;
+  background: transparent;
+  padding: 0;
+}
+
+@media (min-width: 1200px) {
+  .text-btn-small {
+    font-size: 1.5rem;
+  }
+}
+
+.text-btn-small:hover {
+  background-color: transparent;
+}
+
+.text-btn-small.btn-light {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: calc(1.275rem + 0.3vw);
+  color: #f2f2f2;
+  background: transparent;
+  padding: 0;
+}
+
+@media (min-width: 1200px) {
+  .text-btn-small.btn-light {
+    font-size: 1.5rem;
+  }
+}
+
+.text-btn-small.btn-light:hover {
+  background-color: transparent;
+}
+
+.text-btn-small.btn-caution {
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: calc(1.275rem + 0.3vw);
+  color: #db3218;
+  background: transparent;
+  padding: 0;
+}
+
+@media (min-width: 1200px) {
+  .text-btn-small.btn-caution {
+    font-size: 1.5rem;
+  }
+}
+
+.text-btn-small.btn-caution:hover {
+  background-color: transparent;
+}
+
 .outlined-btn {
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: calc(1.275rem + 0.3vw);
-  min-width: 8rem;
   color: #036eb8;
   background: transparent;
   border: 0.2rem solid #036eb8;
@@ -919,7 +987,6 @@ ul {
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: calc(1.275rem + 0.3vw);
-  min-width: 8rem;
   color: #f2f2f2;
   background: transparent;
   border: 0.2rem solid #f2f2f2;
@@ -946,7 +1013,6 @@ ul {
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: calc(1.275rem + 0.3vw);
-  min-width: 8rem;
   color: #db3218;
   background: transparent;
   border: 0.2rem solid #db3218;
@@ -973,7 +1039,6 @@ ul {
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: calc(1.275rem + 0.3vw);
-  min-width: 8rem;
   color: #f2f2f2;
   background: transparent;
   background-color: #036eb8;
@@ -999,7 +1064,6 @@ ul {
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: calc(1.275rem + 0.3vw);
-  min-width: 8rem;
   color: #036eb8;
   background: transparent;
   background-color: #f2f2f2;
@@ -1025,7 +1089,6 @@ ul {
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: calc(1.275rem + 0.3vw);
-  min-width: 8rem;
   color: #db3218;
   background: transparent;
   border: 0.2rem solid #db3218;
@@ -1452,6 +1515,10 @@ textarea::placeholder {
 
 .recruit-item {
   border-bottom: 0.1rem solid #cccccc;
+}
+
+.info-detail .outlined-btn {
+  min-width: 8rem;
 }
 
 @media screen and (min-width: 768px) {

@@ -77,6 +77,13 @@ ul {
     width: 100%;
     max-width: 100rem;
 }
+.home-list {
+    width: 100%;
+    max-width: 60rem;
+    &.home-list-small {
+        max-width: 50rem;
+    }
+}
 .hidden {
     display: none;
 }
@@ -295,13 +302,12 @@ ul {
     @include padding-right(0.5rem);
 }
 // mixins
-@mixin text-btn($text-color, $bg-color) {
+@mixin text-btn($text-color, $bg-color, $min-width: 8rem) {
     @include padding-top(0.8rem);
     @include padding-bottom(0.8rem);
     @include padding-left(1rem);
     @include padding-right(1rem);
     @include font-size($font-sm);
-    min-width: 8rem;
     color: $text-color;
     background: transparent;
     &:hover {
@@ -372,6 +378,18 @@ ul {
     }
     &.btn-caution {
         @include text-btn($text-color: $color-caution, $bg-color: lighten($color: $color-caution, $amount: 50%));
+    }
+}
+.text-btn-small {
+    @include text-btn($text-color: $color-primary, $bg-color: transparent, $min-width: 0);
+    padding: 0;
+    &.btn-light {
+        @include text-btn($text-color: $color-light, $bg-color: transparent, $min-width: 0);
+        padding: 0;
+    }
+    &.btn-caution {
+        @include text-btn($text-color: $color-caution, $bg-color: transparent, $min-width: 0);
+        padding: 0;
     }
 }
 .outlined-btn {
@@ -648,6 +666,11 @@ textarea::placeholder {
 // recruit
 .recruit-item {
     border-bottom: 0.1rem solid lighten($color: $color-dark, $amount: 60%);
+}
+.info-detail {
+    .outlined-btn {
+        min-width: 8rem;
+    }
 }
 // responsive
 @media screen and (min-width: 576px) {}

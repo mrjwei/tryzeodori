@@ -12,9 +12,9 @@
             <span class="d-block mb-4">新着情報</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Info</span>
         </h2>
-        <ul class="my-5">
+        <ul class="home-list home-list-small">
             {% for post in posts|slice:":5" %}
-                <li class="info-item d-flex align-items-center mb-5">
+                <li class="info-item d-flex align-items-center margin-bottom-sm">
                     <div class="meta-group d-flex flex-row justify-content-left align-items-center">
                         {% if post.tag %}<span class="tag font-en font-xs text-light text-uppercase custom-bg-secondary margin-right-sm">{{ post.tag }}</span>{% endif %}
                         <span class="date font-light font-md">{{ post.publish_date|date:'Y-m-d' }}</span>
@@ -24,7 +24,7 @@
             {% endfor %}
         </ul>
         {% if perms.pages.can_add_post %}
-        <a class="add outlined-btn d-flex flex-row justify-content-between align-items-center mt-5" href="{% url 'post_new' %}">
+        <a class="add outlined-btn d-flex flex-row justify-content-between align-items-center margin-top-lg" href="{% url 'post_new' %}">
             新着情報追加
             <span class="material-icons ml-1">add</span>
         </a>
@@ -37,9 +37,15 @@
             <span class="d-block mb-4">土曜開所予定</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Saturdays</span>
         </h2>
-        <ul class="my-5">
+        <ul class="home-list">
             {% for schedule in saturday_schedules %}
-                <li class="font-md text-light mb-5">{{ schedule.date }} {{ schedule.title }}</li>
+                <li class="row font-md text-light margin-bottom-sm">
+                    <span class="col-8">{{ schedule.date }} {{ schedule.title }}</span>
+                    {% if perms.pages.can_update_saturday_schedule %}
+                        <a class="col-2 text-btn-small btn-light text-center" href="">編集</a>
+                        <a class="col-2 text-btn-small btn-caution text-center" href="">削除</a>
+                    {% endif %}
+                </li>
             {% endfor %}
         </ul>
         {% if perms.pages.can_add_saturday_schedule %}
@@ -56,15 +62,19 @@
             <span class="d-block mb-4">職員予定</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Staff Schedule</span>
         </h2>
-        <ul class="my-5">
+        <ul class="home-list">
             {% for schedule in staff_schedules %}
-                <li class="mb-5">
-                    <p class="font-md">{{ schedule.name }}: {{ schedule.date }} {{ schedule.content }} / {{ schedule.duration }}</p>
+                <li class="d-flex flex-row justify-content-between align-items-center font-md text-light margin-bottom-sm">
+                    <span class="col-8 text-dark">{{ schedule.name }}: {{ schedule.date }} {{ schedule.content }} / {{ schedule.duration }}</span>
+                    {% if perms.pages.can_update_staff_schedule %}
+                        <a class="col-2 text-btn-small text-center" href="">編集</a>
+                        <a class="col-2 text-btn-small btn-caution text-center" href="">削除</a>
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>
         {% if perms.pages.can_add_staff_schedule %}
-        <a class="add outlined-btn d-flex flex-row justify-content-between align-items-center mt-5" href="{% url 'staff_new' %}">
+        <a class="add outlined-btn d-flex flex-row justify-content-between align-items-center margin-top-lg" href="{% url 'staff_new' %}">
             職員予定追加
             <span class="material-icons ml-1">add</span>
         </a>

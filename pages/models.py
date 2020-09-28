@@ -35,6 +35,7 @@ class SaturdaySchedule(models.Model):
     class Meta:
         permissions = [
             ('can_add_saturday_schedule', 'can add saturday schedule'),
+            ('can_update_saturday_schedule', 'can update saturday schedule'),
         ]
     
     def __str__(self):
@@ -49,6 +50,7 @@ class StaffSchedule(models.Model):
     class Meta:
         permissions = [
             ('can_add_staff_schedule', 'can add staff schedule'),
+            ('can_update_staff_schedule', 'can update staff schedule'),
         ]
     
     def __str__(self):
