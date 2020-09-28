@@ -76,6 +76,7 @@ ul {
 .row {
     width: 100%;
     max-width: 100rem;
+    margin-left: 0;
 }
 .data-list {
     width: 100%;
@@ -413,6 +414,10 @@ ul {
 .tag {
     display: block;
     @include tag;
+    position: absolute;
+    top: 0;
+    left: 25%;
+    transform: translateY(-20%);
 }
 .form {
     @include form(100%);
@@ -482,6 +487,7 @@ textarea::placeholder {
 }
 // navbar
 .navbar {
+    margin: 0 auto!important;
     position: relative;
     z-index: 10;
     // toggle button
@@ -621,18 +627,17 @@ textarea::placeholder {
 }
 .info {
     z-index: 0;
-    .news-title {
-        color: $color-dark;
-    }
     .info-item {
+        position: relative;
         flex-direction: column;
         justify-content: flex-end;
         .info-title {
-            text-align: right;
+            text-align: center;
             margin-top: 1.5rem;
         }
     }
     .date {
+        text-align: center;
         line-height: 2rem;
     }
     &.pattern::before {
@@ -665,7 +670,6 @@ textarea::placeholder {
 }
 // recruit
 .recruit-item {
-    margin-left: 0;
     margin-right: 0;
     border-bottom: 0.1rem solid lighten($color: $color-dark, $amount: 60%);
     p {
@@ -694,6 +698,11 @@ textarea::placeholder {
         width: 80%;
         max-width: 60rem;
     }
+    // tag
+    .tag {
+        left: -10%;
+        transform: translateY(0);
+    }
     // navbar
     .navbar-collapse {
         position: static!important;
@@ -714,14 +723,13 @@ textarea::placeholder {
     // info
     .info {
         .info-item {
+            position: relative;
             flex-direction: row!important;
-            justify-content: flex-start!important;
+            justify-content: flex-end!important;
             align-items: center;
             .info-title {
                 margin-top: 0!important;
-            }
-            .meta-group {
-                margin-right: 2rem;
+                text-align: right;
             }
         }
     }

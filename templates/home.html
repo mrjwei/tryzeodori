@@ -8,18 +8,18 @@
 {% block content %}
 <section class="section pattern info padding-top-xl padding-bottom-xl" id="info">
     <div class="container">
-        <h2 class="title font-md font-bold text-dark text-center mb-5">
+        <h2 class="font-md font-bold text-dark text-center mb-5">
             <span class="d-block mb-4">新着情報</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Info</span>
         </h2>
         <ul class="data-list data-list-small">
             {% for post in posts|slice:":5" %}
-                <li class="info-item d-flex align-items-center margin-bottom-sm">
-                    <div class="meta-group d-flex flex-row justify-content-left align-items-center">
-                        {% if post.tag %}<span class="tag font-en font-xs text-light text-uppercase custom-bg-secondary margin-right-sm">{{ post.tag }}</span>{% endif %}
-                        <span class="date font-light font-md">{{ post.publish_date|date:'Y-m-d' }}</span>
-                    </div>
-                    <a class="info-title text-dark font-md font-medium" href="{% url 'post_detail' post.pk %}"><u>{{ post.title }}</u></a>
+                <li class="info-item row margin-bottom-sm">
+                    {% if post.tag %}
+                        <span class="tag font-en font-xs text-light text-uppercase custom-bg-secondary margin-right-sm">{{ post.tag }}</span>
+                    {% endif %}                        
+                    <span class="date col-12 col-md-4 col-lg-5 font-light font-md">{{ post.publish_date|date:'Y-m-d' }}</span>
+                    <a class="info-title col-12 col-md-8 col-lg-7 text-dark font-md font-medium" href="{% url 'post_detail' post.pk %}"><u>{{ post.title }}</u></a>
                 </li>
             {% endfor %}
         </ul>
@@ -42,8 +42,8 @@
                 <li class="row font-md text-light margin-bottom-sm">
                     <span class="col-8">{{ schedule.date }} {{ schedule.title }}</span>
                     {% if perms.pages.can_update_saturday_schedule %}
-                        <a class="col-2 text-btn-small btn-light text-center" href="">編集</a>
-                        <a class="col-2 text-btn-small btn-caution text-center" href="">削除</a>
+                        <a class="col-2 text-btn-small btn-light text-center" href="{% url 'saturday_edit' schedule.pk %}">編集</a>
+                        <a class="col-2 text-btn-small btn-caution text-center" href="{% url 'saturday_delete' schedule.pk %}">削除</a>
                     {% endif %}
                 </li>
             {% endfor %}

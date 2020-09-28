@@ -299,6 +299,7 @@ ul {
 .row {
   width: 100%;
   max-width: 100rem;
+  margin-left: 0;
 }
 
 .data-list {
@@ -1116,6 +1117,11 @@ ul {
   padding-left: 1rem;
   padding-right: 1rem;
   border-radius: 0.5rem;
+  position: absolute;
+  top: 0;
+  left: 25%;
+  -webkit-transform: translateY(-20%);
+          transform: translateY(-20%);
 }
 
 .form {
@@ -1269,6 +1275,7 @@ textarea::placeholder {
 }
 
 .navbar {
+  margin: 0 auto !important;
   position: relative;
   z-index: 10;
 }
@@ -1458,11 +1465,8 @@ textarea::placeholder {
   z-index: 0;
 }
 
-.info .news-title {
-  color: #333333;
-}
-
 .info .info-item {
+  position: relative;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -1473,11 +1477,12 @@ textarea::placeholder {
 }
 
 .info .info-item .info-title {
-  text-align: right;
+  text-align: center;
   margin-top: 1.5rem;
 }
 
 .info .date {
+  text-align: center;
   line-height: 2rem;
 }
 
@@ -1514,7 +1519,6 @@ textarea::placeholder {
 }
 
 .recruit-item {
-  margin-left: 0;
   margin-right: 0;
   border-bottom: 0.1rem solid #cccccc;
 }
@@ -1543,6 +1547,11 @@ textarea::placeholder {
     width: 80%;
     max-width: 60rem;
   }
+  .tag {
+    left: -10%;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
   .navbar-collapse {
     position: static !important;
     display: -webkit-box;
@@ -1563,22 +1572,21 @@ textarea::placeholder {
     height: 45rem;
   }
   .info .info-item {
+    position: relative;
     -webkit-box-orient: horizontal !important;
     -webkit-box-direction: normal !important;
         -ms-flex-direction: row !important;
             flex-direction: row !important;
-    -webkit-box-pack: start !important;
-        -ms-flex-pack: start !important;
-            justify-content: flex-start !important;
+    -webkit-box-pack: end !important;
+        -ms-flex-pack: end !important;
+            justify-content: flex-end !important;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
   }
   .info .info-item .info-title {
     margin-top: 0 !important;
-  }
-  .info .info-item .meta-group {
-    margin-right: 2rem;
+    text-align: right;
   }
   .staff .staff-item {
     text-align: left;
