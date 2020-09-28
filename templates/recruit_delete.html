@@ -1,0 +1,17 @@
+{% extends '_account_base.html' %}
+{% load static %}
+
+{% block title %}求人情報削除{% endblock title%}
+
+{% block page_title %}求人情報削除{% endblock page_title %}
+
+{% block content %}
+<div class="panel custom-bg-light d-flex flex-column align-items-center">
+    <p class="font-md font-medium">レコードを削除してもよろしいですか？</p>
+    <form class="form" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="contained-btn btn-caution margin-top-md margin-bottom-md" type="submit">削除</button>
+    </form>
+</div>
+{% endblock content %}

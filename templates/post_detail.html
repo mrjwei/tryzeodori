@@ -14,10 +14,10 @@
             <a class="outlined-btn margin-right-xl" href="{% url 'info' %}">
                 掲示板へ戻る
             </a>
-            <a class="outlined-btn text-center margin-right-sm" href="{% url 'info' %}">
+            <a class="outlined-btn text-center margin-right-sm" href="{% url 'post_edit' post.pk %}">
                 編集
             </a>
-            <a class="outlined-btn btn-caution text-center" href="{% url 'info' %}">
+            <a class="outlined-btn btn-caution text-center" href="{% url 'post_delete' post.pk %}">
                 削除
             </a>
         </div>
