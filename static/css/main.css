@@ -1342,7 +1342,7 @@ textarea::placeholder {
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
-  opacity: .5;
+  opacity: .3;
   z-index: -1;
 }
 
@@ -1440,9 +1440,14 @@ textarea::placeholder {
   height: 120%;
 }
 
+.access .access-info {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
 .access iframe {
   width: 100%;
-  height: 35rem;
+  max-height: 25rem;
 }
 
 .recruit-item {
@@ -1496,6 +1501,10 @@ textarea::placeholder {
   }
   .staff .staff-item {
     text-align: left;
+  }
+  .access-info {
+    font-size: 2rem !important;
+    text-align: left !important;
   }
   .meta-info span {
     text-align: left;
@@ -1567,5 +1576,14 @@ textarea::placeholder {
 
 .account-body .meta-info span:not(:last-child) {
   margin-bottom: 1rem;
+}
+
+.account-body .report-confirm-list {
+  width: 100%;
+  max-width: 45rem;
+}
+
+.account-body .report-confirm-list li {
+  border-bottom: 0.1rem solid #a6a6a6;
 }
 /*# sourceMappingURL=main.css.map */

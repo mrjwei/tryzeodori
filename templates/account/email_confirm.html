@@ -1,21 +1,21 @@
-{% extends '_base.html' %}
+{% extends '_account_base.html' %}
 {% load i18n %}
 {% load account %}
+{% load static %}
 
-{% block title %}メールアドレスの確認{% endblock title %}
+{% block title %}メールアドレスの確認{% endblock title%}
+
+{% block page_title %}メールアドレスを確認してください{% endblock page_title %}
 
 {% block content %}
-<div class="email_confirm outer-container d-flex flex-column justify-content-center align-items-center">
-    <h1 class="title">メールアドレスの確認</h1>
+<div class="d-flex flex-column align-items-center">
     {% if confirmation %}
         {% user_display confirmation.email_address.user as user_display %}
-        <p class="desc">メールアドレス <span class="underline">{{ confirmation.email_address.email }}</span> が <span class="underline">{{ user_display }}さん</span> のものであることを確認してください</p>
-        <div class="email_confirm_container inner-container">
-            <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
-                {% csrf_token %}
-                    <button class="email-confirm-btn" type="submit">{% trans 'Confirm' %}</button>
-            </form>
-        </div>
+        <p class="font-md text-light">メールアドレス <u>{{ confirmation.email_address.email }}</u> が <u>{{ user_display }}さん</u> のものであることを確認してください</p>
+        <form class="form" method="POST">
+            {% csrf_token %}
+            <button class="contained-btn btn-light margin-top-md margin-bottom-md" type="submit">確認</button>
+        </form>
     {% else %}
         {% url 'account_email' as email_url %}
         <p>{% blocktrans %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktrans %}</p>

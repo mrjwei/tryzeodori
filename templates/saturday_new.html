@@ -1,23 +1,19 @@
 {% extends '_base.html' %}
 {% load static %}
 
-{% block title %}土曜日開所予定{% endblock title%}
+{% block title %}新規土曜日予定{% endblock title%}
+{% block hero_title %}新規土曜日予定{% endblock hero_title%}
+{% block hero_subtitle %}new saturday schedule{% endblock hero_subtitle %}
 
 {% block content %}
-<section class="hero subpage">
-    <div class="container d-flex flex-column align-items-center">
-        <h1 class="title">
-            <span class="maintitle">土曜日開所予定</span>
-            <span class="subtitle">Saturday Schedules</span>
-        </h1>
+<section class="section saturday-new padding-top-xl padding-bottom-xl">
+    <div class="container">
+        <h2 class="font-md font-bold margin-bottom-lg">新規土曜日予定</h2>
+        <form class="form" action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="contained-btn margin-top-md" type="submit">作成</button>
+        </form>
     </div>
-</section>
-<section class="section report d-flex flex-column align-items-center">
-    <h2 class="title">新規土曜日開所予定</h2>
-    <form class="saturday-form" action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="cta" type="submit">作成</button>
-    </form>
 </section>
 {% endblock content %}

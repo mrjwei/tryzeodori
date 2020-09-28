@@ -1,32 +1,32 @@
-{% extends '_base.html' %}
+{% extends '_account_base.html' %}
 {% load static %}
 
-{% block title %}作成完了{% endblock title%}
+{% block title %}日報送信確認{% endblock title%}
+
+{% block page_title %}日報送信確認{% endblock page_title %}
 
 {% block content %}
-<div class="report-confirm outer-container d-flex flex-column justify-content-center align-items-center">
-    <h1 class="title">この内容で送信してもよろしいですか？</h1>
-    <div class="content-container d-flex flex-column align-items-center">
-        <ul class="report-confirm-content">
-            <li><span>名前：</span><span>{{ form.name.value }}</span></li>
-            <li><span>体調：</span><span>{{ form.condition.value }}</span></li>
-            <li><span>体温：</span><span>{{ form.temperature.value }}</span></li>
-            <li><span>午前：</span><span>{{ form.am.value }}</span></li>
-            <li><span>午前具体内容：</span><span>{{ form.am_detail.value }}</span></li>
-            <li><span>午後：</span><span>{{ form.pm.value }}</span></li>
-            <li><span>午後具体内容：</span><span>{{ form.pm_detail.value }}</span></li>
-            <li><span>感想や相談事など：</span><span>{{ form.comment.value }}</span></li>
-        </ul>
-        <form class="confirm-form" method="POST">
-            {% csrf_token %}
-            {% for field in form %}
-                {{ field.as_hidden }}
-            {% endfor %}
-            <div class="btn-group mt-5">
-                <button class="cta line-cta" type="submit" name="next" value="back">戻る</button>
-                <button class="cta" type="submit" name="next" value="send">送信</button>
-            </div>
-        </form>
-    </div>
+<div class="d-flex flex-column align-items-center">
+    <p class="font-md font-medium text-light margin-bottom-lg">この内容で送信してもよろしいですか？</p>
+    <ul class="report-confirm-list text-light">
+        <li class="row padding-bottom-sm padding-top-sm ml-0"><span class="col-6">名前：</span><span class="col-6">{{ form.name.value }}</span></li>
+        <li class="row padding-bottom-sm padding-top-sm ml-0"><span class="col-6">体調：</span><span class="col-6">{{ form.condition.value }}</span></li>
+        <li class="row padding-bottom-sm padding-top-sm ml-0"><span class="col-6">体温：</span><span class="col-6">{{ form.temperature.value }}</span></li>
+        <li class="row padding-bottom-sm padding-top-sm ml-0"><span class="col-6">午前：</span><span class="col-6">{{ form.am.value }}</span></li>
+        <li class="row padding-bottom-sm padding-top-sm ml-0"><span class="col-6">午前具体内容：</span><span class="col-6">{{ form.am_detail.value }}</span></li>
+        <li class="row padding-bottom-sm padding-top-sm ml-0"><span class="col-6">午後：</span><span class="col-6">{{ form.pm.value }}</span></li>
+        <li class="row padding-bottom-sm padding-top-sm ml-0"><span class="col-6">午後具体内容：</span><span class="col-6">{{ form.pm_detail.value }}</span></li>
+        <li class="row padding-bottom-sm padding-top-sm ml-0"><span class="col-6">感想や相談事など：</span><span class="col-6">{{ form.comment.value }}</span></li>
+    </ul>
+    <form class="form" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field.as_hidden }}
+        {% endfor %}
+        <div class="d-flex flex-row margin-top-xl">
+            <button class="outlined-btn btn-light margin-right-xl" type="submit" name="next" value="back">戻る</button>
+            <button class="contained-btn btn-light" type="submit" name="next" value="send">送信</button>
+        </div>
+    </form>
 </div>
 {% endblock content %}

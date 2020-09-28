@@ -44,8 +44,8 @@
         
                 {% if page_obj.has_next %}
                     <div class="page-nav">
-                        <a class="text-secondary" href="?page={{ page_obj.next_page_number }}">最後へ</a>
-                        <a class="text-secondary" href="?page={{ page_obj.paginator.num_pages }}">次へ &raquo;</a>
+                        <a class="text-secondary" href="?page={{ page_obj.next_page_number }}">次へ</a>
+                        <a class="text-secondary" href="?page={{ page_obj.paginator.num_pages }}">最後へ &raquo;</a>
                     </div>
                 {% endif %}
             </span>
