@@ -137,7 +137,6 @@ class Report(models.Model):
     class Meta:
         permissions = [
             ('can_view_all_reports', 'can view all reports'),
-            ('can_add_report', 'can add report'),
         ]
 
     def __str__(self):

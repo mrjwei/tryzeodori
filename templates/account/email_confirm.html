@@ -14,7 +14,7 @@
         <p class="font-md text-light">メールアドレス <u>{{ confirmation.email_address.email }}</u> が <u>{{ user_display }}さん</u> のものであることを確認してください</p>
         <form class="form" method="POST">
             {% csrf_token %}
-            <button class="contained-btn btn-light margin-top-md margin-bottom-md" type="submit">確認</button>
+            <button class="contained-btn-light margin-top-md margin-bottom-md" type="submit">確認</button>
         </form>
     {% else %}
         {% url 'account_email' as email_url %}

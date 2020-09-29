@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}ホーム{% endblock title%}
+{% block home %} active{% endblock home %}
 {% block hero_title %}トライズ大通情報サイト{% endblock hero_title%}
 {% block hero_subtitle %}開所予定・イベント・求人情報・施設内告知{% endblock hero_subtitle %}
 
@@ -42,14 +43,14 @@
                 <li class="row font-md text-light margin-bottom-sm">
                     <span class="col-8">{{ schedule.date }} {{ schedule.title }}</span>
                     {% if perms.pages.can_update_saturday_schedule %}
-                        <a class="col-2 text-btn-small btn-light text-center" href="{% url 'saturday_edit' schedule.pk %}">編集</a>
-                        <a class="col-2 text-btn-small btn-caution text-center" href="{% url 'saturday_delete' schedule.pk %}">削除</a>
+                        <a class="col-2 text-btn-small-light text-center" href="{% url 'saturday_edit' schedule.pk %}">編集</a>
+                        <a class="col-2 text-btn-small-light text-center" href="{% url 'saturday_delete' schedule.pk %}">削除</a>
                     {% endif %}
                 </li>
             {% endfor %}
         </ul>
         {% if perms.pages.can_add_saturday_schedule %}
-        <a class="add outlined-btn btn-light d-flex flex-row justify-content-between align-items-center mt-5" href="{% url 'saturday_new' %}">
+        <a class="outlined-btn-light btn-light d-flex flex-row justify-content-between align-items-center mt-5" href="{% url 'saturday_new' %}">
             土曜予定追加
             <span class="material-icons ml-1">add</span>
         </a>
@@ -67,8 +68,8 @@
                 <li class="d-flex flex-row justify-content-between align-items-center font-md text-light margin-bottom-sm">
                     <span class="col-8 text-dark">{{ schedule.name }}: {{ schedule.date }} {{ schedule.content }} / {{ schedule.duration }}</span>
                     {% if perms.pages.can_update_staff_schedule %}
-                        <a class="col-2 text-btn-small text-center" href="">編集</a>
-                        <a class="col-2 text-btn-small btn-caution text-center" href="">削除</a>
+                        <a class="col-2 text-btn-small text-center" href="{% url 'staff_edit' schedule.pk %}">編集</a>
+                        <a class="col-2 text-btn-small-caution text-center" href="{% url 'staff_delete' schedule.pk %}">削除</a>
                     {% endif %}
                 </li>
             {% endfor %}

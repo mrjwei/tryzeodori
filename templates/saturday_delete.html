@@ -1,0 +1,20 @@
+{% extends '_account_base.html' %}
+{% load static %}
+
+{% block title %}土曜予定削除{% endblock title%}
+
+{% block page_title %}土曜予定削除{% endblock page_title %}
+
+{% block content %}
+<div class="panel custom-bg-light d-flex flex-column align-items-center">
+    <p class="font-md font-medium">レコードを削除してもよろしいですか？</p>
+    <form class="form" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex flex-row justify-content-center margin-top-md margin-bottom-md">
+            <a class="outlined-btn margin-right-md" href="{% url 'home' %}">ホームへ戻る</a>
+            <button class="contained-btn-caution" type="submit">削除</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}

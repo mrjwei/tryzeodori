@@ -44,7 +44,7 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     form_class = PostForm
     template_name = 'post_new.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('info')
     login_url = 'account_login'
     permission_required = 'pages.can_add_post'
 
@@ -58,7 +58,7 @@ class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 class PostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Post
     template_name = 'post_edit.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('info')
     login_url = 'account_login'
     fields = ['title', 'content', 'tag']
     permission_required = 'pages.can_update_post'
@@ -66,8 +66,9 @@ class PostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 
 class PostDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Post
+    context_object_name = 'post'
     template_name = 'post_delete.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('info')
     login_url = 'account_login'
     permission_required = 'pages.can_update_post'
 
@@ -118,12 +119,11 @@ class ReportListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     permission_required = 'pages.can_view_all_reports'
 
 
-class ReportCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+class ReportCreateView(LoginRequiredMixin, CreateView):
     form_class = ReportForm
     template_name = 'report_new.html'
     success_url = reverse_lazy('home')
     login_url = 'account_login'
-    permission_required = 'pages.can_add_report'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -176,10 +176,10 @@ class SaturdayCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView
 
 class SaturdayUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = SaturdaySchedule
+    form_class = SaturdayForm
     template_name = 'saturday_edit.html'
     success_url = reverse_lazy('home')
     login_url = 'account_login'
-    fields = '__all__'
     permission_required = 'pages.can_update_saturday_schedule'
 
 
@@ -201,10 +201,10 @@ class StaffCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
 class StaffUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = StaffSchedule
+    form_class = StaffForm
     template_name = 'staff_edit.html'
     success_url = reverse_lazy('home')
     login_url = 'account_login'
-    fields = '__all__'
     permission_required = 'pages.can_update_staff_schedule'
 
 class StaffDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):

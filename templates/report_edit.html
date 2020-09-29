@@ -1,0 +1,22 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}日報編集{% endblock title%}
+{% block hero_title %}日報編集{% endblock hero_title%}
+{% block hero_subtitle %}edit recruit{% endblock hero_subtitle %}
+
+{% block content %}
+<section class="section info-new padding-top-xl padding-bottom-xl">
+    <div class="container">
+        <h2 class="font-md font-bold margin-bottom-lg">日報編集</h2>
+        <form class="form" action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-flex flex-row justify-content-center align-items-center margin-top-xl">
+                <button class="contained-btn margin-right-md" type="submit">変更保存</button>
+                <a class="text-btn" href="{% url 'reports' %}">戻る</a>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock content %}

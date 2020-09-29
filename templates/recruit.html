@@ -12,15 +12,15 @@
         <ul class="data-list">
             {% for post in posts %}
                 <li class="recruit-item row padding-bottom-sm margin-bottom-sm">
-                    <p class="col-12 col-md-6 d-flex flex-row justify-content-center align-items-center">
+                    <p class="col-12 col-md-5 d-flex flex-row justify-content-center align-items-center">
                         {% if post.tag %}<span class="tag font-en font-xs text-light text-uppercase custom-bg-secondary margin-right-sm">{{ post.tag }}</span>{% endif %}
                         <span class="recruit-title">{{ post.title }}</span>
                     </p>
                     <span class="number col-12 col-md-4">番号：{{ post.number }}</span>
                     {% if perms.pages.can_update_recruit_info %}
-                        <div class="col-12 col-md-2 row btn-group">
+                        <div class="col-12 col-md-3 row btn-group">
                             <a class="col-2 offset-4 offset-md-0 col-md-6 text-btn-small text-center" href="{% url 'recruit_edit' post.pk %}">編集</a>
-                            <a class="col-2 col-md-6 text-btn-small btn-caution text-center" href="{% url 'recruit_delete' post.pk %}">削除</a>
+                            <a class="col-2 col-md-6 text-btn-small-caution text-center" href="{% url 'recruit_delete' post.pk %}">削除</a>
                         </div>
                     {% endif %}
                 </li>

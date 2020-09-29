@@ -11,7 +11,10 @@
     <form class="form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="contained-btn btn-caution margin-top-md margin-bottom-md" type="submit">削除</button>
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <button class="contained-btn-caution margin-top-md margin-bottom-md margin-right-md" type="submit">削除</button>
+            <a class="outlined-btn" href="{% url 'post_detail' post.pk %}">情報へ戻る</a>
+        </div>
     </form>
 </div>
 {% endblock content %}

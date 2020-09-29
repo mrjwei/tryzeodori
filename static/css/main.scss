@@ -303,31 +303,18 @@ ul {
     @include padding-right(0.5rem);
 }
 // mixins
-@mixin text-btn($text-color, $bg-color, $min-width: 8rem) {
+%generic-btn {
     @include padding-top(0.8rem);
     @include padding-bottom(0.8rem);
     @include padding-left(1rem);
     @include padding-right(1rem);
     @include font-size($font-sm);
-    color: $text-color;
-    background: transparent;
+    min-width: 8rem;
+    color: $color-primary;
+    background-color: transparent;
+    text-align: center;
     &:hover {
-        background-color: $bg-color;
-    }
-}
-@mixin contained-btn($text-color, $bg-color) {
-    @include text-btn($text-color: $text-color, $bg-color: $bg-color);
-    background-color: $bg-color;
-    &:hover {
-        background-color: lighten($color: $bg-color, $amount: 20%);
-    }
-}
-@mixin outlined-btn($text-color, $bg-color) {
-    @include text-btn($text-color: $text-color, $bg-color: $bg-color);
-    border: 0.2rem solid $text-color;
-    &:hover {
-        background-color: $bg-color;
-        border: 0.2rem solid $text-color;
+        background-color: lighten($color-primary, 80%);
     }
 }
 @mixin short-bar($color) {
@@ -373,42 +360,92 @@ ul {
 }
 // buttons
 .text-btn {
-    @include text-btn($text-color: $color-primary, $bg-color: lighten($color: $color-primary, $amount: 50%));
-    &.btn-light {
-        @include text-btn($text-color: $color-light, $bg-color: lighten($color: $color-primary, $amount: 10%));
-    }
-    &.btn-caution {
-        @include text-btn($text-color: $color-caution, $bg-color: lighten($color: $color-caution, $amount: 50%));
-    }
+    @extend %generic-btn;
 }
 .text-btn-small {
-    @include text-btn($text-color: $color-primary, $bg-color: transparent, $min-width: 0);
+    @extend %generic-btn;
+    min-width: 0;
     padding: 0;
-    &.btn-light {
-        @include text-btn($text-color: $color-light, $bg-color: transparent, $min-width: 0);
-        padding: 0;
-    }
-    &.btn-caution {
-        @include text-btn($text-color: $color-caution, $bg-color: transparent, $min-width: 0);
-        padding: 0;
+    &:hover {
+        background-color: transparent;
     }
 }
 .outlined-btn {
-    @include outlined-btn($text-color: $color-primary, $bg-color: lighten($color: $color-primary, $amount: 50%));
-    &.btn-light {
-        @include outlined-btn($text-color: $color-light, $bg-color: darken($color: $color-light, $amount: 30%));
-    }
-    &.btn-caution {
-        @include outlined-btn($text-color: $color-caution, $bg-color: lighten($color: $color-caution, $amount: 50%));
+    @extend %generic-btn;
+    border: 0.2rem solid $color-primary;
+    &:hover {
+        border: 0.2rem solid $color-primary;
+        background-color: lighten($color-primary, 80%);
     }
 }
 .contained-btn {
-    @include contained-btn($text-color: $color-light, $bg-color: $color-primary);
-    &.btn-light {
-        @include contained-btn($text-color: $color-primary, $bg-color: $color-light);
+    @extend %generic-btn;
+    color: $color-light;
+    background-color: $color-primary;
+    &:hover {
+        background-color: lighten($color: $color-primary, $amount: 20%);
     }
-    &.btn-caution {
-        @include outlined-btn($text-color: $color-caution, $bg-color: lighten($color: $color-caution, $amount: 50%));
+}
+.text-btn-light, .outlined-btn-light {
+    @extend %generic-btn;
+    color: $color-light;
+    &:hover {
+        background-color: darken($color: $color-light, $amount: 20%);
+    }
+}
+.text-btn-small-light {
+    @extend %generic-btn;
+    min-width: 0;
+    padding: 0;
+    color: $color-light;
+    &:hover {
+        background-color: transparent;
+    }
+}
+.outlined-btn-light {
+    @extend %generic-btn;
+    border: 0.2rem solid $color-light;
+    &:hover {
+        border: 0.2rem solid $color-light;
+        background-color: darken($color-light, 20%);
+    }
+}
+.contained-btn-light {
+    @extend %generic-btn;
+    color: $color-primary;
+    background-color: $color-light;
+    &:hover {
+        background-color: darken($color: $color-light, $amount: 20%);
+    }
+}
+.text-btn-caution, .outlined-btn-caution {
+    @extend %generic-btn;
+    color: $color-caution;
+    &:hover {
+        background-color: lighten($color: $color-caution, $amount: 80%);
+    }
+}
+.text-btn-small-caution {
+    @extend %generic-btn;
+    min-width: 0;
+    padding: 0;
+    color: $color-caution;
+    &:hover {
+        background-color: transparent;
+    }
+}
+.outlined-btn-caution {
+    border: 0.2rem solid $color-caution;
+    &:hover {
+        color: $color-caution;
+    }
+}
+.contained-btn-caution {
+    @extend %generic-btn;
+    color: $color-light;
+    background-color: $color-caution;
+    &:hover {
+        background-color: lighten($color: $color-caution, $amount: 20%);
     }
 }
 .tag {
@@ -487,8 +524,10 @@ textarea::placeholder {
 }
 // navbar
 .navbar {
+    height: 6.5rem;
     margin: 0 auto!important;
     position: relative;
+    padding: 0;
     z-index: 10;
     // toggle button
     .navbar-toggler {
@@ -505,6 +544,7 @@ textarea::placeholder {
         margin: 0;
         a {
             max-width: 7rem;
+            margin: 0 auto;
         }
     }
     // navbar-collapse
@@ -514,6 +554,12 @@ textarea::placeholder {
         left: 0;
         z-index: 10;
         display: none;
+        .nav-link {
+            color: darken($color: $color-light, $amount: 5%)!important;
+            &:hover, &.active {
+                color: $color-light!important;
+            }
+        }
     }
     .show {
         display: block;
@@ -704,16 +750,35 @@ textarea::placeholder {
         transform: translateY(0);
     }
     // navbar
+    .navbar-brand {
+        a {
+            margin: 0!important;
+        }
+    }
     .navbar-collapse {
         position: static!important;
+        height: 100%;
         display: flex;
         justify-content: center;
         .close {
             display: none;
         }
+        .navbar-nav {
+            height: 100%;
+        }
+        .nav-item {
+            height: 100%;
+        }
         .nav-link {
-            padding-left: 1rem!important;
-            padding-right: 1rem!important;
+            height: 100%;
+            line-height: 6rem;
+            @include padding-left(1.5rem!important);
+            @include padding-right(1.5rem!important);
+            margin: 0;
+            position: relative;
+            &:hover, &.active {
+                font-weight: $font-bold;
+            }
         }
     }
     // hero
@@ -778,10 +843,7 @@ textarea::placeholder {
     // layout
     // navbar
     .navbar-collapse {
-        .nav-link {
-            padding-left: 2rem!important;
-            padding-right: 2rem!important;
-        }
+        
     }
     // hero
     .hero {
@@ -799,6 +861,7 @@ textarea::placeholder {
 // account pages
 // ======================
 .account-body {
+    min-height: 100%;
     position: relative;
     background: url(/static/images/hero.jpg);
     background-size: cover;
@@ -830,8 +893,6 @@ textarea::placeholder {
         }
     }
     .report-confirm-list {
-        width: 100%;
-        max-width: 45rem;
         li {
             border-bottom: 0.1rem solid darken($color: $color-light, $amount: 30%);
         }
