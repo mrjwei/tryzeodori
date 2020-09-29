@@ -9,18 +9,20 @@
 {% block content %}
 <section class="section pattern info padding-top-xl padding-bottom-xl" id="info">
     <div class="container">
-        <h2 class="font-md font-bold text-dark text-center mb-5">
-            <span class="d-block mb-4">新着情報</span>
+        <h2 class="title font-md font-bold text-dark text-center margin-bottom-xl">
+            <span class="d-block margin-bottom-md">新着情報</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Info</span>
         </h2>
-        <ul class="data-list data-list-small">
+        <ul class="data-list data-list-lg">
             {% for post in posts|slice:":5" %}
                 <li class="info-item row margin-bottom-sm">
                     {% if post.tag %}
-                        <span class="tag font-en font-xs text-light text-uppercase custom-bg-secondary margin-right-sm">{{ post.tag }}</span>
+                        <span class="col col-4 col-md-1 tag font-en font-xs text-light text-uppercase custom-bg-secondary">{{ post.tag }}</span>
+                    {% else %}
+                        <span class="col col-4 col-md-1 tag tag-placeholder font-en font-xs text-light text-uppercase custom-bg-secondary">{{ post.tag }}</span>
                     {% endif %}                        
-                    <span class="date col-12 col-md-4 col-lg-5 font-light font-md">{{ post.publish_date|date:'Y-m-d' }}</span>
-                    <a class="info-title col-12 col-md-8 col-lg-7 text-dark font-md font-medium" href="{% url 'post_detail' post.pk %}"><u>{{ post.title }}</u></a>
+                    <span class="date col col-8 col-md-3 font-light font-md text-left">{{ post.publish_date|date:'Y-m-d' }}</span>
+                    <a class="info-title col col-12 col-md-8 text-dark font-md font-medium text-left" href="{% url 'post_detail' post.pk %}"><u>{{ post.title }}</u></a>
                 </li>
             {% endfor %}
         </ul>
@@ -34,8 +36,8 @@
 </section>
 <section class="section custom-bg-primary saturdays padding-top-xl padding-bottom-xl">
     <div class="container">
-        <h2 class="title font-md font-bold text-light text-center mb-5">
-            <span class="d-block mb-4">土曜開所予定</span>
+        <h2 class="title font-md font-bold text-light text-center margin-bottom-xl">
+            <span class="d-block margin-bottom-md">土曜開所予定</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Saturdays</span>
         </h2>
         <ul class="data-list">
@@ -43,8 +45,10 @@
                 <li class="row font-md text-light margin-bottom-sm">
                     <span class="col-8">{{ schedule.date }} {{ schedule.title }}</span>
                     {% if perms.pages.can_update_saturday_schedule %}
-                        <a class="col-2 text-btn-small-light text-center" href="{% url 'saturday_edit' schedule.pk %}">編集</a>
-                        <a class="col-2 text-btn-small-light text-center" href="{% url 'saturday_delete' schedule.pk %}">削除</a>
+                        <div class="btn-group-sm col-4 d-flex flex-row justify-content-end">
+                            <a class="text-btn-small-light text-center margin-right-sm" href="{% url 'saturday_edit' schedule.pk %}">編集</a>
+                            <a class="text-btn-small-light text-center" href="{% url 'saturday_delete' schedule.pk %}">削除</a>
+                        </div>
                     {% endif %}
                 </li>
             {% endfor %}
@@ -59,8 +63,8 @@
 </section>
 <section class="section pattern staff padding-top-xl padding-bottom-xl">
     <div class="container">
-        <h2 class="title font-md font-bold text-dark text-center mb-5">
-            <span class="d-block mb-4">職員予定</span>
+        <h2 class="title font-md font-bold text-dark text-center margin-bottom-xl">
+            <span class="d-block margin-bottom-md">職員予定</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Staff Schedule</span>
         </h2>
         <ul class="data-list">
@@ -68,8 +72,10 @@
                 <li class="d-flex flex-row justify-content-between align-items-center font-md text-light margin-bottom-sm">
                     <span class="col-8 text-dark">{{ schedule.name }}: {{ schedule.date }} {{ schedule.content }} / {{ schedule.duration }}</span>
                     {% if perms.pages.can_update_staff_schedule %}
-                        <a class="col-2 text-btn-small text-center" href="{% url 'staff_edit' schedule.pk %}">編集</a>
-                        <a class="col-2 text-btn-small-caution text-center" href="{% url 'staff_delete' schedule.pk %}">削除</a>
+                        <div class="btn-group-sm col-4 d-flex flex-row justify-content-end">
+                            <a class="text-btn-small text-center margin-right-sm" href="{% url 'staff_edit' schedule.pk %}">編集</a>
+                            <a class="text-btn-small-caution text-center" href="{% url 'staff_delete' schedule.pk %}">削除</a>
+                        </div>
                     {% endif %}
                 </li>
             {% endfor %}
@@ -84,8 +90,8 @@
 </section>
 <section class="section custom-bg-primary access padding-top-xl padding-bottom-xl">
     <div class="container">
-        <h2 class="title font-md font-bold text-light text-center mb-5">
-            <span class="d-block mb-4">アクセス</span>
+        <h2 class="title font-md font-bold text-light text-center margin-bottom-xl">
+            <span class="d-block margin-bottom-md">アクセス</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Access</span>
         </h2>
         <div class="row my-5">

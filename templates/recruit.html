@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}求人情報{% endblock title%}
+{% block recruit %} active{% endblock recruit %}
 {% block hero_title %}求人情報{% endblock hero_title%}
 {% block hero_subtitle %}recruit{% endblock hero_subtitle %}
 
@@ -9,18 +10,20 @@
 <section class="section recruit padding-top-xl padding-bottom-xl">
     <div class="container">
         <h2 class="font-md font-bold margin-bottom-lg">{{ month }}月{{ day }}日更新</h2>
-        <ul class="data-list">
+        <ul class="data-list data-list-lg">
             {% for post in posts %}
-                <li class="recruit-item row padding-bottom-sm margin-bottom-sm">
-                    <p class="col-12 col-md-5 d-flex flex-row justify-content-center align-items-center">
-                        {% if post.tag %}<span class="tag font-en font-xs text-light text-uppercase custom-bg-secondary margin-right-sm">{{ post.tag }}</span>{% endif %}
-                        <span class="recruit-title">{{ post.title }}</span>
-                    </p>
-                    <span class="number col-12 col-md-4">番号：{{ post.number }}</span>
+                <li class="recruit-item row padding-bottom-sm margin-bottom-sm">    
+                    {% if post.tag %}
+                        <span class="col col-4 col-md-2 tag font-en font-xs text-light text-uppercase custom-bg-secondary">{{ post.tag }}</span>
+                    {% else %}
+                        <span class="col col-4 col-md-2 tag tag-placeholder font-en font-xs text-light text-uppercase custom-bg-secondary">{{ post.tag }}</span>
+                    {% endif %}
+                    <span class="col col-8 col-md-4 recruit-title">{{ post.title }}</span>
+                    <span class="col col-8 col-md-4 number">番号：{{ post.number }}</span>
                     {% if perms.pages.can_update_recruit_info %}
-                        <div class="col-12 col-md-3 row btn-group">
-                            <a class="col-2 offset-4 offset-md-0 col-md-6 text-btn-small text-center" href="{% url 'recruit_edit' post.pk %}">編集</a>
-                            <a class="col-2 col-md-6 text-btn-small-caution text-center" href="{% url 'recruit_delete' post.pk %}">削除</a>
+                        <div class="col btn-group-sm col-4 col-md-2 d-flex flex-row justify-content-end">
+                            <a class="text-btn-small text-center margin-right-xs" href="{% url 'recruit_edit' post.pk %}">編集</a>
+                            <a class="text-btn-small-caution text-center" href="{% url 'recruit_delete' post.pk %}">削除</a>
                         </div>
                     {% endif %}
                 </li>

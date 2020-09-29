@@ -244,12 +244,14 @@ input[type="checkbox"], input[type="radio"] {
 
 html {
   font-size: 62.5%;
+  min-height: 100%;
 }
 
 body {
   font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: 0.1rem;
+  min-height: 100%;
   z-index: -1;
 }
 
@@ -310,8 +312,20 @@ ul {
   max-width: 50rem;
 }
 
+.data-list.data-list-lg {
+  max-width: 70rem;
+}
+
 .hidden {
   display: none;
+}
+
+.btn-group-sm {
+  min-width: 10rem;
+}
+
+.col {
+  max-width: 100%;
 }
 
 .font-jp {
@@ -878,6 +892,7 @@ ul {
 }
 
 .contained-btn:hover {
+  color: #f2f2f2;
   background-color: #26a4fb;
 }
 
@@ -886,6 +901,7 @@ ul {
 }
 
 .text-btn-light:hover, .outlined-btn-light:hover {
+  color: #f2f2f2;
   background-color: #bfbfbf;
 }
 
@@ -896,6 +912,7 @@ ul {
 }
 
 .text-btn-small-light:hover {
+  color: #f2f2f2;
   background-color: transparent;
 }
 
@@ -914,6 +931,7 @@ ul {
 }
 
 .contained-btn-light:hover {
+  color: #036eb8;
   background-color: #bfbfbf;
 }
 
@@ -922,6 +940,7 @@ ul {
 }
 
 .text-btn-caution:hover, .outlined-btn-caution:hover {
+  color: #db3218;
   background-color: white;
 }
 
@@ -932,6 +951,7 @@ ul {
 }
 
 .text-btn-small-caution:hover {
+  color: #db3218;
   background-color: transparent;
 }
 
@@ -949,26 +969,30 @@ ul {
 }
 
 .contained-btn-caution:hover {
+  color: #f2f2f2;
   background-color: #ef7c6a;
 }
 
+.text-btn-small, .text-btn-small-light, .text-btn-small-caution {
+  min-width: 5rem;
+}
+
 .tag {
-  display: block;
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
   padding-left: 1rem;
   padding-right: 1rem;
   border-radius: 0.5rem;
-  position: absolute;
-  top: 0;
-  left: 25%;
-  -webkit-transform: translateY(-20%);
-          transform: translateY(-20%);
+  max-width: 4.5rem;
+}
+
+.tag.tag-placeholder {
+  display: none;
 }
 
 .form {
   width: 100%;
-  max-width: 45rem;
+  max-width: 50rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1120,8 +1144,23 @@ textarea::placeholder {
   height: 6.5rem;
   margin: 0 auto !important;
   position: relative;
-  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: calc(1.325rem + 0.9vw) !important;
+  padding-right: calc(1.325rem + 0.9vw) !important;
   z-index: 10;
+}
+
+@media (min-width: 1200px) {
+  .navbar {
+    padding-left: 2rem !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar {
+    padding-right: 2rem !important;
+  }
 }
 
 .navbar .navbar-toggler {
@@ -1319,24 +1358,24 @@ textarea::placeholder {
 }
 
 .info .info-item {
-  position: relative;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.info .info-item .info-title {
-  text-align: center;
+.info .info-title {
+  padding: 0;
   margin-top: 1.5rem;
+}
+
+.info .tag {
+  margin-right: 1.5rem;
 }
 
 .info .date {
   text-align: center;
   line-height: 2rem;
+  padding: 0;
 }
 
 .info.pattern::before {
@@ -1381,11 +1420,18 @@ textarea::placeholder {
 }
 
 .recruit-item .number {
-  text-align: center;
+  text-align: left;
+  padding: 0;
+  margin-top: 1.5rem;
 }
 
-.recruit-item .btn-group {
-  margin-top: 2rem;
+.recruit-item .btn-group-sm {
+  margin-top: 1.5rem;
+}
+
+.recruit-item .tag.tag-placeholder {
+  display: block;
+  opacity: 0;
 }
 
 .info-detail .outlined-btn {
@@ -1401,9 +1447,11 @@ textarea::placeholder {
     max-width: 60rem;
   }
   .tag {
-    left: -10%;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    max-width: 4.5rem;
+  }
+  .tag.tag-placeholder {
+    display: block;
+    opacity: 0;
   }
   .navbar-brand a {
     margin: 0 !important;
@@ -1423,38 +1471,57 @@ textarea::placeholder {
   }
   .navbar-collapse .navbar-nav {
     height: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
   .navbar-collapse .nav-item {
     height: 100%;
-  }
-  .navbar-collapse .nav-link {
-    height: 100%;
-    line-height: 6rem;
-    padding-left: calc(1.275rem + 0.3vw) !important;
-    padding-right: calc(1.275rem + 0.3vw) !important;
-    margin: 0;
-    position: relative;
+    padding-left: calc(1.325rem + 0.9vw) !important;
+    padding-right: calc(1.325rem + 0.9vw) !important;
   }
 }
 
 @media screen and (min-width: 768px) and (min-width: 1200px) {
-  .navbar-collapse .nav-link {
-    padding-left: 1.5rem !important;
+  .navbar-collapse .nav-item {
+    padding-left: 2rem !important;
   }
 }
 
 @media screen and (min-width: 768px) and (min-width: 1200px) {
-  .navbar-collapse .nav-link {
-    padding-right: 1.5rem !important;
+  .navbar-collapse .nav-item {
+    padding-right: 2rem !important;
   }
 }
 
 @media screen and (min-width: 768px) {
+  .navbar-collapse .nav-link {
+    position: relative;
+    height: 100%;
+    line-height: 6rem;
+    padding: 0 !important;
+    margin: 0;
+    opacity: .8;
+  }
   .navbar-collapse .nav-link:hover, .navbar-collapse .nav-link.active {
-    font-weight: 700;
+    opacity: 1;
+  }
+  .navbar-collapse .nav-link:hover::after, .navbar-collapse .nav-link.active::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0.5rem;
+    background-color: #f2f2f2;
+    position: absolute;
   }
   .hero {
     height: 45rem;
+  }
+  .info .tag {
+    margin: 0;
+  }
+  .info .date {
+    padding: 0 1.5rem;
   }
   .info .info-item {
     position: relative;
@@ -1470,6 +1537,7 @@ textarea::placeholder {
             align-items: center;
   }
   .info .info-item .info-title {
+    padding: 0 1.5rem;
     margin-top: 0 !important;
     text-align: right;
   }
@@ -1480,29 +1548,15 @@ textarea::placeholder {
     font-size: 2rem !important;
     text-align: left !important;
   }
-  .recruit-item {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
   .recruit-item p {
     margin-bottom: 0;
   }
   .recruit-item .number {
     text-align: left;
+    margin: 0;
   }
-  .recruit-item .btn-group {
-    margin-top: 0;
+  .recruit-item .btn-group-sm {
+    margin: 0;
   }
   .meta-info span {
     text-align: left;

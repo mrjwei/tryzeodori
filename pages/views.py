@@ -24,7 +24,7 @@ class HomePageView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['posts'] = Post.objects.all().order_by('publish_date')
         context['saturday_schedules'] = SaturdaySchedule.objects.all().order_by('date')
-        context['staff_schedules'] = StaffSchedule.objects.all()
+        context['staff_schedules'] = StaffSchedule.objects.all().order_by('-date')
         return context
 
 class PostListView(LoginRequiredMixin, ListView):
@@ -111,7 +111,7 @@ class RecruitDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView)
 
 
 class ReportListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
-    paginate_by = 2
+    paginate_by = 20
     model = Report
     template_name = 'report_list.html'
     ordering = ['-date']

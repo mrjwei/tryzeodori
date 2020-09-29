@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" class="w-100 h-100">
+<html lang="en" class="w-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
     <!-- custom CSS -->
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
-<body class="w-100 h-100">
+<body class="w-100">
     {% if user.is_authenticated %}
     <div class="navbar-container custom-bg-primary w-100">
         <nav class="navbar navbar-expand-md flex-row justify-content-between container row padding-top-sm padding-bottom-sm">
@@ -24,7 +24,7 @@
                 <span class="material-icons font-lg text-light">menu</span>
             </button>
             <h1 class="navbar-brand col-4 col-md-2">
-                <a class="w-100" href="#top">
+                <a class="w-100" href="{% url 'home' %}">
                     <img class="w-100" src="{% static 'images/logo-white.png' %}" alt="就労支援トライズ大通ロゴ">
                 </a>
             </h1>
@@ -88,11 +88,9 @@
     </section>
     {% block content %}
     {% endblock content %}
-    {% if user.is_authenticated %}
-    <footer class="footer text-center custom-bg-primary py-3">
+    <footer class="footer text-center custom-bg-primary padding-top-sm padding-bottom-sm">
         <small class="copyright font-xs text-light">&copy;2020就労支援トライズ大通. All Rights Reserved.</small>
     </footer>
-    {% endif %}
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

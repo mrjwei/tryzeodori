@@ -32,11 +32,13 @@ $letter-spacing-normal: 0.1rem;
 }
 html {
     font-size: 62.5%;
+    min-height: 100%;
 }
 body {
     font-size: $font-sm;
     font-weight: $font-normal;
     letter-spacing: $letter-spacing-normal;
+    min-height: 100%;
     z-index: -1;
 }
 h1, h2, h3, p {
@@ -84,9 +86,18 @@ ul {
     &.data-list-small {
         max-width: 50rem;
     }
+    &.data-list-lg {
+        max-width: 70rem;
+    }
 }
 .hidden {
     display: none;
+}
+.btn-group-sm {
+    min-width: 10rem;
+}
+.col {
+    max-width: 100%;
 }
 // utility classes & mixins
 .font-jp {
@@ -332,10 +343,11 @@ ul {
     @include padding-left(1rem);
     @include padding-right(1rem);
     border-radius: 0.5rem;
+    max-width: 4.5rem;
 }
 @mixin form($width) {
     width: $width;
-    max-width: 45rem;
+    max-width: 50rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -383,6 +395,7 @@ ul {
     color: $color-light;
     background-color: $color-primary;
     &:hover {
+        color: $color-light;
         background-color: lighten($color: $color-primary, $amount: 20%);
     }
 }
@@ -390,6 +403,7 @@ ul {
     @extend %generic-btn;
     color: $color-light;
     &:hover {
+        color: $color-light;
         background-color: darken($color: $color-light, $amount: 20%);
     }
 }
@@ -399,6 +413,7 @@ ul {
     padding: 0;
     color: $color-light;
     &:hover {
+        color: $color-light;
         background-color: transparent;
     }
 }
@@ -415,6 +430,7 @@ ul {
     color: $color-primary;
     background-color: $color-light;
     &:hover {
+        color: $color-primary;
         background-color: darken($color: $color-light, $amount: 20%);
     }
 }
@@ -422,6 +438,7 @@ ul {
     @extend %generic-btn;
     color: $color-caution;
     &:hover {
+        color: $color-caution;
         background-color: lighten($color: $color-caution, $amount: 80%);
     }
 }
@@ -431,6 +448,7 @@ ul {
     padding: 0;
     color: $color-caution;
     &:hover {
+        color: $color-caution;
         background-color: transparent;
     }
 }
@@ -445,16 +463,18 @@ ul {
     color: $color-light;
     background-color: $color-caution;
     &:hover {
+        color: $color-light;
         background-color: lighten($color: $color-caution, $amount: 20%);
     }
 }
+.text-btn-small, .text-btn-small-light, .text-btn-small-caution {
+    min-width: 5rem;
+}
 .tag {
-    display: block;
     @include tag;
-    position: absolute;
-    top: 0;
-    left: 25%;
-    transform: translateY(-20%);
+    &.tag-placeholder {
+        display: none;
+    }
 }
 .form {
     @include form(100%);
@@ -527,7 +547,10 @@ textarea::placeholder {
     height: 6.5rem;
     margin: 0 auto!important;
     position: relative;
-    padding: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    @include padding-left(2rem!important);
+    @include padding-right(2rem!important);
     z-index: 10;
     // toggle button
     .navbar-toggler {
@@ -674,17 +697,19 @@ textarea::placeholder {
 .info {
     z-index: 0;
     .info-item {
-        position: relative;
-        flex-direction: column;
-        justify-content: flex-end;
-        .info-title {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
+        align-items: center;
+    }
+    .info-title {
+        padding: 0;
+        margin-top: 1.5rem;
+    }
+    .tag {
+        margin-right: 1.5rem;
     }
     .date {
         text-align: center;
         line-height: 2rem;
+        padding: 0;
     }
     &.pattern::before {
         top: -10%;
@@ -722,10 +747,18 @@ textarea::placeholder {
         margin-bottom: 2rem;
     }
     .number {
-        text-align: center;
+        text-align: left;
+        padding: 0;
+        margin-top: 1.5rem;
     }
-    .btn-group {
-        margin-top: 2rem;
+    .btn-group-sm {
+        margin-top: 1.5rem;
+    }
+    .tag {
+        &.tag-placeholder {
+            display: block;
+            opacity: 0;
+        }
     }
 }
 .info-detail {
@@ -734,7 +767,8 @@ textarea::placeholder {
     }
 }
 // responsive
-@media screen and (min-width: 576px) {}
+@media screen and (min-width: 576px) {
+}
 @media screen and (min-width: 768px) {
     // layout
     .container {
@@ -744,10 +778,12 @@ textarea::placeholder {
         width: 80%;
         max-width: 60rem;
     }
-    // tag
     .tag {
-        left: -10%;
-        transform: translateY(0);
+        max-width: 4.5rem;
+        &.tag-placeholder {
+            display: block;
+            opacity: 0;
+        }
     }
     // navbar
     .navbar-brand {
@@ -765,19 +801,30 @@ textarea::placeholder {
         }
         .navbar-nav {
             height: 100%;
+            justify-content: space-between;
         }
         .nav-item {
             height: 100%;
+            @include padding-left(2rem!important);
+            @include padding-right(2rem!important);
         }
         .nav-link {
+            position: relative;
             height: 100%;
             line-height: 6rem;
-            @include padding-left(1.5rem!important);
-            @include padding-right(1.5rem!important);
+            padding: 0!important;
             margin: 0;
-            position: relative;
+            opacity: .8;
             &:hover, &.active {
-                font-weight: $font-bold;
+                opacity: 1;
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 100%;
+                    height: 0.5rem;
+                    background-color: $color-light;
+                    position: absolute;
+                }
             }
         }
     }
@@ -787,12 +834,19 @@ textarea::placeholder {
     }
     // info
     .info {
+        .tag {
+            margin: 0;
+        }
+        .date {
+            padding: 0 1.5rem;
+        }
         .info-item {
             position: relative;
             flex-direction: row!important;
             justify-content: flex-end!important;
             align-items: center;
             .info-title {
+                padding: 0 1.5rem;
                 margin-top: 0!important;
                 text-align: right;
             }
@@ -811,18 +865,15 @@ textarea::placeholder {
     }
     // recruit
     .recruit-item {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
         p {
             margin-bottom: 0;
         }
         .number {
             text-align: left;
+            margin: 0;
         }
-        .btn-group {
-            margin-top: 0;
+        .btn-group-sm {
+            margin: 0;
         }
     }
     // account pages

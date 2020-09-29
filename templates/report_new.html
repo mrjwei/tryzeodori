@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block title %}日報{% endblock title%}
+{% block report %} active{% endblock report %}
 {% block hero_title %}新規日報{% endblock hero_title%}
 {% block hero_subtitle %}new report{% endblock hero_subtitle %}
 
@@ -12,14 +13,14 @@
         {% if user.is_authenticated %}
             {% if sent %}
                 <p class="text-caution">本日の日報は既に送信されました!</p>
-                <a class="contained-btn margin-top-md" href="{% url 'home' %}">ホームへ戻る</a>
+                <a class="outlined-btn margin-top-md" href="{% url 'home' %}">ホームへ戻る</a>
             {% else %}
                 <form class="form" method="POST">
                     {% csrf_token %}
                     {% for field in form %}
                         <p>{{ field.label_tag }}{{field}}</p>
                     {% endfor %}
-                    <button class="contained-btn margin-top-md" type="submit" name="next" value="confirm">送信</button>
+                    <button class="outlined-btn margin-top-md" type="submit" name="next" value="confirm">送信</button>
                 </form>
             {% endif %}
         {% endif %}
