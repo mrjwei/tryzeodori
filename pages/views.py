@@ -57,6 +57,7 @@ class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Post
+    context_object_name = 'post'
     template_name = 'post_edit.html'
     success_url = reverse_lazy('info')
     login_url = 'account_login'

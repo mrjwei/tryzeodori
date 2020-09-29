@@ -12,7 +12,10 @@
         <form class="form" action="" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <button class="contained-btn margin-top-md" type="submit">変更保存</button>
+            <div class="d-flex flex-row justify-content-center margin-top-lg">
+                <button class="contained-btn margin-right-md" type="submit">変更保存</button>
+                <a class="text-btn" href="{% url 'recruit' %}">戻る</a>
+            </div>
         </form>
     </div>
 </section>

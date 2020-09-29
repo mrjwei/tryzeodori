@@ -12,7 +12,7 @@
         <form class="form" action="" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <div class="d-flex flex-row justify-content-center align-items-center margin-top-xl">
+            <div class="d-flex flex-row justify-content-center align-items-center margin-top-lg">
                 <button class="contained-btn margin-right-md" type="submit">変更保存</button>
                 <a class="text-btn" href="{% url 'reports' %}">戻る</a>
             </div>

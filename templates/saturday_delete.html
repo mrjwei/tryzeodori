@@ -11,9 +11,9 @@
     <form class="form" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <div class="d-flex flex-row justify-content-center margin-top-md margin-bottom-md">
-            <a class="outlined-btn margin-right-md" href="{% url 'home' %}">ホームへ戻る</a>
-            <button class="contained-btn-caution" type="submit">削除</button>
+        <div class="d-flex flex-row justify-content-center margin-top-lg">
+            <button class="contained-btn-caution margin-right-md" type="submit">削除</button>
+            <a class="text-btn" href="{% url 'home' %}">戻る</a>
         </div>
     </form>
 </div>
