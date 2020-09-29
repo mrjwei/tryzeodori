@@ -2,12 +2,11 @@ $(function(){
     $(window).load(function() {
         // get document & footer height
         var body_height =  $("body").height();
-        var $footer = $('.footer');
-        var footer_height = $footer.outerHeight();
-        var footer_top_pos = $footer.position().top;
+        var win_height = $(window).height();
+        var $footer = $(".footer");
         // check footer position
-        if (footer_top_pos < body_height - footer_height) {
-            $footer.css({"position": "absolute", "bottom": "0"});
+        if (body_height < win_height) {
+            $footer.css({"position": "absolute", "bottom": "0", "width": "100%"});
         }
     });
     // datepicker
