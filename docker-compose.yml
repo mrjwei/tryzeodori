@@ -23,6 +23,9 @@ services:
             - "DJANGO_EMAIL_HOST=smtp.sendgrid.net"
             - "DJANGO_EMAIL_HOST_USER=apikey"
             - "DJANGO_EMAIL_HOST_PASSWORD=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"
+            - "DJANGO_AWS_ACCESS_KEY_ID=AKIAXOEEDKAGUXJXVZ5C"
+            - "DJANGO_AWS_SECRET_ACCESS_KEY=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"
+            - "DJANGO_AWS_STORAGE_BUCKET_NAME=tryzeodori-media"
     db:
         image: postgres:11
         volumes:

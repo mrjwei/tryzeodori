@@ -20,7 +20,7 @@ class Post(models.Model):
         ('New', '新着'),
     )
     tag = models.CharField('タッグ', max_length=10, blank=True, null=True, choices=TAGS)
-    img = models.ImageField(upload_to='info/')
+    img = models.ImageField(upload_to='info/', blank=True)
 
     class Meta:
         permissions = [

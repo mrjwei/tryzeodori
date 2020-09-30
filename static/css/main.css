@@ -326,6 +326,20 @@ ul {
 
 .col {
   max-width: 100%;
+  padding-left: calc(1.275rem + 0.3vw);
+  padding-right: calc(1.275rem + 0.3vw);
+}
+
+@media (min-width: 1200px) {
+  .col {
+    padding-left: 1.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col {
+    padding-right: 1.5rem;
+  }
 }
 
 .font-jp {

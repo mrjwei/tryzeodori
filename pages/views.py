@@ -54,6 +54,9 @@ class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         context['day'] = day
         return context
 
+    def form_valid(self, form):
+        form.save()
+
 
 class PostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Post
@@ -61,7 +64,7 @@ class PostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     template_name = 'post_edit.html'
     success_url = reverse_lazy('info')
     login_url = 'account_login'
-    fields = ['title', 'content', 'tag']
+    fields = ['title', 'content', 'tag', 'img']
     permission_required = 'pages.can_update_post'
 
 
