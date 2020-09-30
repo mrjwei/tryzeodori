@@ -156,8 +156,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATIC_URL = '/static/'
-STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 STATICFILES_DIRS = [
     str(BASE_DIR.joinpath('static')),
 ]
@@ -168,15 +166,17 @@ MEDIA_URL = '/media/'
 AWS_ACCESS_KEY_ID = "AKIAXOEEDKAGUXJXVZ5C"
 AWS_SECRET_ACCESS_KEY = "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"
 AWS_STORAGE_BUCKET_NAME = "tryzeodori-media"
-
-AWS_S3_FILE_OVERWRITE = False
-
-DEFAULT_FILE_STORAGE = "config.storage_backends.MediaStorage"
-STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3-ap-northeast-1.amazonaws.com'
 
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
+
+AWS_LOCATION = 'static'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+
+DEFAULT_FILE_STORAGE = "config.storage_backends.MediaStorage"
 
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
 SECURE_HSTS_SECONDS = env.int("DJANGO_SECURE_HSTS_SECONDS", default=2592000)
