@@ -612,7 +612,7 @@ textarea::placeholder {
 .hero {
     position: relative;
     height: 35rem;
-    background: url(images/hero-curved.png);
+    background: url(/static/images/hero-curved.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: bottom;
@@ -704,6 +704,9 @@ textarea::placeholder {
     .info-title {
         padding: 0;
         margin-top: 1.5rem;
+    }
+    .info-img {
+        max-width: 100%;
     }
     .tag {
         margin-right: 1.5rem;

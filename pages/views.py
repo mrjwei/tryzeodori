@@ -54,17 +54,14 @@ class PostCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
         context['day'] = day
         return context
 
-    def form_valid(self, form):
-        form.save()
-
 
 class PostUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Post
+    form_class = PostForm
     context_object_name = 'post'
     template_name = 'post_edit.html'
     success_url = reverse_lazy('info')
     login_url = 'account_login'
-    fields = ['title', 'content', 'tag', 'img']
     permission_required = 'pages.can_update_post'
 
 
@@ -100,9 +97,9 @@ class RecruitCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
 
 class RecruitUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = RecruitInfo
+    form_class = RecruitForm
     template_name = 'recruit_edit.html'
     success_url = reverse_lazy('recruit')
-    fields = ['title', 'number', 'tag']
     permission_required = 'pages.can_update_recruit_info'
 
 
@@ -155,10 +152,10 @@ class ReportCreateView(LoginRequiredMixin, CreateView):
 
 class ReportUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Report
+    form_class = ReportForm
     template_name = 'report_edit.html'
     success_url = reverse_lazy('reports')
     login_url = 'account_login'
-    fields = ['name', 'condition', 'temperature', 'am', 'am_detail', 'pm', 'pm_detail', 'comment']
     permission_required = 'pages.can_view_all_reports'
 
 

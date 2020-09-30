@@ -11,7 +11,7 @@
         <h2 class="margin-bottom-md">{{ post.title }}</h2>
         <p class="inner-container">{{ post.content }}</p>
         {% if post.img %}
-            <a href="{{ post.img.url }}"><img src="{{ post.img.url }}" alt="{{ post.title }}の画像"></a>
+            <a class="info-img margin-top-md" href="{{ post.img.url }}" target="blank_"><img src="{{ post.img.url }}" alt="{{ post.title }}の画像"></a>
         {% endif %}
         <div class="d-flex flex-row margin-top-xl">
             <a class="outlined-btn text-center margin-right-sm" href="{% url 'post_edit' post.pk %}">
