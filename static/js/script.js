@@ -22,9 +22,11 @@ $(function(){
     });
     // mobile menu behaviour
     $(".navbar-toggler").click(function() {
-        $(".navbar-collapse").addClass("show");
+        $(".navbar-collapse").toggleClass("show");
+        $(".navbar-toggler .close").toggleClass("hidden");
     });
-    $(".close").click(function() {
-        $(".navbar-collapse").removeClass("show");
+    $(".show .nav-link").click(function() {
+        $(".navbar-collapse").toggleClass("show");
+        $(".navbar-toggler .close").toggleClass("hidden");
     });
 });

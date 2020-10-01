@@ -22,8 +22,8 @@ class HomePageView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['posts'] = Post.objects.all().order_by('publish_date')
-        context['saturday_schedules'] = SaturdaySchedule.objects.all().order_by('date')
+        context['posts'] = Post.objects.all().order_by('-publish_date')
+        context['saturday_schedules'] = SaturdaySchedule.objects.all().order_by('-date')
         context['staff_schedules'] = StaffSchedule.objects.all().order_by('-date')
         return context
 
@@ -82,6 +82,7 @@ class RecruitListView(LoginRequiredMixin, ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['posts'] = RecruitInfo.objects.all().order_by('-publish_date')
         context['month'] = month
         context['day'] = day
         return context

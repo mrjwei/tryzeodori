@@ -22,6 +22,7 @@
         <nav class="navbar navbar-expand-md flex-row justify-content-between container row padding-top-sm padding-bottom-sm">
             <button class="navbar-toggler text-left col-4" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="material-icons font-lg text-light">menu</span>
+                <span class="material-icons font-lg text-light close hidden">close</span>
             </button>
             <h1 class="navbar-brand col-4 col-md-2">
                 <a class="w-100" href="{% url 'home' %}">
@@ -29,7 +30,6 @@
                 </a>
             </h1>
             <div class="collapse navbar-collapse custom-bg-primary px-0 col-md-8 col-lg-6" id="collapsibleNavbar">
-                <button class="close"><span class="material-icons">close</span></button>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a href="{% url 'home' %}" class="nav-link text-light{% block home %}{% endblock home %}">ホーム</a>
