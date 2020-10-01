@@ -1,0 +1,131 @@
+@import "base";
+
+
+// ========================================
+// home
+// ========================================
+// info section
+.info {
+    z-index: 0;
+    .info-item {
+        align-items: center;
+    }
+    .info-title {
+        padding: 0;
+        margin-top: 1.5rem;
+    }
+    .tag {
+        margin-right: 1.5rem;
+    }
+    .date {
+        text-align: center;
+        line-height: 2rem;
+        padding: 0;
+    }
+    &.pattern::before {
+        top: -10%;
+        height: 110%;
+    }
+}
+// saturday section
+.saturday {
+    z-index: 10;
+}
+// staff section
+.staff {
+    .staff-item {
+        text-align: center;
+    }
+    z-index: 0;
+    &.pattern::before {
+        top: -20%;
+        height: 120%;
+    }
+}
+// access section
+.access {
+    .access-info {
+        font-size: $font-sm;
+        text-align: center;
+    }
+    iframe {
+        width: 100%;
+        max-height: 25rem;
+    }
+}
+// ========================================
+// info
+// ========================================
+// ========================================
+// recruit
+// ========================================
+.recruit-item {
+    margin-right: 0;
+    border-bottom: 0.1rem solid lighten($color: $color-dark, $amount: 60%);
+    p {
+        margin-bottom: 2rem;
+    }
+    .number {
+        text-align: left;
+        padding: 0;
+        margin-top: 1.5rem;
+    }
+    .btn-group-sm {
+        margin-top: 1.5rem;
+    }
+    .tag {
+        &.tag-placeholder {
+            display: block;
+            opacity: 0;
+        }
+    }
+}
+// ========================================
+// info detail page
+// ========================================
+.info-detail {
+    .outlined-btn {
+        min-width: 8rem;
+    }
+}
+// ========================================
+// account management related pages
+// ========================================
+.account-body {
+    min-height: 100%;
+    position: relative;
+    background: url(/static/images/hero.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+    &::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: $color-dark;
+        opacity: .6;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+    }
+    .panel {
+        width: 100%;
+        max-width: 60rem;
+        margin: 0 auto;
+        border-radius: 1rem;
+        @include padding(6rem);
+    }
+    .meta-info {
+        text-align: center;
+        span:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+    .report-confirm-list {
+        li {
+            border-bottom: 0.1rem solid darken($color: $color-light, $amount: 30%);
+        }
+    }
+}

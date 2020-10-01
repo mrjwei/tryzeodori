@@ -1,0 +1,293 @@
+@import "../../node_modules/rfs/scss.scss";
+@import "variables";
+
+*,
+*::before
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+    min-height: 100%;
+}
+body {
+    font-size: $font-sm;
+    font-weight: $font-normal;
+    letter-spacing: $letter-spacing-normal;
+    min-height: 100%;
+    z-index: -1;
+}
+h1, h2, h3, p {
+    padding: 0;
+    margin: 0;
+}
+a {
+    display: block;
+}
+img {
+    display: block;
+}
+button,
+button:hover,
+button:focus,
+button:active,
+button:visited {
+    border: none;
+    outline: none;
+}
+a, a:hover {
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.container {
+    width: 100%;
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+.inner-container {
+    width: 100%;
+}
+.row {
+    width: 100%;
+    max-width: 100rem;
+    margin-left: 0;
+}
+.data-list {
+    width: 100%;
+    max-width: 60rem;
+    &.data-list-small {
+        max-width: 50rem;
+    }
+    &.data-list-lg {
+        max-width: 70rem;
+    }
+}
+.hidden {
+    display: none;
+}
+.btn-group-sm {
+    min-width: 10rem;
+}
+.col {
+    max-width: 100%;
+    @include padding-left(1.5rem);
+    @include padding-right(1.5rem);
+}
+// utility classes & mixins
+.font-jp {
+    font-family: $font-family-primary;
+}
+.font-en {
+    font-family: $font-family-secondary;
+}
+.font-xl {
+    @include font-size($font-xl);
+}
+.font-lg {
+    @include font-size($font-lg);
+}
+.font-md {
+    @include font-size($font-md);
+}
+.font-sm {
+    @include font-size($font-sm);
+}
+.font-xs {
+    @include font-size($font-xs);
+}
+.font-bold {
+    font-weight: $font-bold;
+}
+.font-medium {
+    font-weight: $font-medium;
+}
+.font-normal {
+    font-weight: $font-normal;
+}
+.font-light {
+    font-weight: $font-light;
+}
+.text-light {
+    color: $color-light!important;
+}
+.text-dark {
+    color: $color-dark!important;
+}
+.text-primary {
+    color: $color-primary!important;
+}
+.text-secondary {
+    color: $color-secondary!important;
+}
+.text-caution {
+    color: $color-caution!important;
+}
+.letter-spacing-lg {
+    letter-spacing: $letter-spacing-lg;
+}
+.letter-spacing-normal {
+    letter-spacing: $letter-spacing-normal;
+}
+.custom-bg-primary {
+    background-color: $color-primary;
+}
+.custom-bg-secondary {
+    background-color: $color-secondary;
+}
+.custom-bg-light {
+    background-color: $color-light;
+}
+.margin-xl {
+    @include margin(8rem);
+}
+.margin-top-xl {
+    @include margin-top(8rem);
+}
+.margin-bottom-xl {
+    @include margin-bottom(8rem);
+}
+.margin-left-xl {
+    @include margin-left(8rem);
+}
+.margin-right-xl {
+    @include margin-right(8rem);
+}
+.margin-lg {
+    @include margin(4rem);
+}
+.margin-top-lg {
+    @include margin-top(4rem);
+}
+.margin-bottom-lg {
+    @include margin-bottom(4rem);
+}
+.margin-left-lg {
+    @include margin-left(4rem);
+}
+.margin-right-lg {
+    @include margin-right(4rem);
+}
+.margin-md {
+    @include margin(3rem);
+}
+.margin-top-md {
+    @include margin-top(3rem);
+}
+.margin-bottom-md {
+    @include margin-bottom(3rem);
+}
+.margin-left-md {
+    @include margin-left(3rem);
+}
+.margin-right-md {
+    @include margin-right(3rem);
+}
+.margin-sm {
+    @include margin(2rem);
+}
+.margin-top-sm {
+    @include margin-top(2rem);
+}
+.margin-bottom-sm {
+    @include margin-bottom(2rem);
+}
+.margin-left-sm {
+    @include margin-left(2rem);
+}
+.margin-right-sm {
+    @include margin-right(2rem);
+}
+.margin-xs {
+    @include margin(1rem);
+}
+.margin-top-xs {
+    @include margin-top(1rem);
+}
+.margin-bottom-xs {
+    @include margin-bottom(1rem);
+}
+.margin-left-xs {
+    @include margin-left(1rem);
+}
+.margin-right-xs {
+    @include margin-right(1rem);
+}
+.padding-xl {
+    @include padding(12rem);
+}
+.padding-top-xl {
+    @include padding-top(12rem);
+}
+.padding-bottom-xl {
+    @include padding-bottom(12rem);
+}
+.padding-left-xl {
+    @include padding-left(12rem);
+}
+.padding-right-xl {
+    @include padding-right(12rem);
+}
+.padding-lg {
+    @include padding(3rem);
+}
+.padding-top-lg {
+    @include padding-top(3rem);
+}
+.padding-bottom-lg {
+    @include padding-bottom(3rem);
+}
+.padding-left-lg {
+    @include padding-left(3rem);
+}
+.padding-right-lg {
+    @include padding-right(3rem);
+}
+.padding-md {
+    @include padding(1.5rem);
+}
+.padding-top-md {
+    @include padding-top(1.5rem);
+}
+.padding-bottom-md {
+    @include padding-bottom(1.5rem);
+}
+.padding-left-md {
+    @include padding-left(1.5rem);
+}
+.padding-right-md {
+    @include padding-right(1.5rem);
+}
+.padding-sm {
+    @include padding(1rem);
+}
+.padding-top-sm {
+    @include padding-top(1rem);
+}
+.padding-bottom-sm {
+    @include padding-bottom(1rem);
+}
+.padding-left-sm {
+    @include padding-left(1rem);
+}
+.padding-right-sm {
+    @include padding-right(1rem);
+}
+.padding-xs {
+    @include padding(0.5rem);
+}
+.padding-top-xs {
+    @include padding-top(0.5rem);
+}
+.padding-bottom-xs {
+    @include padding-bottom(0.5rem);
+}
+.padding-left-xs {
+    @include padding-left(0.5rem);
+}
+.padding-right-xs {
+    @include padding-right(0.5rem);
+}

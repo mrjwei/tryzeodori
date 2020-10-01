@@ -1,0 +1,375 @@
+@import "base";
+@import "mixins";
+
+// datepicker
+.ui-datepicker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: $color-secondary;
+    color: $color-light;
+    padding: 2rem;
+    a {
+        color: $color-light;
+        cursor: pointer;
+        &:hover {
+            color: darken($color: $color-light, $amount: 5%);
+        }
+    }
+    .ui-datepicker-header {
+        margin-bottom: 1rem;
+        .ui-datepicker-prev {
+            float: left;
+        }
+        .ui-datepicker-next {
+            float: right;
+        }
+        .ui-datepicker-title {
+            clear: both;
+        }
+    }
+    td a {
+        padding: 0.5rem;
+    }
+}
+// buttons
+.text-btn {
+    @extend %generic-btn;
+}
+.text-btn-small {
+    @extend %generic-btn;
+    min-width: 0;
+    padding: 0;
+    &:hover {
+        background-color: transparent;
+    }
+}
+.outlined-btn {
+    @extend %generic-btn;
+    border: 0.2rem solid $color-primary;
+    &:hover {
+        border: 0.2rem solid $color-primary;
+        background-color: lighten($color-primary, 80%);
+    }
+}
+.contained-btn {
+    @extend %generic-btn;
+    color: $color-light;
+    background-color: $color-primary;
+    &:hover {
+        color: $color-light;
+        background-color: lighten($color: $color-primary, $amount: 20%);
+    }
+}
+.text-btn-light, .outlined-btn-light {
+    @extend %generic-btn;
+    color: $color-light;
+    &:hover {
+        color: $color-light;
+        background-color: darken($color: $color-light, $amount: 20%);
+    }
+}
+.text-btn-small-light {
+    @extend %generic-btn;
+    min-width: 0;
+    padding: 0;
+    color: $color-light;
+    &:hover {
+        color: $color-light;
+        background-color: transparent;
+    }
+}
+.outlined-btn-light {
+    @extend %generic-btn;
+    border: 0.2rem solid $color-light;
+    &:hover {
+        border: 0.2rem solid $color-light;
+        background-color: darken($color-light, 20%);
+    }
+}
+.contained-btn-light {
+    @extend %generic-btn;
+    color: $color-primary;
+    background-color: $color-light;
+    &:hover {
+        color: $color-primary;
+        background-color: darken($color: $color-light, $amount: 20%);
+    }
+}
+.text-btn-caution, .outlined-btn-caution {
+    @extend %generic-btn;
+    color: $color-caution;
+    &:hover {
+        color: $color-caution;
+        background-color: lighten($color: $color-caution, $amount: 80%);
+    }
+}
+.text-btn-small-caution {
+    @extend %generic-btn;
+    min-width: 0;
+    padding: 0;
+    color: $color-caution;
+    &:hover {
+        color: $color-caution;
+        background-color: transparent;
+    }
+}
+.outlined-btn-caution {
+    border: 0.2rem solid $color-caution;
+    &:hover {
+        color: $color-caution;
+    }
+}
+.contained-btn-caution {
+    @extend %generic-btn;
+    color: $color-light;
+    background-color: $color-caution;
+    &:hover {
+        color: $color-light;
+        background-color: lighten($color: $color-caution, $amount: 20%);
+    }
+}
+.text-btn-small, .text-btn-small-light, .text-btn-small-caution {
+    min-width: 5rem;
+}
+// tag
+.tag {
+    @include tag;
+    &.col {
+        padding: 0.6rem 0;
+        max-width: 4.5rem;
+    }
+    &.tag-placeholder {
+        display: none;
+    }
+}
+// form
+.form {
+    @include form(100%);
+}
+// accordion
+.accordion {
+    width: 100%;
+    max-width: 60rem;
+    cursor: pointer;
+    p {
+        margin-left: 0;
+        margin-right: 0; 
+        &:not(:last-child) {
+            border-bottom: 0.1rem solid lighten($color: $color-dark, $amount: 60%);
+        }
+    }
+    .accordion-title {
+        background-color: $color-secondary;
+    }
+    .ui-accordion-header-active {
+        background-color: $color-primary;
+        .down {
+            display: none;
+        }
+        .up {
+            display: block;
+        }
+    }
+}
+// paginate
+.pagination {
+    width: 30%;
+    .step-links {
+        display: block;
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+    .page-nav {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        &:first-child {
+            left: 0;
+        }
+        &:last-child {
+            right: 0;
+        }
+        a {
+            margin: 0 1rem;
+        }
+    }
+    .current {
+        display: block;
+        margin: 0 auto;
+    }
+}
+// textarea
+textarea::placeholder {
+    color:lighten($color: $color-dark, $amount: 60%);
+    opacity: 1;
+}
+// navbar
+.navbar {
+    height: 6.5rem;
+    margin: 0 auto!important;
+    position: relative;
+    padding-top: 0;
+    padding-bottom: 0;
+    @include padding-left(2rem!important);
+    @include padding-right(2rem!important);
+    z-index: 10;
+    // toggle button
+    .navbar-toggler {
+        border: none;
+        padding: 0;
+        z-index: 100;
+    }
+    // brand
+    .navbar-brand {
+        padding: 0;
+        margin: 0;
+        a {
+            max-width: 7rem;
+            margin: 0 auto;
+        }
+    }
+    // navbar-collapse
+    .collapse {
+        display: block;
+    }
+    .navbar-collapse {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 100;
+        transition: left .6s ease-in-out;
+        .navbar-nav {
+            margin-top: 2rem;
+        }
+        .nav-link {
+            padding: 1rem 0 1rem 2rem;
+            color: darken($color: $color-light, $amount: 5%)!important;
+            &:hover, &.active {
+                color: $color-light!important;
+            }
+        }
+        &.show {
+            left: 0;
+            transition: left .6s ease-in-out;
+        }
+    }
+    .close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        cursor: pointer;
+    }
+    // username, logout button, etc.
+    .account-group {
+        .dropdown-toggle, 
+        .dropdown-toggle:hover, 
+        .dropdown-toggle:focus, 
+        .dropdown-toggle:active,
+        .dropdown-toggle:visited {
+            border: none;
+            outline: none;
+            background-color: transparent;
+        }
+        .dropdown-menu {
+            border: none;
+            outline: none;
+            padding: 0;
+        }
+    }
+}
+// hero
+.hero {
+    position: relative;
+    height: 35rem;
+    background: url(/static/images/hero-curved.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    overflow-y: hidden;
+    z-index: 1;
+    h1 {
+        position: relative;
+        padding: 0 2rem;
+        transform: translateY(-3rem);
+        .main-msg {
+            @include font-size($font-xl);
+        }
+        .sub-msg {
+            @include font-size($font-md);
+            line-height: 3rem;
+        }
+        &::after {
+            @include short-bar($color-light);
+            position: absolute;
+            width: 20%;
+            height: 0.5rem;
+            left: 50%;
+            top: -4rem;
+            transform: translateX(-50%);
+        }
+    }
+    .down-arrow {
+        width: 8rem;
+        height: 8rem;
+        color: $color-dark;
+        background-color: white;
+        border-radius: 100%;
+        position: absolute;
+        bottom: -4rem;
+        .material-icons {
+            transform: translateY(-1rem);
+        }
+    }
+}
+// section
+.section {
+    position: relative;
+    z-index: 1;
+    &.pattern::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: url(/static/images/bg-pattern.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        // top: 0;
+        opacity: .3;
+        z-index: -1;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .title {
+        span:first-child {
+            position: relative;
+            &::before, &::after {
+                @include short-bar($color-dark);
+            }
+            &::before {
+                left: -4rem;
+            }
+            &::after {
+                right: -4rem;
+            }
+        }
+        &.text-light {
+            span:first-child {
+                &::before, &::after {
+                    @include short-bar($color-light);
+                }
+            }
+        }
+    }
+}
+// uploaded images
+.upload-img {
+    max-width: 100%;
+}

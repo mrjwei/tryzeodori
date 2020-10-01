@@ -1,0 +1,60 @@
+@import "base";
+
+// mixins
+%generic-btn {
+    @include padding-top(0.8rem);
+    @include padding-bottom(0.8rem);
+    @include padding-left(1rem);
+    @include padding-right(1rem);
+    @include font-size($font-sm);
+    min-width: 8rem;
+    color: $color-primary;
+    background-color: transparent;
+    text-align: center;
+    &:hover {
+        background-color: lighten($color-primary, 80%);
+    }
+}
+@mixin short-bar($color) {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 0.2rem;
+    background-color: $color;
+    position: absolute;
+    top: 50%;
+}
+@mixin tag {
+    @include padding-top(0.6rem);
+    @include padding-bottom(0.6rem);
+    @include padding-left(1rem);
+    @include padding-right(1rem);
+    border-radius: 0.5rem;
+    max-width: 4.5rem;
+    text-align: center;
+}
+@mixin form($width) {
+    width: $width;
+    max-width: 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        &:not(:last-of-type) {
+            @include margin-bottom(2rem);
+        }
+        label {
+            width: 35%;
+        }
+        input, textarea {
+            width: 65%;
+        }
+    }
+    .outlined-btn, .contained-btn {
+        min-width: 8rem;
+    }
+}
