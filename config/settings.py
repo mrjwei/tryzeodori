@@ -172,13 +172,13 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
 
-if DEBUG:
-    STATIC_URL = '/static/'
-else:
-    AWS_LOCATION = 'static'
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
-    DEFAULT_FILE_STORAGE = "config.storage_backends.MediaStorage"
+# if DEBUG:
+#     STATIC_URL = '/static/'
+# else:
+AWS_LOCATION = 'static'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
+DEFAULT_FILE_STORAGE = "config.storage_backends.MediaStorage"
 
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
 SECURE_HSTS_SECONDS = env.int("DJANGO_SECURE_HSTS_SECONDS", default=2592000)
