@@ -29,9 +29,13 @@ class HomePageView(LoginRequiredMixin, TemplateView):
 
 class PostListView(LoginRequiredMixin, ListView):
     model = Post
-    context_object_name = 'posts'
     template_name = 'info.html'
     login_url = 'account_login'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['posts'] = Post.objects.all().order_by('-publish_date')
+        return context
     
 
 class PostDetailView(LoginRequiredMixin, DetailView):
