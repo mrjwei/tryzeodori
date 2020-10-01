@@ -1058,6 +1058,7 @@ ul {
 .accordion {
   width: 100%;
   max-width: 60rem;
+  cursor: pointer;
 }
 
 .accordion p {
@@ -1367,6 +1368,10 @@ textarea::placeholder {
   top: 50%;
 }
 
+.upload-img {
+  max-width: 100%;
+}
+
 .info {
   z-index: 0;
 }
@@ -1380,10 +1385,6 @@ textarea::placeholder {
 .info .info-title {
   padding: 0;
   margin-top: 1.5rem;
-}
-
-.info .info-img {
-  max-width: 100%;
 }
 
 .info .tag {

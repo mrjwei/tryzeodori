@@ -12,7 +12,7 @@
         <h2 class="font-md font-bold margin-bottom-lg">{{ month }}月{{ day }}日更新</h2>
         <ul class="data-list data-list-lg">
             {% for post in posts %}
-                <li class="recruit-item row padding-bottom-sm margin-bottom-sm">    
+                <li class="recruit-item row padding-bottom-md margin-bottom-md">    
                     {% if post.tag %}
                         <span class="col col-4 col-md-2 tag font-en font-xs text-light text-uppercase custom-bg-secondary">{{ post.tag }}</span>
                     {% else %}
@@ -27,7 +27,7 @@
                         </div>
                     {% endif %}
                     {% if post.img %}
-                        <a href="{{ post.img.url }}"><img src="{{ post.img.url }}" alt="{{ post.title }}求人画像"></a>
+                        <a class="margin-top-md" href="{{ post.img.url }}"><img class="upload-img" src="{{ post.img.url }}" alt="{{ post.title }}求人画像"></a>
                     {% endif %}
                 </li>
             {% endfor %}

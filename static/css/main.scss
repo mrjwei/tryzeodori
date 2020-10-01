@@ -484,6 +484,7 @@ ul {
 .accordion {
     width: 100%;
     max-width: 60rem;
+    cursor: pointer;
     p {
         margin-left: 0;
         margin-right: 0; 
@@ -696,6 +697,9 @@ textarea::placeholder {
         }
     }
 }
+.upload-img {
+    max-width: 100%;
+}
 .info {
     z-index: 0;
     .info-item {
@@ -704,9 +708,6 @@ textarea::placeholder {
     .info-title {
         padding: 0;
         margin-top: 1.5rem;
-    }
-    .info-img {
-        max-width: 100%;
     }
     .tag {
         margin-right: 1.5rem;
