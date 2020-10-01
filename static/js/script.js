@@ -21,13 +21,21 @@ $(function(){
         icons: false
     });
     // mobile menu behaviour
-    $(".navbar-toggler").click(function() {
-        $(".navbar-collapse").toggleClass("show");
+    // $(".close").click(function() {
+    //     $(".navbar-collapse").toggleClass("show");
+    // });
+    $(".navbar-toggler").click(function(e) {
+        e.stopPropagation();
+        $(".navbar-collapse").addClass("show");
     });
-    $(".close").click(function() {
-        $(".navbar-collapse").toggleClass("show");
+    $(".close").click(function(e) {
+        e.stopPropagation();
+        $(".navbar-collapse").removeClass("show");
     });
-    $(".show .nav-link").click(function() {
-        $(".navbar-collapse").toggleClass("show");
-    });
+    // $(".close").click(function() {
+    //     $(".navbar-collapse").toggleClass("show");
+    // });
+    // $(".show .nav-link").click(function() {
+    //     $(".navbar-collapse").toggleClass("show");
+    // });
 });

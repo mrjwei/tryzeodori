@@ -571,6 +571,9 @@ textarea::placeholder {
         }
     }
     // navbar-collapse
+    .collapse {
+        display: block;
+    }
     .navbar-collapse {
         width: 100%;
         height: 100%;
@@ -578,28 +581,27 @@ textarea::placeholder {
         top: 0;
         left: -100%;
         z-index: 100;
-        transition: all .6s ease-in-out!important;
+        transition: left .6s ease-in-out;
         .navbar-nav {
-            margin-top: 3rem;
-            .nav-link {
-                padding: 1rem 0 1rem 1rem;
-                color: darken($color: $color-light, $amount: 5%)!important;
-                &:hover, &.active {
-                    color: $color-light!important;
-                }
+            margin-top: 2rem;
+        }
+        .nav-link {
+            padding: 1rem 0 1rem 2rem;
+            color: darken($color: $color-light, $amount: 5%)!important;
+            &:hover, &.active {
+                color: $color-light!important;
             }
+        }
+        &.show {
+            left: 0;
+            transition: left .6s ease-in-out;
         }
     }
     .close {
         position: absolute;
-        top: 1rem;
-        right: 1rem;
+        top: 2rem;
+        right: 2rem;
         cursor: pointer;
-    }
-    .show {
-        left: 0;
-        transition: all .6s ease-in-out!important;
-        z-index: 100;
     }
     // username, logout button, etc.
     .account-group {
@@ -816,6 +818,7 @@ textarea::placeholder {
             display: none;
         }
         .navbar-nav {
+            margin-top: 0!important;
             height: 100%;
             justify-content: space-between;
         }
