@@ -9,7 +9,7 @@
 <section class="section recruit-edit padding-top-xl padding-bottom-xl">
     <div class="container">
         <h2 class="font-md font-bold margin-bottom-lg">求人情報編集</h2>
-        <form class="form" action="" method="POST">
+        <form class="form" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="d-flex flex-row justify-content-center margin-top-lg">

@@ -9,7 +9,7 @@
 <section class="section recruit-new padding-top-xl padding-bottom-xl">
     <div class="container">
         <h2 class="font-md font-bold margin-bottom-lg">新規求人情報</h2>
-        <form class="form" method="POST">
+        <form class="form" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="contained-btn margin-top-md" type="submit">作成</button>

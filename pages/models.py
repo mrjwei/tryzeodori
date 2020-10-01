@@ -86,6 +86,7 @@ class RecruitInfo(models.Model):
         ('New', '新着'),
     )
     tag = models.CharField('タッグ', max_length=10, blank=True, null=True, choices=TAGS)
+    img = models.ImageField(blank=True)
     
     class Meta:
         permissions = [

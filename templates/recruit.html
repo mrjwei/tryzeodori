@@ -26,6 +26,9 @@
                             <a class="text-btn-small-caution text-center" href="{% url 'recruit_delete' post.pk %}">削除</a>
                         </div>
                     {% endif %}
+                    {% if post.img %}
+                        <a href="{{ post.img.url }}"><img src="{{ post.img.url }}" alt="{{ post.title }}求人画像"></a>
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>
