@@ -11,7 +11,25 @@
         <h2 class="font-md font-bold margin-bottom-lg">新規情報</h2>
         <form class="form" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.as_p }}
+            <p>
+                <label for="id_title">テーマ：</label>
+                <input type="text" id="id_title" name="title" maxlength="25" required>
+            </p>
+            <pre>
+                <label for="id_content">内容：</label>
+                <textarea type="text" id="id_content" name="content" required></textarea>
+            </pre>
+            <p>
+                <label for="id_tag">タッグ</label>
+                <select name="tag" id="id_tag">
+                    <option value>---------</option>
+                    <option value="New">新着</option>
+                </select>
+            </p>
+            <p>
+                <label for="id_img">画像</label>
+                <input type="file" id="id_img" name="img" accept="image/*">
+            </p>
             <div class="d-flex flex-row justify-content-center margin-top-lg">
                 <button class="contained-btn margin-right-md" type="submit">作成</button>
                 <a class="text-btn" href="{% url 'info' %}">戻る</a>
