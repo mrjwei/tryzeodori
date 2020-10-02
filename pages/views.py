@@ -24,7 +24,7 @@ class HomePageView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['posts'] = Post.objects.all().order_by('-publish_date')
         context['saturday_schedules'] = SaturdaySchedule.objects.all().order_by('-date')
-        context['staff_schedules'] = StaffSchedule.objects.all().order_by('-date')
+        context['staff_schedules'] = StaffSchedule.objects.all().order_by('date')
         return context
 
 class PostListView(LoginRequiredMixin, ListView):
