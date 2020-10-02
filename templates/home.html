@@ -45,8 +45,8 @@
                 <li class="row font-md text-light margin-bottom-sm">
                     <span class="col-8">{{ schedule.date }} {{ schedule.title }}</span>
                     {% if perms.pages.can_update_saturday_schedule %}
-                        <div class="btn-group-sm col-4 d-flex flex-row justify-content-end">
-                            <a class="text-btn-small-light text-center margin-right-sm" href="{% url 'saturday_edit' schedule.pk %}">編集</a>
+                        <div class="btn-group-sm col-3 px-0 d-flex flex-row justify-content-end">
+                            <a class="text-btn-small-light text-center" href="{% url 'saturday_edit' schedule.pk %}">編集</a>
                             <a class="text-btn-small-light text-center" href="{% url 'saturday_delete' schedule.pk %}">削除</a>
                         </div>
                     {% endif %}
@@ -75,8 +75,8 @@
                         <span class="col col-8">{{ schedule.date }} {{ schedule.content }} / {{ schedule.duration }}</span>
                     </span>
                     {% if perms.pages.can_update_staff_schedule %}
-                        <div class="btn-group-sm col-3 d-flex flex-row justify-content-end">
-                            <a class="text-btn-small text-center margin-right-sm" href="{% url 'staff_edit' schedule.pk %}">編集</a>
+                        <div class="btn-group-sm col-3 px-0 d-flex flex-row justify-content-end">
+                            <a class="text-btn-small text-center" href="{% url 'staff_edit' schedule.pk %}">編集</a>
                             <a class="text-btn-small-caution text-center" href="{% url 'staff_delete' schedule.pk %}">削除</a>
                         </div>
                     {% endif %}
