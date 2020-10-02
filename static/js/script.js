@@ -32,10 +32,6 @@ $(function(){
         e.stopPropagation();
         $(".navbar-collapse").removeClass("show");
     });
-    // $(".close").click(function() {
-    //     $(".navbar-collapse").toggleClass("show");
-    // });
-    // $(".show .nav-link").click(function() {
-    //     $(".navbar-collapse").toggleClass("show");
-    // });
+    // fix textarea cannot break line problem
+    $("textarea").html("<pre></pre>");
 });

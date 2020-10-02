@@ -11,7 +11,9 @@
         <h2 class="font-md font-bold margin-bottom-lg">新規情報</h2>
         <form class="form" action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
+            {% autoescape off %}
             {{ form.as_p }}
+            {% endautoescape %}
             <div class="d-flex flex-row justify-content-center margin-top-lg">
                 <button class="contained-btn margin-right-md" type="submit">作成</button>
                 <a class="text-btn" href="{% url 'info' %}">戻る</a>

@@ -26,7 +26,7 @@
                     <li class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">午前具体内容：</span><span class="col-8">{{ report.am_detail }}</span></li>
                     <li class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">午後：</span><span class="col-8">{{ report.pm }}</span></li>
                     <li class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">午後具体内容：</span><span class="col-8">{{ report.pm_detail }}</span></li>
-                    <li class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">感想や相談事など：</span><span class="col-8">{{ report.comment }}</span></li>
+                    <li class="row margin-bottom-sm padding-bottom-sm"><span class="col-4">感想や相談事など：</span><span class="col-8">{{ report.comment|linebreaksbr }}</span></li>
                     <li class="row">
                         <a class="col-2 offset-4 text-btn-small text-center" href="{% url 'report_edit' report.pk %}">編集</a>
                         <a class="col-2 text-btn-small-caution text-center" href="{% url 'report_delete' report.pk %}">削除</a>
