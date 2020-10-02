@@ -14,17 +14,19 @@
             {% if post.img %}
                 <a class="margin-top-md" href="{{ post.img.url }}" target="blank_"><img class="upload-img" src="{{ post.img.url }}" alt="{{ post.title }}の画像"></a>
             {% endif %}
-            <div class="d-flex flex-row justify-content-center margin-top-xl">
-                <a class="outlined-btn text-center margin-right-sm" href="{% url 'post_edit' post.pk %}">
-                    編集
-                </a>
-                <a class="outlined-btn-caution text-center margin-right-lg" href="{% url 'post_delete' post.pk %}">
-                    削除
-                </a>
-                <a class="text-btn" href="{% url 'info' %}">
-                    戻る
-                </a>
-            </div>
+            {% if perms.pages.can_update_post %}
+                <div class="d-flex flex-row justify-content-center margin-top-xl">
+                    <a class="outlined-btn text-center margin-right-sm" href="{% url 'post_edit' post.pk %}">
+                        編集
+                    </a>
+                    <a class="outlined-btn-caution text-center margin-right-lg" href="{% url 'post_delete' post.pk %}">
+                        削除
+                    </a>
+                    <a class="text-btn" href="{% url 'info' %}">
+                        戻る
+                    </a>
+                </div>
+            {% endif %}
         </div>
     </div>
 </section>
