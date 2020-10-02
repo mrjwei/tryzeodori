@@ -32,6 +32,4 @@ $(function(){
         e.stopPropagation();
         $(".navbar-collapse").removeClass("show");
     });
-    // fix textarea cannot break line problem
-    $("textarea").html("<pre></pre>");
 });
