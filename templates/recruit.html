@@ -22,7 +22,7 @@
                     <span class="col col-8 col-md-4 number">番号：{{ post.number }}</span>
                     {% if perms.pages.can_update_recruit_info %}
                         <div class="col btn-group-sm col-4 col-md-2 d-flex flex-row justify-content-end">
-                            <a class="text-btn-small text-center margin-right-xs" href="{% url 'recruit_edit' post.pk %}">編集</a>
+                            <a class="text-btn-small text-center" href="{% url 'recruit_edit' post.pk %}">編集</a>
                             <a class="text-btn-small-caution text-center" href="{% url 'recruit_delete' post.pk %}">削除</a>
                         </div>
                     {% endif %}

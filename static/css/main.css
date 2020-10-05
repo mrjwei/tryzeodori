@@ -320,10 +320,6 @@ ul {
   display: none;
 }
 
-.btn-group-sm {
-  min-width: 10rem;
-}
-
 .col {
   max-width: 100%;
   padding-left: calc(1.275rem + 0.3vw);
@@ -942,10 +938,6 @@ ul {
 
 .hidden {
   display: none;
-}
-
-.btn-group-sm {
-  min-width: 10rem;
 }
 
 .col {
@@ -2131,10 +2123,6 @@ ul {
   display: none;
 }
 
-.btn-group-sm {
-  min-width: 10rem;
-}
-
 .col {
   max-width: 100%;
   padding-left: calc(1.275rem + 0.3vw);
@@ -2886,10 +2874,6 @@ ul {
 
 .hidden {
   display: none;
-}
-
-.btn-group-sm {
-  min-width: 10rem;
 }
 
 .col {

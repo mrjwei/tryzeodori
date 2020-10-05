@@ -45,8 +45,8 @@
                 <li class="row font-md text-light margin-bottom-sm">
                     <span class="col-8">{{ schedule.date }} {{ schedule.title }}</span>
                     {% if perms.pages.can_update_saturday_schedule %}
-                        <div class="btn-group-sm col-4 d-flex flex-row justify-content-end">
-                            <a class="text-btn-small-light text-center margin-right-sm" href="{% url 'saturday_edit' schedule.pk %}">編集</a>
+                        <div class="btn-group-sm col-3 px-0 d-flex flex-row justify-content-end">
+                            <a class="text-btn-small-light text-center" href="{% url 'saturday_edit' schedule.pk %}">編集</a>
                             <a class="text-btn-small-light text-center" href="{% url 'saturday_delete' schedule.pk %}">削除</a>
                         </div>
                     {% endif %}
@@ -75,8 +75,8 @@
                         <span class="col col-8">{{ schedule.date }} {{ schedule.content }} / {{ schedule.duration }}</span>
                     </span>
                     {% if perms.pages.can_update_staff_schedule %}
-                        <div class="btn-group-sm col-3 d-flex flex-row justify-content-end">
-                            <a class="text-btn-small text-center margin-right-sm" href="{% url 'staff_edit' schedule.pk %}">編集</a>
+                        <div class="btn-group-sm col-3 px-0 d-flex flex-row justify-content-end">
+                            <a class="text-btn-small text-center" href="{% url 'staff_edit' schedule.pk %}">編集</a>
                             <a class="text-btn-small-caution text-center" href="{% url 'staff_delete' schedule.pk %}">削除</a>
                         </div>
                     {% endif %}
@@ -97,7 +97,7 @@
             <span class="d-block margin-bottom-md">アクセス</span>
             <span class="d-block font-en font-medium font-sm text-uppercase letter-spacing-lg">Access</span>
         </h2>
-        <div class="row my-5">
+        <div class="row">
             <div class="col-md-6 text-light mb-5 access-info d-flex flex-column justify-content-center">
                 <p class="mb-3">〒060-0051</p>
                 <p class="mb-3">札幌市中央区南1条東2丁目 5-1 MⅡビル 5Ｆ</p>
