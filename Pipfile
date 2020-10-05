@@ -17,6 +17,7 @@ gunicorn = "*"
 pillow = "*"
 django-storages = "*"
 boto3 = "*"
+django-import-export = "*"
 
 [requires]
 python_version = "3.8"

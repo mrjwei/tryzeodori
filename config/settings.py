@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'storages',
+    'import_export',
     
     # local
     'accounts',
