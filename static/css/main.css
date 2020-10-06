@@ -2667,6 +2667,13 @@ ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.info .info-item * {
+  text-align: center;
 }
 
 .info .info-title {
@@ -2675,6 +2682,7 @@ ul {
 }
 
 .info .tag {
+  display: none;
   margin-right: 1.5rem;
 }
 
@@ -2721,23 +2729,40 @@ ul {
   border-bottom: 0.1rem solid #cccccc;
 }
 
+.recruit-item .url {
+  color: #333333;
+}
+
+.recruit-item .url:hover {
+  color: gray;
+}
+
+.recruit-item .url * {
+  text-align: center;
+  margin: 0 auto;
+}
+
 .recruit-item p {
   margin-bottom: 2rem;
 }
 
 .recruit-item .number {
-  text-align: left;
+  display: block;
+  width: 20rem;
   padding: 0;
   margin-top: 1.5rem;
 }
 
 .recruit-item .btn-group-sm {
+  margin: 0 auto;
   margin-top: 1.5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.recruit-item .tag.tag-placeholder {
-  display: block;
-  opacity: 0;
+.recruit-item .tag {
+  display: none;
 }
 
 .info-detail .outlined-btn {
@@ -3492,9 +3517,6 @@ ul {
   .hero {
     height: 45rem;
   }
-  .info .tag {
-    margin: 0;
-  }
   .info .date {
     padding: 0 1.5rem;
   }
@@ -3507,14 +3529,19 @@ ul {
     -webkit-box-pack: end !important;
         -ms-flex-pack: end !important;
             justify-content: flex-end !important;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+  }
+  .info .info-item * {
+    text-align: left;
   }
   .info .info-item .info-title {
     padding: 0 1.5rem;
     margin-top: 0 !important;
-    text-align: right;
+    text-align: left;
+  }
+  .info .tag {
+    display: block;
+    margin: 0;
+    text-align: center;
   }
   .staff .staff-item {
     text-align: left;
@@ -3523,15 +3550,29 @@ ul {
     font-size: 2rem !important;
     text-align: left !important;
   }
+  .recruit-item .url * {
+    margin: 0;
+    text-align: left;
+  }
   .recruit-item p {
     margin-bottom: 0;
   }
   .recruit-item .number {
-    text-align: left;
     margin: 0;
   }
   .recruit-item .btn-group-sm {
     margin: 0;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .recruit-item .tag {
+    display: block;
+    text-align: center;
+  }
+  .recruit-item .tag.tag-placeholder {
+    display: block;
+    opacity: 0;
   }
   .meta-info span {
     text-align: left;

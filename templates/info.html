@@ -11,14 +11,14 @@
     <div class="container">
         <ul class="data-list data-list-lg">
             {% for post in posts %}
-                <li class="info-item row margin-bottom-sm">
+                <li class="info-item row margin-bottom-md">
                     {% if post.tag %}
                         <span class="col col-4 col-md-1 tag font-en font-xs text-light text-uppercase custom-bg-secondary">{{ post.tag }}</span>
                     {% else %}
                         <span class="col col-4 col-md-1 tag tag-placeholder font-en font-xs text-light text-uppercase custom-bg-secondary">{{ post.tag }}</span>
                     {% endif %}                        
-                    <span class="date col col-8 col-md-3 font-light font-md text-left">{{ post.publish_date|date:'Y-m-d' }}</span>
-                    <a class="info-title col col-12 col-md-8 text-dark font-md font-medium text-left" href="{% url 'post_detail' post.pk %}"><u>{{ post.title }}</u></a>
+                    <span class="date col col-8 col-md-3 font-light font-md">{{ post.publish_date|date:'Y-m-d' }}</span>
+                    <a class="info-title col col-12 col-md-8 text-dark font-md font-medium" href="{% url 'post_detail' post.pk %}"><u>{{ post.title }}</u></a>
                 </li>
             {% endfor %}
         </ul>

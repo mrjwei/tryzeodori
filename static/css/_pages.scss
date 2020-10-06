@@ -9,12 +9,17 @@
     z-index: 0;
     .info-item {
         align-items: center;
+        justify-content: center;
+        * {
+            text-align: center;
+        }
     }
     .info-title {
         padding: 0;
         margin-top: 1.5rem;
     }
     .tag {
+        display: none;
         margin-right: 1.5rem;
     }
     .date {
@@ -62,22 +67,32 @@
 .recruit-item {
     margin-right: 0;
     border-bottom: 0.1rem solid lighten($color: $color-dark, $amount: 60%);
+    .url {
+        color: $color-dark;
+        &:hover {
+            color: lighten($color: $color-dark, $amount: 30%);
+        }
+        * {
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
     p {
         margin-bottom: 2rem;
     }
     .number {
-        text-align: left;
+        display: block;
+        width: 20rem;
         padding: 0;
         margin-top: 1.5rem;
     }
     .btn-group-sm {
+        margin: 0 auto;
         margin-top: 1.5rem;
+        justify-content: center;
     }
     .tag {
-        &.tag-placeholder {
-            display: block;
-            opacity: 0;
-        }
+        display: none;
     }
 }
 // ========================================

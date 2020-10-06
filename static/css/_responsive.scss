@@ -69,9 +69,6 @@
     }
     // info
     .info {
-        .tag {
-            margin: 0;
-        }
         .date {
             padding: 0 1.5rem;
         }
@@ -79,12 +76,19 @@
             position: relative;
             flex-direction: row!important;
             justify-content: flex-end!important;
-            align-items: center;
+            * {
+                text-align: left;
+            }
             .info-title {
                 padding: 0 1.5rem;
                 margin-top: 0!important;
-                text-align: right;
+                text-align: left;
             }
+        }
+        .tag {
+            display: block;
+            margin: 0;
+            text-align: center;
         }
     }
     // staff
@@ -100,15 +104,29 @@
     }
     // recruit
     .recruit-item {
+        .url {
+            * {
+                margin: 0;
+                text-align: left;
+            }
+        }
         p {
             margin-bottom: 0;
         }
         .number {
-            text-align: left;
             margin: 0;
         }
         .btn-group-sm {
             margin: 0;
+            justify-content: flex-end;
+        }
+        .tag {
+            display: block;
+            text-align: center;
+            &.tag-placeholder {
+                display: block;
+                opacity: 0;
+            }
         }
     }
     // account pages
@@ -128,9 +146,6 @@
 @media screen and (min-width: 992px) {
     // layout
     // navbar
-    .navbar-collapse {
-        
-    }
     // hero
     .hero {
         height: 55rem;

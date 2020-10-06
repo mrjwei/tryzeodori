@@ -85,7 +85,8 @@ class RecruitInfo(models.Model):
     TAGS = (
         ('New', '新着'),
     )
-    tag = models.CharField('タッグ', max_length=10, blank=True, null=True, choices=TAGS)
+    url = models.URLField(verbose_name='URL', max_length=500, blank=True, null=True)
+    tag = models.CharField('タグ', max_length=10, blank=True, null=True, choices=TAGS)
     img = models.ImageField('画像', blank=True)
     
     class Meta:

@@ -13,21 +13,23 @@
         <ul class="data-list data-list-lg">
             {% for post in posts %}
                 <li class="recruit-item row padding-bottom-md margin-bottom-md">    
-                    {% if post.tag %}
-                        <span class="col col-4 col-md-2 tag font-en font-xs text-light text-uppercase custom-bg-secondary">{{ post.tag }}</span>
-                    {% else %}
-                        <span class="col col-4 col-md-2 tag tag-placeholder font-en font-xs text-light text-uppercase custom-bg-secondary">{{ post.tag }}</span>
-                    {% endif %}
-                    <span class="col col-8 col-md-4 recruit-title">{{ post.title }}</span>
-                    <span class="col col-8 col-md-4 number">番号：{{ post.number }}</span>
+                    <a class="url row col col-12 col-md-10 col-lg-9" href="{% if post.url %}{{ post.url }}{% endif %}" target="_blank">
+                        {% if post.tag %}
+                            <span class="col col-4 col-md-2 col-lg-1 tag font-en font-xs text-light text-uppercase custom-bg-secondary">{{ post.tag }}</span>
+                        {% else %}
+                            <span class="col col-4 col-md-2 col-lg-1 tag tag-placeholder font-en font-xs text-light text-uppercase custom-bg-secondary">{{ post.tag }}</span>
+                        {% endif %}
+                        <span class="col col-8 col-md-4 col-lg-5 recruit-title">{{ post.title }}</span>
+                        <span class="col col-8 col-md-4 col-lg-5 number">番号：{{ post.number }}</span>
+                    </a>
                     {% if perms.pages.can_update_recruit_info %}
-                        <div class="col btn-group-sm col-4 col-md-2 d-flex flex-row justify-content-end">
+                        <div class="col btn-group-sm col-4 col-md-2 col-lg-3 d-flex flex-row">
                             <a class="text-btn-small text-center" href="{% url 'recruit_edit' post.pk %}">編集</a>
                             <a class="text-btn-small-caution text-center" href="{% url 'recruit_delete' post.pk %}">削除</a>
                         </div>
                     {% endif %}
                     {% if post.img %}
-                        <a class="margin-top-md" href="{{ post.img.url }}"><img class="upload-img" src="{{ post.img.url }}" alt="{{ post.title }}求人画像"></a>
+                        <img class="upload-img" src="{{ post.img.url }}" alt="{{ post.title }}求人画像">
                     {% endif %}
                 </li>
             {% endfor %}
