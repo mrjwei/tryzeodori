@@ -31,6 +31,7 @@
     @include padding-right(1rem);
     border-radius: 0.5rem;
     max-width: 4.5rem;
+    height: 2.7rem;
     text-align: center;
 }
 @mixin form($width) {

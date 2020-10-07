@@ -313,7 +313,7 @@ ul {
 }
 
 .data-list.data-list-lg {
-  max-width: 70rem;
+  max-width: 80rem;
 }
 
 .hidden {
@@ -933,7 +933,7 @@ ul {
 }
 
 .data-list.data-list-lg {
-  max-width: 70rem;
+  max-width: 80rem;
 }
 
 .hidden {
@@ -1652,6 +1652,7 @@ ul {
   padding-right: 1rem;
   border-radius: 0.5rem;
   max-width: 4.5rem;
+  height: 2.7rem;
   text-align: center;
 }
 
@@ -2116,7 +2117,7 @@ ul {
 }
 
 .data-list.data-list-lg {
-  max-width: 70rem;
+  max-width: 80rem;
 }
 
 .hidden {
@@ -2894,7 +2895,7 @@ ul {
 }
 
 .data-list.data-list-lg {
-  max-width: 70rem;
+  max-width: 80rem;
 }
 
 .hidden {
@@ -3549,6 +3550,11 @@ ul {
   .access-info {
     font-size: 2rem !important;
     text-align: left !important;
+  }
+  .recruit-item {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   .recruit-item .url * {
     margin: 0;
