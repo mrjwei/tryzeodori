@@ -34,6 +34,27 @@
                 </li>
             {% endfor %}
         </ul>
+        <div class="pagination margin-top-lg">
+            <span class="step-links d-flex flex-row justify-content-between">
+                {% if page_obj.has_previous %}
+                    <div class="page-nav">
+                        <a class="text-secondary" href="?page=1">&laquo; 最初へ</a>
+                        <a class="text-secondary" href="?page={{ page_obj.previous_page_number }}">前へ</a>
+                    </div>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <div class="page-nav">
+                        <a class="text-secondary" href="?page={{ page_obj.next_page_number }}">次へ</a>
+                        <a class="text-secondary" href="?page={{ page_obj.paginator.num_pages }}">最後へ &raquo;</a>
+                    </div>
+                {% endif %}
+            </span>
+        </div>
         {% if perms.pages.can_add_recruit_info %}
         <a class="add outlined-btn d-flex flex-row justify-content-between align-items-center margin-top-lg" href="{% url 'recruit_new' %}">
             求人情報追加

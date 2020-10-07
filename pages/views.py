@@ -79,6 +79,7 @@ class PostDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
 
 
 class RecruitListView(LoginRequiredMixin, ListView):
+    paginate_by = 20
     model = RecruitInfo
     context_object_name = 'posts'
     template_name = 'recruit.html'
